@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<colorizer xmlns="http://www.aptana.com/2007/colorizer/1.0" language="text/ruby">
+<category name="WHITESPACE" style="WHITESPACE"/>
+<style foreground="rgb(0,0,0)" id="WHITESPACE"/>
+<category name="LITERAL" style="LITERAL">
+<token style="LITERAL_COMMAND" type="COMMAND"/>
+<token style="LITERAL_STRING" type="STRING"/>
+<token style="LITERAL_REGEXP" type="REGEXP"/>
+</category>
+<style font-weight="bold" foreground="rgb(0,128,255)" id="LITERAL"/>
+<style foreground="rgb(0,128,128)" id="LITERAL_COMMAND"/>
+<style foreground="rgb(0,0,255)" id="LITERAL_STRING"/>
+<style foreground="rgb(90,30,160)" id="LITERAL_REGEXP"/>
+<category name="KEYWORD" style="KEYWORD"/>
+<style font-weight="bold" foreground="rgb(163,53,122)" id="KEYWORD"/>
+<category name="COMMENT" style="COMMENT">
+<token style="COMMENT_TASK_TAG" type="TASK_TAG"/>
+</category>
+<style foreground="rgb(0,128,0)" id="COMMENT"/>
+<style font-weight="bold" foreground="rgb(127,159,191)" id="COMMENT_TASK_TAG"/>
+<category name="ERROR" style="ERROR"/>
+<style font-style="italic" foreground="rgb(255,128,192)" id="ERROR"/>
+<category name="PUNCTUATOR" style="PUNCTUATOR"/>
+<style foreground="rgb(64,64,64)" id="PUNCTUATOR"/>
+<category name="IDENTIFIER" style="IDENTIFIER">
+<token style="IDENTIFIER_SYMBOL" type="SYMBOL"/>
+<token style="IDENTIFIER_CONSTANT" type="CONSTANT"/>
+<token style="IDENTIFIER_FID" type="FID"/>
+<token style="IDENTIFIER_IDENTIFIER" type="IDENTIFIER"/>
+</category>
+<style font-weight="bold" foreground="rgb(0,64,128)" id="IDENTIFIER"/>
+<style font-weight="bold" foreground="rgb(255,64,64)" id="IDENTIFIER_SYMBOL"/>
+<style foreground="rgb(0,0,0)" id="IDENTIFIER_CONSTANT"/>
+<style foreground="rgb(0,0,0)" id="IDENTIFIER_FID"/>
+<style foreground="rgb(0,0,0)" id="IDENTIFIER_IDENTIFIER"/>
+</colorizer>

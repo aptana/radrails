@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Your First Rails Project">
+  <intro>
+    <description>A cheat sheet which demonstrates generating a Rails project, setting up the configuration and generating a resource.</description>
+  </intro>
+
+	<item title="Open the Rails perspective">
+		<command
+			serialization="org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=org.radrails.rails.ui.PerspectiveRails)"
+			confirm="true">
+		</command>
+		<description>
+			If you're not already in the Rails perspective, in the main menu
+			select <b>Window</b> &gt; <b>Open Perspective</b> &gt; <b>Rails</b>
+			or click on the &quot;Click to Perform&quot; link below.
+		</description>
+	</item>
+
+  	<item
+		title="Create a Rails project"
+		dialog="true">
+		<command
+			serialization="org.eclipse.ui.newWizard(newWizardId=org.radrails.rails.ui.wizards.NewWizardProject)"
+			confirm="true">
+		</command>
+		<description>
+			In the main toolbar, click on the <b>New Rails Project</b> button, or click on
+			the link below. Enter <b>rails</b> for the project name, then
+			click <b>Finish</b>.
+		</description>
+	</item> 
+
+	<item title="Rails project generation output">
+		<description>
+			As the rails command is run to generate your project, you should see the <b>Rails Shell</b> appear in the <b>Console</b> view.
+            <br/>
+			<br/>
+            This view will show the output of the <b>rails</b> command and creates hyperlinks for the generated files. You can use those links to quickly open the files.
+            <br/>
+			<br/>
+            Additionally this view is an alternate way of entering rails related commands in a shell/console fashion - including the ability to 
+            run the <b>rails</b> command to generate rails projects.
+		</description>
+	</item> 
+
+	<item title="Open the database.yml file">
+		<description>
+			Now that you have your Rails project, you'll want to edit/verify your database connection settings.
+			<br/>
+			<br/>
+			Click the link for <b>config/database.yml</b> in the <b>Rails Shell</b> (you'll likely need to scroll up), 
+			or expand the project in the <b>Ruby Explorer</b> and double-click the file.
+		</description>
+	</item>
+
+	<item title="Edit/Verify your database settings">
+		<description>
+			Edit and/or verify your database settings. <br/>
+			<br/>
+			If you are using sqlite, there's not much to do.<br/>
+			<br/>
+			With other databases you'll want to enter the username, password, host and port information. You'll also need to manually create the database outside RadRails.			
+		</description>
+	</item>
+  
+</cheatsheet>

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: net.lucky_dip.hamleditor; singleton:=true
+Bundle-Version: 0.6.0.qualifier
+Bundle-Activator: net.lucky_dip.hamleditor.Activator
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.jface.text,
+ org.eclipse.ui.editors,
+ org.eclipse.ui.workbench.texteditor,
+ org.rubypeople.rdt.ui,
+ com.aptana.ide.editors,
+ com.aptana.ide.core.ui
+Eclipse-LazyStart: true
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-ClassPath: .
+Bundle-ActivationPolicy: lazy

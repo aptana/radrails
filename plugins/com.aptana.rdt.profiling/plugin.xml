@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="com.aptana.rdt.profiling.category"
+            name="Profiling"/>
+      <view
+            category="com.aptana.rdt.profiling.category"
+            class="com.aptana.rdt.internal.profiling.ExecutionStatisticsView"
+            icon="icons/chart_bar.gif"
+            id="com.aptana.rdt.profiling.ExecutionStatisticsView"
+            name="Hot Spots"/>
+      <view
+            category="com.aptana.rdt.profiling.category"
+            class="com.aptana.rdt.internal.profiling.CallGraphView"
+            icon="icons/chart_organisation.gif"
+            id="com.aptana.rdt.profiling.CallGraphView"
+            name="Call Graph"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="com.aptana.rdt.profiling.perspective">
+         <perspectiveShortcut id="org.radrails.rails.ui.PerspectiveRails"/>
+         <viewShortcut id="com.aptana.rdt.profiling.ExecutionStatisticsView"/>
+         <viewShortcut id="com.aptana.rdt.profiling.CallGraphView"/>
+      </perspectiveExtension>
+      <perspectiveExtension targetID="org.radrails.rails.ui.PerspectiveRails">
+         <perspectiveShortcut id="com.aptana.rdt.profiling.perspective"/>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.aptana.rdt.internal.profiling.PerspectiveFactory"
+            icon="icons/clock.gif"
+            id="com.aptana.rdt.profiling.perspective"
+            name="Profiling"/>
+   </extension>
+   <extension
+         point="org.rubypeople.rdt.launching.vmRunners">
+      <vmRunner
+            class="com.aptana.rdt.internal.profiling.StandardVMProfiler"
+            id="com.aptana.rdt.profiling.vmRunner"
+            mode="profile"
+            vmInstallType="org.rubypeople.rdt.launching.StandardVMType"
+            />
+   </extension>
+   <extension point="com.aptana.rdt.gems">
+      <gem path="lib/ruby-prof-0.7.3.gem" auto-install="true" name="ruby-prof" version="0.7.3" compiles="true"/>
+   </extension>
+   	<extension point="org.eclipse.debug.ui.launchShortcuts">
+		<shortcut label="%RubyApplicationShortcut.label"
+			icon="icons/run_ruby.gif"
+			class="org.rubypeople.rdt.internal.debug.ui.launcher.RubyApplicationShortcut"
+			modes="profile" id="com.aptana.rdt.profiling.RubyShortcut">
+			<contextualLaunch>
+				<enablement>
+					<with variable="selection">
+						<count value="1">
+						</count>
+						<iterate>
+							<or>
+								<test value="*.rb"
+									property="org.eclipse.debug.ui.matchesPattern">
+								</test>
+								<test value="*.rbx"
+									property="org.eclipse.debug.ui.matchesPattern">
+								</test>
+								<test value="*.rbw"
+									property="org.eclipse.debug.ui.matchesPattern">
+								</test>
+								<and>
+               	    				<test property="org.rubypeople.rdt.launching.isContainer"/>
+               	     				<test property="org.rubypeople.rdt.launching.hasProjectNature" args="org.rubypeople.rdt.core.rubynature"/>
+               	  				</and>
+							</or>
+						</iterate>
+					</with>
+				</enablement>
+				<contextLabel label="%LaunchShortcut.Ruby.label" mode="profile">
+				</contextLabel>
+			</contextualLaunch>
+			<perspective id="com.aptana.rdt.profiling.perspective">
+			</perspective>
+		</shortcut>
+	</extension>
+	 <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%ActionSet.profiling"
+            visible="true"
+            id="om.aptana.rdt.profiling.ProfilingSet">
+         <menu
+               label="%Menu.run"
+               path="additions"
+               id="org.eclipse.ui.run">
+            <separator
+                  name="ProfilingGroup">
+            </separator>
+         </menu>
+         <action
+               label="%Action.profiling"
+               style="pulldown"
+               icon="$nl$/icons/full/obj16/profiling.gif"
+               class="com.aptana.rdt.internal.profiling.menu.ProfilingMenuDelegate"
+               menubarPath="org.eclipse.ui.run/ProfilingGroup"
+               id="com.aptana.rdt.profiling.ProfilingMenuDelegateMenu">
+         </action>
+         <action
+               definitionId="com.aptana.rdt.profiling.ProfilingMenuDelegateToolbar"
+               label="%Action.profiling"
+               style="pulldown"
+               icon="$nl$/icons/full/obj16/profiling.gif"
+               tooltip="%Action.profilingTip"
+               class="com.aptana.rdt.internal.profiling.menu.ProfilingMenuDelegate"
+               toolbarPath="org.eclipse.debug.ui.launchActionSet/debug"
+               id="com.aptana.rdt.profiling.ProfilingMenuDelegateToolbar">
+         </action>
+         <action
+               definitionId="com.aptana.rdt.profiling.commands.OpenProfilingConfigurations"
+               label="%ActionDefinition.openProfilingConfigurations.name"
+               class="com.aptana.rdt.internal.profiling.menu.OpenProfilingConfigurations"
+               id="com.aptana.rdt.profiling.OpenProfilingConfigurations">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="%ActionDefinition.profilingMenuDelegateToolbar.name"
+            description="%ActionDefinition.profilingMenuDelegateToolbar.description"
+            categoryId="org.eclipse.debug.ui.category.run"
+            id="com.aptana.rdt.profiling.ProfilingToolMenuDelegateToolbar">
+      </command>
+       <command
+            name="%ActionDefinition.openProfilingConfigurations.name"
+            categoryId="org.eclipse.debug.ui.category.run"
+            description="%ActionDefinition.openProfilingsConfigurations.description"
+            id="com.aptana.rdt.profiling.commands.OpenProfilingConfigurations">
+      </command>
+   </extension>
+   <extension
+         point="com.aptana.ide.update.feature">
+      <feature
+            id="com.aptana.radrails.feature.professional">
+      </feature>
+   </extension>
+   <extension
+         point="org.eclipse.ui.activities">
+      <activityPatternBinding
+            activityId="com.aptana.ide.professional.activity.pro"
+            pattern="com\.aptana\.rdt\.profiling/com\..*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.aptana.ide.professional.activity.pro"
+            pattern="com\.aptana\.rdt\.profiling/org\..*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.aptana.ide.professional.activity.pro"
+            pattern="com\.aptana\.rdt\.profiling/pro\..*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.aptana.ide.professional.activity.trial"
+            pattern="com\.aptana\.rdt\.profiling/org\..*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.aptana.ide.professional.activity.trial"
+            pattern="com\.aptana\.rdt\.profiling/trial\..*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="com.aptana.ide.professional.activity.trial"
+            pattern="com\.aptana\.rdt\.profiling/com\..*">
+      </activityPatternBinding>
+   </extension>
+</plugin>

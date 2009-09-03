@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension point="com.aptana.rdt.gems">     
+      <gem path="lib/mongrel-1.1.5-x86-mswin32-60.gem" name="mongrel" version="1.1.5" platform="mswin32" auto-install="true">
+        <dependency name="gem_plugin" version="&gt;= 0.2.3"/>
+      	<dependency name="cgi_multipart_eof_fix" version="&gt;= 2.4"/>
+      </gem>
+      <gem path="lib/fastthread-1.0.1-i386-mswin32.gem" name="fastthread" version="1.0.1" platform="mswin32" auto-install="true">
+        <dependency name="gem_plugin" version="&gt;= 0.2.3"/>
+      	<dependency name="cgi_multipart_eof_fix" version="&gt;= 2.4"/>
+      </gem>
+   </extension>
+</plugin>

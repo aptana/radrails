@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+		 <key>CFBundleExecutable</key>
+		 <string>./Contents/MacOS/radrails</string>
+		 <key>CFBundleIconFile</key>
+		 <string>radrails_macosx.icns</string>
+		 <key>CFBundleInfoDictionaryVersion</key>
+		 <string>6.0</string>
+		 <key>CFBundleName</key>
+		 <string>radrails</string>
+ 		 <key>CFBundleIdentifier</key>
+        	 <string>org.radrails.ide.ui.application</string>
+		 <key>CFBundlePackageType</key>
+		 <string>APPL</string>
+		 <key>CFBundleSignature</key>
+		 <string>????</string>
+		 <key>CFBundleVersion</key>
+		 <string>3.1</string>
+		 <key>LSUIElement</key>
+		 <string>1</string>
+		 <key>Eclipse</key>
+		 <array>
+		 		 <string>-startup</string>
+		 		 <string>../../../startup.jar</string>
+		 		 <string>-consoleLog</string>
+                       		 <string>-showlocation</string>
+		 </array>
+</dict>
+</plist>

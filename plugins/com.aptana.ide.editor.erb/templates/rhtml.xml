@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+<!-- Textmate style -->
+
+<!-- for...in..end -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%forinTemplate.description" 
+	id="org.radrails.rails.ui.templates.forin" 
+	name="%forinTemplate.name">%forinTemplate.template</template>
+<!-- form_tag -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%ftTemplate.description" 
+	id="org.radrails.rails.ui.templates.ft" 
+	name="%ftTemplate.name">%ftTemplate.template</template>
+<!-- link_to(action) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%liaTemplate.description" 
+	id="org.radrails.rails.ui.templates.lia" 
+	name="%liaTemplate.name">%liaTemplate.template</template>
+<!-- link_to(action,id) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%liaiTemplate.description" 
+	id="org.radrails.rails.ui.templates.liai" 
+	name="%liaiTemplate.name">%liaiTemplate.template</template>
+<!-- link_to(controller) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%licTemplate.description" 
+	id="org.radrails.rails.ui.templates.lic" 
+	name="%licTemplate.name">%licTemplate.template</template>
+<!-- link_to(controller,action) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%licaTemplate.description" 
+	id="org.radrails.rails.ui.templates.lica" 
+	name="%licaTemplate.name">%licaTemplate.template</template>
+<!-- link_to(controller,action,id) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%licaiTemplate.description" 
+	id="org.radrails.rails.ui.templates.licai" 
+	name="%licaiTemplate.name">%licaiTemplate.template</template>
+	
+<!-- RadRails style -->
+
+<!-- link_to_remote(name,update,url) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%ltrTemplate.description" 
+	id="org.radrails.rails.ui.templates.ltr" 
+	name="%ltrTemplate.name">%ltrTemplate.template</template>
+<!-- form_remote_tag(html) -->
+<template 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	description="%frtTemplate.description" 
+	id="org.radrails.rails.ui.templates.frt" 
+	name="%frtTemplate.name">%frtTemplate.template</template>
+	
+<!-- Dr. Nic Williams' templates -->
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.arrow"
+	deleted="false" 
+	description="tm - &#x2192;" 
+	enabled="true" 
+	name="arrow">&amp;#x2192;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.backspace"
+	deleted="false" 
+	description="tm - ⌫" 
+	enabled="true" 
+	name="backspace">&amp;#x232B;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.backtab"
+	deleted="false" 
+	description="tm - &#x21E4;" 
+	enabled="true" 
+	name="backtab">&amp;#x21E4;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.base"
+	deleted="false" 
+	description="tm - Base" 
+	enabled="true" 
+	name="base">&lt;base href="${href}"${target}&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.body"
+	deleted="false" 
+	description="tm - Body" 
+	enabled="true" 
+	name="body">&lt;body&gt;
+	${cursor}
+&lt;/body&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.body_onload"
+	deleted="false" 
+	description="tm - Body" 
+	enabled="true" 
+	name="bodyo">&lt;body onload="${onload}; return false"&gt;
+	${cursor}
+&lt;/body&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.br"
+	deleted="false" 
+	description="tm - Br" 
+	enabled="true" 
+	name="br">&lt;br /&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.command"
+	deleted="false" 
+	description="tm - &#x2318;" 
+	enabled="true" 
+	name="command">&amp;#x2318;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.control"
+	deleted="false" 
+	description="tm - ⌃" 
+	enabled="true" 
+	name="control">&amp;#x2303;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.delete"
+	deleted="false" 
+	description="tm - ⌦" 
+	enabled="true" 
+	name="delete">&amp;#x2326;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.dic"
+	deleted="false" 
+	description="tm - Div" 
+	enabled="true" 
+	name="div">&lt;${div} id="${name}" class="${classes}"&gt;
+	${paste}
+&lt;/${div}&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.html_4_01_strict_doctype"
+	deleted="false" 
+	description="tm - HTML — 4.01 Strict" 
+	enabled="true" 
+	name="doctype">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+	"http://www.w3.org/TR/html4/strict.dtd"&gt;
+</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.html_4_01_transitional_doctype"
+	deleted="false" 
+	description="tm - HTML — 4.01 Transitional" 
+	enabled="true" 
+	name="doctype">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd"&gt;
+</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.xhtml_1_frameset_doctype"
+	deleted="false" 
+	description="tm - XHTML — 1.0 Frameset" 
+	enabled="true" 
+	name="doctype">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"&gt;
+</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.xhtml_strict_doctype"
+	deleted="false" 
+	description="tm - XHTML — 1.0 Strict" 
+	enabled="true" 
+	name="doctype">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
+</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.xhtml_1_transitional_doctype"
+	deleted="false" 
+	description="tm - XHTML — 1.0 Transitional" 
+	enabled="true" 
+	name="doctype">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.xhtml_1_1_doctype"
+	deleted="false" 
+	description="tm - XHTML — 1.1" 
+	enabled="true" 
+	name="doctype">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.down_arrow"
+	deleted="false" 
+	description="tm - &#x2193;" 
+	enabled="true" 
+	name="down">&amp;#x2193;</template>
+	
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.enter"
+	deleted="false" 
+	description="tm - &#x2305;" 
+	enabled="true" 
+	name="enter">&amp;#x2305;</template>
+	
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.erb_output_tags"
+	deleted="false" 
+	description="%erb.description" 
+	enabled="true" 
+	name="erb">%erb.template</template>
+	
+<template autoinsert="true"
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.escape"
+	deleted="false" 
+	description="tm - &#x238B;⎋" 
+	enabled="true" 
+	name="escape">&amp;#x238B;</template>
+	
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.form"
+	deleted="false" 
+	description="tm - Form" 
+	enabled="true" 
+	name="form">&lt;form action="${action}" method="${get}" accept-charset="utf-8"&gt;
+	${cursor}
+
+	&lt;p&gt;&lt;input type="submit" value="Continue &amp;rarr;"&gt;&lt;/p&gt;
+&lt;/form&gt;</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.h1"
+	deleted="false" 
+	description="tm - Heading" 
+	enabled="true" 
+	name="h1">&lt;h1 id="${name}"&gt;${paste}&lt;/h1&gt;</template>
+	
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.head"
+	deleted="false" 
+	description="tm - Head" 
+	enabled="true" 
+	name="head">&lt;head&gt;
+	&lt;meta http-equiv="Content-type" content="text/html; charset=utf-8"&gt;
+	&lt;title&gt;${title}&lt;/title&gt;
+	${cursor}
+&lt;/head&gt;</template>
+
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.input"
+	deleted="false" 
+	description="tm - Input" 
+	enabled="true" 
+	name="input">&lt;input type="${button}" name="${some_name}" value="${3}"${id}&gt;</template>
+	
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.left_arrow"
+	deleted="false" 
+	description="tm - &#x2190;" 
+	enabled="true" 
+	name="left">&amp;#x2190;</template>
+	
+<template autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.link"
+	deleted="false" 
+	description="tm - Link" 
+	enabled="true" 
+	name="link">&lt;link rel="${stylesheet}" href="${master}" type="text/css" media="${screen}" title="${title}" charset="${utf}"${TM_XHTML}&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.mailto"
+	deleted="false" 
+	description="tm - Mail Anchor" 
+	enabled="true" 
+	name="mailto">&lt;a href="mailto:${email}?subject=${feedback}"&gt;${email}&lt;/a&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.meta"
+	deleted="false" 
+	description="tm - Meta" 
+	enabled="true" 
+	name="meta">&lt;meta name="${name}" content="${content}"${TM_XHTML}&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.embed_quicktime"
+	deleted="false" 
+	description="tm - Embed QT Movie" 
+	enabled="true" 
+	name="movie">&lt;object width="${320}" height="${240}" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab"&gt;
+	&lt;param name="src" value="${movie}"&gt;
+	&lt;param name="controller" value="${true}"&gt;
+	&lt;param name="autoplay" value="${false}"&gt;
+	&lt;embed src="${movie}"
+		width="${320}" height="${240}"
+		controller="${true}" autoplay="${false}"
+		scale="tofit" cache="true"
+		pluginspage="http://www.apple.com/quicktime/download/"
+	&gt;
+&lt;/object&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.nbsp"
+	deleted="false" 
+	description="tm - Non-Breaking Space" 
+	enabled="true" 
+	name="nbsp">&amp;nbsp;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.option_character"
+	deleted="false" 
+	description="tm - ⌥" 
+	enabled="true" 
+	name="option">&amp;#x2325;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.return_character"
+	deleted="false" 
+	description="tm - &#x21A9;" 
+	enabled="true" 
+	name="return">&amp;#x21A9;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.right_arrow"
+	deleted="false" 
+	description="tm - &#x2192;" 
+	enabled="true" 
+	name="right">&amp;#x2192;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.render_partial"
+	deleted="false" 
+	description="tm - render (partial)" 
+	enabled="true" 
+	name="rp">%renderPartial.template</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_collection"
+	deleted="false" 
+	description="tm - render (partial, collection)" 
+	enabled="true" 
+	name="rpc">%renderPartialCollection.template</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_locals"
+	deleted="false" 
+	description="tm - render (partial, locals)" 
+	enabled="true" 
+	name="rpl">%renderPartialLocals.template</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_object"
+	deleted="false" 
+	description="tm - render (partial, object)" 
+	enabled="true" 
+	name="rpo">%renderPartialObject.template</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_status"
+	deleted="false" 
+	description="tm - render (partial, status)" 
+	enabled="true" 
+	name="rps">%renderPartialStatus.template</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.script_tag"
+	deleted="false" 
+	description="tm - Script" 
+	enabled="true" 
+	name="script">&lt;script type="text/javascript" charset="utf-8"&gt;
+	${cursor}
+&lt;/script&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.script_src_tag"
+	deleted="false" 
+	description="tm - Script With External Source" 
+	enabled="true" 
+	name="scriptsrc">&lt;script src="${url}" type="text/javascript" charset="${utf}"&gt;&lt;/script&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.shift_character"
+	deleted="false" 
+	description="tm - &#x21E7;" 
+	enabled="true" 
+	name="shift">&amp;#x21E7;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml"
+	id="org.radrails.rails.ui.templates.tm.inline_css_style_tag" 
+	deleted="false" 
+	description="tm - Style" 
+	enabled="true" 
+	name="style">&lt;style type="text/css" media="${screen}"&gt;
+	${cursor}
+&lt;/style&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.tab_character"
+	deleted="false" 
+	description="tm - &#x21E5;" 
+	enabled="true" 
+	name="tab">&amp;#x21E5;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.table"
+	deleted="false" 
+	description="tm - Table" 
+	enabled="true" 
+	name="table">&lt;table border="${0}" cellpadding="${0}"&gt;
+	&lt;tr&gt;&lt;th&gt;${Header}&lt;/th&gt;&lt;/tr&gt;
+	&lt;tr&gt;&lt;td&gt;${Data}&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</template>
+
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml"
+	id="org.radrails.rails.ui.templates.tm.textarea" 
+	deleted="false" 
+	description="tm - Text Area" 
+	enabled="true" 
+	name="textarea">&lt;textarea name="${name}" rows="${8}" cols="${40}"&gt;${cursor}&lt;/textarea&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.title"
+	deleted="false" description="tm - Title" 
+	enabled="true" name="title">&lt;title&gt;${title}&lt;/title&gt;</template>
+	
+<template 
+	autoinsert="true" 
+	context="org.radrails.rails.ui.templateContextType.rhtml" 
+	id="org.radrails.rails.ui.templates.tm.up_arrow"
+	deleted="false" description="tm - &#x2191;" 
+	enabled="true" name="up">&amp;#x2191;</template>
+</templates>

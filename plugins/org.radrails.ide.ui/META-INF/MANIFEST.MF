@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: org.radrails.ide.ui; singleton:=true
+Bundle-Version: 1.2.2.qualifier
+Bundle-Activator: org.radrails.ide.ui.RadRailsIDEPlugin
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.update.core,
+ org.eclipse.update.ui,
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.radrails.server.core,
+ org.radrails.rails.ui
+Eclipse-LazyStart: true
+Bundle-Vendor: %Bundle-Vendor.0
+Export-Package: org.radrails.ide.ui;x-friends:="org.radrails.rails.core,org.radrails.rails.ui,org.tigris.subversion.subclipse,org.tigris.subversion.subclipse.core,org.tigris.subversion.subclipse.ui"
+Bundle-ActivationPolicy: lazy

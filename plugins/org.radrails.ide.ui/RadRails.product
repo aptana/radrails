@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.1"?>
+
+<product name="RadRails" id="org.radrails.ide.ui.radrails" application="org.radrails.ide.ui.application" useFeatures="true">
+
+   <aboutInfo>
+      <image path="/org.radrails.ide.ui/icons/rails_logo_remix.gif"/>
+      <text>
+         RadRails
+
+Version: 0.8.0.qualifier
+
+(c) Copyright Marc Baumbach, Matt Kent, Kyle Shank, Andy Gianfagna, Ryan Lowe and others 2005, 2007.  All rights reserved.
+Visit http://radrails.org and development at http://hog.radrails.org/radrails
+
+RadRails includes software developed by
+Subclipse http://subclipse.tigris.org
+RDT http://rubyeclipse.sf.net
+      </text>
+   </aboutInfo>
+
+   <configIni use="default"/>
+
+   <launcherArgs>
+   </launcherArgs>
+
+   <windowImages i16="/org.radrails.ide.ui/icons/rails.gif"/>
+
+   <splash
+      location="org.radrails.ide.ui"
+      startupProgressRect="0,290,455,295" />
+   <launcher name="radrails">
+      <linux icon="/org.radrails.ide.ui/icons/linux.xpm"/>
+      <macosx icon="/org.radrails.ide.ui/icons/radrails_macosx.icns"/>
+      <solaris/>
+      <win useIco="false">
+         <ico path="/org.radrails.ide.ui/icons/radrails.ico"/>
+         <bmp
+            winSmallHigh="/org.radrails.ide.ui/icons/16.bmp"
+            winSmallLow="/org.radrails.ide.ui/icons/16low.bmp"
+            win24Low="/org.radrails.ide.ui/icons/24low.bmp"
+            winMediumHigh="/org.radrails.ide.ui/icons/32.bmp"
+            winMediumLow="/org.radrails.ide.ui/icons/32low.bmp"
+            winLargeHigh="/org.radrails.ide.ui/icons/48.bmp"
+            winLargeLow="/org.radrails.ide.ui/icons/48low.bmp"/>
+      </win>
+   </launcher>
+
+
+   <plugins>
+      <plugin id="com.ibmdb2.driver"/>
+      <plugin id="com.jcraft.jsch"/>
+      <plugin id="com.mysql.driver"/>
+      <plugin id="com.oracle.driver"/>
+      <plugin id="com.sqlserver.driver"/>
+      <plugin id="org.apache.ant"/>
+      <plugin id="org.apache.lucene"/>
+      <plugin id="org.eclipse.ant.core"/>
+      <plugin id="org.eclipse.compare"/>
+      <plugin id="org.eclipse.core.commands"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.filebuffers"/>
+      <plugin id="org.eclipse.core.filesystem"/>
+      <plugin id="org.eclipse.core.filesystem.macosx.ppc"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.resources"/>
+      <plugin id="org.eclipse.core.resources.compatibility" fragment="true"/>
+      <plugin id="org.eclipse.core.resources.macosx"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.core.variables"/>
+      <plugin id="org.eclipse.debug.core"/>
+      <plugin id="org.eclipse.debug.ui"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.help.appserver"/>
+      <plugin id="org.eclipse.help.base"/>
+      <plugin id="org.eclipse.help.ui"/>
+      <plugin id="org.eclipse.help.webapp"/>
+      <plugin id="org.eclipse.jface"/>
+      <plugin id="org.eclipse.jface.text"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.search"/>
+      <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.carbon.macosx.ppc"/>
+      <plugin id="org.eclipse.team.core"/>
+      <plugin id="org.eclipse.team.cvs.core"/>
+      <plugin id="org.eclipse.team.cvs.ssh"/>
+      <plugin id="org.eclipse.team.cvs.ssh2"/>
+      <plugin id="org.eclipse.team.cvs.ui"/>
+      <plugin id="org.eclipse.team.ui"/>
+      <plugin id="org.eclipse.text"/>
+      <plugin id="org.eclipse.tomcat"/>
+      <plugin id="org.eclipse.ui"/>
+      <plugin id="org.eclipse.ui.carbon" fragment="true"/>
+      <plugin id="org.eclipse.ui.cheatsheets"/>
+      <plugin id="org.eclipse.ui.console"/>
+      <plugin id="org.eclipse.ui.editors"/>
+      <plugin id="org.eclipse.ui.forms"/>
+      <plugin id="org.eclipse.ui.ide"/>
+      <plugin id="org.eclipse.ui.intro"/>
+      <plugin id="org.eclipse.ui.navigator"/>
+      <plugin id="org.eclipse.ui.navigator.resources"/>
+      <plugin id="org.eclipse.ui.views"/>
+      <plugin id="org.eclipse.ui.views.properties.tabbed"/>
+      <plugin id="org.eclipse.ui.workbench"/>
+      <plugin id="org.eclipse.ui.workbench.texteditor"/>
+      <plugin id="org.eclipse.update.configurator"/>
+      <plugin id="org.eclipse.update.core"/>
+      <plugin id="org.eclipse.update.ui"/>
+      <plugin id="org.epic.regexp"/>
+      <plugin id="org.kxml2"/>
+      <plugin id="org.postgresql.driver"/>
+      <plugin id="org.radrails.db.core"/>
+      <plugin id="org.radrails.db.ui"/>
+      <plugin id="org.radrails.ide.ui"/>
+      <plugin id="org.radrails.rails.core"/>
+      <plugin id="org.radrails.rails.ui"/>
+      <plugin id="org.radrails.server.core"/>
+      <plugin id="org.radrails.server.ui"/>
+      <plugin id="org.rubypeople.rdt"/>
+      <plugin id="org.rubypeople.rdt.core"/>
+      <plugin id="org.rubypeople.rdt.debug.core"/>
+      <plugin id="org.rubypeople.rdt.debug.ui"/>
+      <plugin id="org.rubypeople.rdt.doc.user"/>
+      <plugin id="org.rubypeople.rdt.launching"/>
+      <plugin id="org.rubypeople.rdt.source"/>
+      <plugin id="org.rubypeople.rdt.testunit"/>
+      <plugin id="org.rubypeople.rdt.ui"/>
+      <plugin id="org.sqlite.driver"/>
+      <plugin id="org.tigris.subversion.subclipse"/>
+      <plugin id="org.tigris.subversion.subclipse.core"/>
+      <plugin id="org.tigris.subversion.subclipse.ui"/>
+   </plugins>
+
+   <features>
+      <feature id="org.radrails.core" version="0.1.0"/>
+      <feature id="org.radrails.feature" version="0.7.3"/>
+   </features>
+
+</product>

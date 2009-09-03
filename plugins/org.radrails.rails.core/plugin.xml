@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         id="railsnature"
+         name="Rails project"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.radrails.rails.internal.core.RailsNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.rubypeople.rdt.core.compilationParticipant">
+      <compilationParticipant
+            class="org.radrails.rails.internal.parser.warnings.RailsDeprecationParticipant"
+            id="RailsDeprecationParticipant">
+         <managedMarker markerType="org.rubypeople.rdt.core.problem"/>
+      </compilationParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="org.radrails.rails.internal.core.RailsPluginPreferenceInitializer"/>
+   </extension>
+   <extension
+         point="org.rubypeople.rdt.core.errorProvider">
+      <category
+            id="org.radrails.rails.core.category.errors.railsDeprecations"
+            name="Rails Deprecations"/>
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated Instance Variable References (@params, @session, etc.)"
+            prefKey="org.radrails.rails.core.compiler.problem.railsInstanceVariable"/>            
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated Render Method Calls (render_text, render_template)"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationRenderCalls"/>
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated Redirect Method Calls (redirect_to_path, redirect_to_url)"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationRedirectCalls"/>  
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated Post format methods (post_format, formatted_post?, xml_post?, yaml_post?)"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationPostFormat"/>
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated start_ and end_form_tag methods"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationStartEndFormTag"/>   
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated update_element_function method"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationUpdateElementFunction"/>
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated image link methods"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationImageLinkMethods"/>      
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated human_size helper alias"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationHumanSizeHelperAlias"/>
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated ActiveRecord find methods (find_first, find_all)"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationActiveRecordFindMethods"/>
+      <error
+            categoryId="org.radrails.rails.core.category.errors.railsDeprecations"
+            label="Deprecated ActiveRecord push_with_attributes method"
+            prefKey="org.radrails.rails.core.compiler.problem.railsDeprecationPushWithAttributes"/>                   
+   </extension>
+   <extension
+         point="org.rubypeople.rdt.core.codeResolver">
+      <codeResolver
+            class="org.radrails.rails.internal.core.RailsCodeResolver"
+            id="org.radrails.rails.core.codeResolver">
+         <requires
+               id="org.rubypeople.rdt.core.codeResolver">
+         </requires>
+      </codeResolver>
+   </extension>
+
+</plugin>

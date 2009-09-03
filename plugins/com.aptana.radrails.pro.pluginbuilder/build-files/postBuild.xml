@@ -1,0 +1,146 @@
+<project name="Run as part of postBuild" default="main">
+
+	<target name="main">
+		<property name="UpdateSiteStagingLocation" value="${buildResultsDirectory}/updateSite"/>
+		<antcall target="-generateUpdateSite"/>
+		<antcall target="-archiveUpdateSites"/>
+		<!-- Don't digest the site yet because it has only one feature -->
+		<!-- <antcall target="-buildUpdateSiteDigests"/> --> 
+		<antcall target="-pack200UpdateSites"/>
+		<antcall target="-gatherFiles"/>
+	</target>
+
+	<!--======================================================-->
+	<!-- UpdateSite Export target, to be called from allElements  -->
+	<!-- ==================================================== -->
+	<target name="updateSiteExport">
+		<mkdir dir="${UpdateSiteStagingLocation}/${id}"/>
+		<mkdir dir="${UpdateSiteStagingLocation}/${id}/features"/>
+		<mkdir dir="${UpdateSiteStagingLocation}/${id}/plugins"/>
+		<ant antfile="build.xml" dir="${buildDirectory}/features/${id}/" target="build.update.jar">
+			<property name="feature.destination" value="${UpdateSiteStagingLocation}/${id}/features"/>
+			<property name="plugin.destination" value="${UpdateSiteStagingLocation}/${id}/plugins"/>
+		</ant>
+	</target>
+
+	<target name="-generateUpdateSite">
+		<!-- Create the directory structure -->
+		<mkdir dir="${UpdateSiteStagingLocation}"/>
+		<!-- Build the jar files -->
+		<ant antfile="${builder}/customTargets.xml" target="allElements">
+			<property name="genericTargets" value="${builder}/postBuild.xml"/>
+			<property name="target" value="updateSiteExport"/>
+		</ant>
+		
+		<!-- site.xml files for integration and release builds are handled elsewhere -->
+		<antcall target="-createRadRailsNightlyBuildSiteXml"/>
+						
+		<delete dir="${buildDirectory}/temp.updatesite"/>
+	</target>
+	
+	<target name="-pack200UpdateSites" description="Run Pack200 on the jars">
+		<antcall target="-pack200">
+			<param name="update.feature.id" value="com.aptana.radrails.feature.professional"/>
+		</antcall>
+	</target>
+
+	<target name="-buildUpdateSiteDigests" description="Create digests for update sites">
+		<antcall target="-buildUpdateSiteDigest">
+			<param name="digest.updatesite.location" value="${UpdateSiteStagingLocation}/com.aptana.radrails.feature.professional"/>
+		</antcall>	
+	</target>
+		
+	<target name="-buildUpdateSiteDigest">
+		<echo message="${baseLocation}/startup.jar"></echo>
+		<java classname="org.eclipse.core.launcher.Main" fork="true" failonerror="true">
+			<arg value="-application" />
+			<arg value="org.eclipse.update.core.siteOptimizer" />
+			<arg value="-digestBuilder" />
+			<arg value="-digestOutputDir=${digest.updatesite.location}" />
+			<arg value="-siteXML=${digest.updatesite.location}/site.xml" />
+			<classpath>
+				<pathelement location="${baseLocation}/startup.jar" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="-copyUpdateParts">
+		<copy todir="${UpdateSiteStagingLocation}/${dest.id}/features">
+			<fileset dir="${UpdateSiteStagingLocation}/${src.id}/features">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${UpdateSiteStagingLocation}/${dest.id}/plugins">
+			<fileset dir="${UpdateSiteStagingLocation}/${src.id}/plugins">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="-createRadRailsNightlyBuildSiteXml" if="isNightlyBuild">
+		<echo file="${UpdateSiteStagingLocation}/com.aptana.radrails.feature.professional/site.xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;site pack200=&quot;true&quot; digestURL=&quot;http://update.aptana.com/update/rails/3.2/&quot;&gt; 
+    &lt;description url=&quot;http://update.aptana.com/update/rails/3.2/&quot;&gt;RadRails Pro adds professional-level options to Aptana RadRails&lt;/description&gt; 
+	&lt;feature url=&quot;features/com.aptana.radrails.feature.professional_${version.full}.jar&quot; id=&quot;com.aptana.radrails.feature.professional&quot; version=&quot;${version.full}&quot;&gt;
+		&lt;category name=&quot;Aptana RadRails&quot;/&gt;
+	&lt;/feature&gt;
+    &lt;category-def name=&quot;Aptana RadRails&quot; label=&quot;Rails&quot;&gt;
+        &lt;description&gt;Adds professional options for Ruby on Rails to the Community Edition version&lt;/description&gt;
+    &lt;/category-def&gt;
+&lt;/site&gt;</echo>
+	</target>
+	
+	<target name="-pack200">
+		<mkdir dir="${buildResultsDirectory}/pack200"/>
+		<java jar="${baseLocation}/startup.jar" 
+			fork="true" 
+		    failonerror="true" 
+		    maxmemory="256m" 
+		    dir="${buildDirectory}"> 
+			<arg line="-application org.eclipse.update.core.siteOptimizer" /> 
+		    <arg line="-jarProcessor -verbose -processAll -repack -pack -outputDir ${buildResultsDirectory}/pack200" />
+		    <arg line="${UpdateSiteStagingLocation}/${update.feature.id}" /> 
+		</java>
+		<!-- move new packed and gzipped JARs over (The *.jar files are packed, un-gzipped JARs. We shouldn't move those over) -->
+		<move todir="${UpdateSiteStagingLocation}/${update.feature.id}/features">
+			<fileset dir="${buildResultsDirectory}/pack200/features">
+				<include name="*.jar.pack.gz"/>
+			</fileset>
+		</move>
+		<move todir="${UpdateSiteStagingLocation}/${update.feature.id}/plugins">
+			<fileset dir="${buildResultsDirectory}/pack200/plugins">
+				<include name="*.jar.pack.gz"/>
+			</fileset>
+		</move>
+		<delete dir="${buildResultsDirectory}/pack200"/>
+	</target>
+	
+	<target name="-archiveUpdateSites">
+		<antcall target="-archiveUpdateSite">
+			<param name="feature.id" value="com.aptana.radrails.feature.professional"/>
+		</antcall>
+	</target>	
+	
+	<target name="-archiveUpdateSite">
+		<zip destfile="${UpdateSiteStagingLocation}/${feature.id}-${version.full}.zip">
+			<fileset dir="${UpdateSiteStagingLocation}/${feature.id}">
+	    		<include name="**/*"/>
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="-gatherFiles">
+		<mkdir dir="${buildResultsDirectory}/logs"/>
+
+		<copy todir="${buildResultsDirectory}/logs" flatten="true">
+			<fileset dir="${buildDirectory}">
+				<include name="**/*.log"/>
+			</fileset>
+		</copy>
+		<copy todir="${buildResultsDirectory}" flatten="true">
+			<fileset dir="${buildDirectory}">
+				<include name="**/Changelog.txt"/>
+			</fileset>
+		</copy>
+	</target>
+</project>

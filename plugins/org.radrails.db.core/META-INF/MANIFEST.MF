@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: org.radrails.db.core
+Bundle-Version: 2.0.0.qualifier
+Bundle-Activator: org.radrails.db.core.DatabasePlugin
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.radrails.rails.core,
+ com.aptana.ide.libraries,
+ org.jruby
+Eclipse-LazyStart: true
+Export-Package: org.radrails.db.core
+Eclipse-BuddyPolicy: global
+Bundle-ActivationPolicy: lazy

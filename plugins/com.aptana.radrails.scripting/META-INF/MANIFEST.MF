@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.aptana.radrails.scripting;singleton:=true
+Bundle-Version: 1.2.2.qualifier
+Bundle-Activator: com.aptana.radrails.scripting.Activator
+Bundle-Vendor: %Bundle-Vendor.0
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.eclipsemonkey,
+ org.eclipse.eclipsemonkey.lang.ruby
+Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy

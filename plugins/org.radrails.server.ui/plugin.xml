@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.radrails.server.internal.ui.ServersView"
+            icon="icons/server.gif"
+            id="org.radrails.server.ui.ViewServers"
+            name="%view.name.0"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.radrails.rails.ui.NewWizardCategoryRails"
+            class="org.radrails.server.internal.ui.wizards.NewServerWizard"
+            finalPerspective="org.radrails.rails.ui.PerspectiveRails"
+            icon="icons/server.gif"
+            id="org.radrails.server.ui.WizardNewServer"
+            name="%wizard.name.0"
+            preferredPerspectives="org.radrails.rails.ui.PerspectiveRails"
+            project="false"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.radrails.rails.ui.PerspectiveRails">
+         <newWizardShortcut id="org.radrails.server.ui.WizardNewServer"/>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.radrails.server.internal.ui.launching.RailsAppLaunchConfigurationTabGroup"
+            description="%launchConfigurationTabGroup.description.0"
+            id="org.radrails.server.ui.RailsAppLaunchConfigurationTabGroup"
+            type="org.radrails.server.ui.RailsAppLaunchConfigurationType">
+         <launchMode mode="run"/>
+         <launchMode
+               mode="debug"
+               perspective="org.eclipse.debug.ui.DebugPerspective">
+         </launchMode>
+         <launchMode
+               mode="profile"
+               perspective="com.aptana.rdt.profiling.perspective">
+         </launchMode>
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.radrails.server.ui.RailsAppLaunchConfigurationType"
+            icon="icons/rails.gif"
+            id="org.radrails.server.ui.RailsAppLaunchConfigurationTypeImage"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.radrails.server.internal.ui.launching.RailsAppLaunchConfigurationDelegate"
+            id="org.radrails.server.ui.RailsAppLaunchConfigurationType"
+            modes="run,debug,profile"
+            name="%launchConfigurationType.name.0"
+            public="true"/>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.radrails.server.internal.ui.launching.RailsAppLaunchShortcut"
+            icon="icons/rails.gif"
+            id="org.radrails.server.ui.RailsAppShortcut"
+            label="%shortcut.label.0"
+            modes="run">
+         <contextualLaunch>
+            <contextLabel
+                  label="%contextLabel.label.0"
+                  mode="run"/>
+            <enablement>
+               <with variable="selection">
+					<count value="1"/>
+						<iterate>
+							<test property="org.rubypeople.rdt.launching.hasProjectNature" args="org.radrails.rails.core.railsnature"/>
+						</iterate>
+					</with>
+            </enablement>
+         </contextualLaunch>
+         <perspective id="org.radrails.rails.ui.PerspectiveRails"/>
+      </shortcut>
+	</extension>
+	
+    <extension point="org.eclipse.ui.console.consolePageParticipants">
+		<consolePageParticipant
+            class="org.radrails.server.internal.ui.console.ServerConsolePageParticipant"
+            id="org.radrails.server.ui.ServerConsolePageParticipant">
+			<enablement>
+				<instanceof value="org.eclipse.debug.ui.console.IConsole"/>
+			</enablement>
+		</consolePageParticipant>
+	</extension>
+	<extension
+         point="com.aptana.ide.server.serverTypes">
+      <serverType
+            class="com.aptana.radrails.server.bridge.RailsServerTypeDelegate"
+            description="%serverType.description.0"
+            id="com.aptana.radrails.server.bridge.serverType"
+            launchModes="run,debug"
+            name="%serverType.name.0"
+            supportsPublish="false"
+            supportsRestart="false">
+      </serverType>
+   </extension>
+   <extension
+         point="com.aptana.ide.server.serverProvider">
+      <provider
+            class="com.aptana.radrails.server.bridge.RailsServerProvider"
+            id="com.aptana.radrails.server.bridge.provider1"
+            name="Rails Server Provider">
+      </provider>
+   </extension>
+   <extension
+         point="com.aptana.ide.server.ui.serverImages">
+      <serverTypeImage
+            image="icons/mongrel.gif"
+            typeId="Mongrel">
+      </serverTypeImage>
+      <serverTypeImage
+            image="icons/webrick.gif"
+            typeId="WEBrick">
+      </serverTypeImage>
+      <serverTypeImage
+            image="icons/lighttpd.gif"
+            typeId="LightTPD">
+      </serverTypeImage>
+      <serverTypeImage
+            image="icons/rails.gif"
+            typeId="com.aptana.radrails.server.bridge.serverType">
+      </serverTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="com.aptana.radrails.server.bridge.RailsServerTypeDelegate"
+            class="com.aptana.radrails.server.bridge.RailsTypeAdapter">
+         <adapter
+               type="com.aptana.ide.server.ui.views.actions.ICanAdd">
+         </adapter>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="com.aptana.radrails.server.bridge.objectContribution2"
+            objectClass="com.aptana.radrails.server.bridge.RailsServer">
+         <action
+               class="com.aptana.radrails.server.bridge.LaunchBrowser"
+               icon="icons/browser.gif"
+               id="com.aptana.ide.radrails.server.ui.ActionViewBrowser"
+               label="%action.label.0"
+               menubarPath="additions"
+               style="push"
+               tooltip="%action.tooltip.0">
+         </action>
+      </objectContribution>
+      <viewerContribution
+            id="com.aptana.radrails.server.bridge.viewerContribution2"
+            targetID="com.aptana.radrails.server.bridge.viewerContribution2">
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="org.radrails.rails.ui.PerspectiveRails">
+         <viewShortcut id="com.aptana.ide.server.ui.serversView"/>
+         <viewShortcut id="com.aptana.ide.logging.LogView"/>
+      </perspectiveExtension>
+   </extension>
+</plugin>

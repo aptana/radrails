@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.eclipsemonkey.ruby"
+      label="%featureName"
+      version="1.2.2.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.aptana.com">
+      %description
+   </description>
+
+   <copyright url="http://www.aptana.com">
+      %copyright
+   </copyright>
+
+   <license url="http://www.eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.eclipsemonkey" version="0.1.10.1517" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.eclipsemonkey.lang.ruby"
+         download-size="24"
+         install-size="28"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.aptana.radrails.scripting"
+         download-size="6"
+         install-size="8"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.jruby"
+         download-size="1"
+         install-size="1"
+         version="1.2.0.9419p1"/>
+
+</feature>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.aptana.radrails.sqlite3.win32;singleton:=true
+Bundle-Version: 3.5.7.qualifier
+Bundle-Activator: com.aptana.radrails.sqlite3.win32.Activator
+Bundle-Vendor: %Bundle-Vendor.0
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ com.aptana.rdt
+Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
+Eclipse-PlatformFilter: (osgi.os=win32)
+Bundle-Localization: plugin

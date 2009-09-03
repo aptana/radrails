@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+<!-- Rails Templates -->
+
+<!-- session -->
+<template 
+	context="ruby" 
+	description="%sessionTemplate1.description" 
+	id="org.radrails.rails.ui.templates.session1" 
+	name="session">session[${variable}] = ${value}</template>
+
+<!-- flash -->
+<template 
+	context="ruby" 
+	description="%flashTemplate1.description" 
+	id="org.radrails.rails.ui.templates.flash1" 
+	name="flash">flash[${type}] = "${text}"</template>
+
+<!-- redirect_to -->
+<template 
+	context="ruby" 
+	description="%redirectToTemplate1.description" 
+	id="org.radrails.rails.ui.templates.redirectTo1" 
+	name="redirect_to">redirect_to(:action => "${action}")</template>
+<template 
+	context="ruby" 
+	description="%redirectToTemplate2.description" 
+	id="org.radrails.rails.ui.templates.redirectTo2" 
+	name="redirect_to">redirect_to(:action => "${action}", :id => "${id}")</template>
+<template 
+	context="ruby" 
+	description="%redirectToTemplate3.description" 
+	id="org.radrails.rails.ui.templates.redirectTo3" 
+	name="redirect_to">redirect_to(:controller => "${controller}", :action => "${action}")</template>
+<template 
+	context="ruby" 
+	description="%redirectToTemplate4.description" 
+	id="org.radrails.rails.ui.templates.redirectTo4" 
+	name="redirect_to">redirect_to(:controller => "${controller}", :action => "${action}", :id => "${id}")</template>	
+<template 
+	context="ruby" 
+	description="%redirectToTemplate5.description" 
+	id="org.radrails.rails.ui.templates.redirectTo5" 
+	name="redirect_to">redirect_to("${url}")</template>	
+
+<!-- render -->
+<template 
+	context="ruby" 
+	description="%renderTemplate1.description" 
+	id="org.radrails.rails.ui.templates.render1" 
+	name="render">render(:file => "${filepath}", :use_full_path => ${false})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate2.description" 
+	id="org.radrails.rails.ui.templates.render2" 
+	name="render">render(:inline => "${erb}", :locals => { :name => "${value}" })</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate3.description" 
+	id="org.radrails.rails.ui.templates.render3" 
+	name="render">render(:partial => "${item}", :object => ${object})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate4.description" 
+	id="org.radrails.rails.ui.templates.render4" 
+	name="render">render(:action => "${action}", :layout => "${layoutname}")</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate5.description" 
+	id="org.radrails.rails.ui.templates.render5" 
+	name="render">render(:text => "${text_to_render}", :layout => ${true})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate6.description" 
+	id="org.radrails.rails.ui.templates.render6" 
+	name="render">render(:layout => "${layoutname}")</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate7.description" 
+	id="org.radrails.rails.ui.templates.render7" 
+	name="render">render(:partial => "${item}", :locals => { :name => "${value}" })</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate8.description" 
+	id="org.radrails.rails.ui.templates.render8" 
+	name="render">render(:partial => "${item}", :status => ${500})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate9.description" 
+	id="org.radrails.rails.ui.templates.render9" 
+	name="render">render(:partial => "${item}", :collection => ${items})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate10.description" 
+	id="org.radrails.rails.ui.templates.render10" 
+	name="render">render(:text => "${text_to_render}", :layout => "${layoutname}")</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate11.description" 
+	id="org.radrails.rails.ui.templates.render11" 
+	name="render">render(:text => "${text_to_render}", :status => ${401})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate12.description" 
+	id="org.radrails.rails.ui.templates.render12" 
+	name="render">render(:nothing => true)</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate13.description" 
+	id="org.radrails.rails.ui.templates.render13" 
+	name="render">render(:file => "${filepath}")</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate14.description" 
+	id="org.radrails.rails.ui.templates.render14" 
+	name="render">render(:nothing => ${true}, :status => ${401})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate15.description" 
+	id="org.radrails.rails.ui.templates.render15" 
+	name="render">render(:partial => "${item}")</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate16.description" 
+	id="org.radrails.rails.ui.templates.render16" 
+	name="render">render(:inline => "${erb}", :type => ${rxml})</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate17.description" 
+	id="org.radrails.rails.ui.templates.render17" 
+	name="render">render(:inline => "${erb}")</template>
+<template 
+	context="ruby" 
+	description="%renderTemplate18.description" 
+	id="org.radrails.rails.ui.templates.render18" 
+	name="render">render(:text => "${text_to_render}")</template>							
+
+<!-- render_component -->
+<template 
+	context="ruby" 
+	description="%renderComponentTemplate1.description" 
+	id="org.radrails.rails.ui.templates.renderComponent1" 
+	name="render_component">render_component(:action => "${action}")</template>
+<template 
+	context="ruby" 
+	description="%renderComponentTemplate2.description" 
+	id="org.radrails.rails.ui.templates.renderComponent2" 
+	name="render_component">render_component(:controller => "${controller}")</template>
+<template 
+	context="ruby" 
+	description="%renderComponentTemplate3.description" 
+	id="org.radrails.rails.ui.templates.renderComponent3" 
+	name="render_component">render_component(:controller => "${controller}", :action => "${action}")</template>
+
+
+<!-- validates_acceptance_of -->
+<template 
+	context="ruby" 
+	description="%validateAcceptanceTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateAcceptance1" 
+	name="validates_acceptance_of">validates_acceptance_of(${attribute}, :message => "${message}", :accept => "${1}")</template>
+
+<!-- validates_associated -->
+<template 
+	context="ruby" 
+	description="%validateAssociatedTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateAssociated1" 
+	name="validates_associated">validates_associated(${object})</template>
+	
+<!-- validates_confirmation_of -->
+<template 
+	context="ruby" 
+	description="%validateConfirmationOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateConfirmationOf1" 
+	name="validates_confirmation_of">validates_confirmation_of(${attribute}, :message => "${message}")</template>
+
+<!-- validates_each -->
+<template 
+	context="ruby" 
+	description="%validateEachOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateEachOf1" 
+	name="validates_each">validates_each ${attribute} do |record, attr|
+	record.errors.add attr, "${error_message}" if ${condition}
+end</template>
+
+<!-- validates_exclusion_of -->
+<template 
+	context="ruby" 
+	description="%validateExclusionOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateExclusionOf1" 
+	name="validates_exclusion_of">validates_exclusion_of(${attribute}, :in => ${enumerable_object}, :message => "${message}")</template>
+
+<!-- validates_format_of -->
+<template 
+	context="ruby" 
+	description="%validateFormatOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateFormatOf1" 
+	name="validates_format_of">validates_format_of(${attribute}, :with => /${regular_expression}/, :message => "${message}")</template>
+
+<!-- validates_inclusion_of -->
+<template 
+	context="ruby" 
+	description="%validateInclusionOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateInclusionOf1" 
+	name="validates_inclusion_of">validates_inclusion_of(${attribute}, :in => ${enumerable_object}, :message => "${message}")</template>
+
+<!-- validates_length_of -->
+<template 
+	context="ruby" 
+	description="%validateLengthOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateLengthOf1" 
+	name="validates_length_of">validates_length_of(${attribute}, :maximum => ${max}, :message => "${message}")</template>
+
+<template 
+	context="ruby" 
+	description="%validateLengthOfTemplate2.description" 
+	id="org.radrails.rails.ui.templates.validateLengthOf2" 
+	name="validates_length_of">validates_length_of(${attribute}, :minimum => ${min}, :message => "${message}")</template>
+
+<template 
+	context="ruby" 
+	description="%validateLengthOfTemplate3.description" 
+	id="org.radrails.rails.ui.templates.validateLengthOf3" 
+	name="validates_length_of">validates_length_of(${attribute}, :in => ${range}, :message => "${message}")</template>
+
+<!-- validates_numericality_of -->
+<template 
+	context="ruby" 
+	description="%validateNumericalityOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateNumericalityOf1" 
+	name="validates_numericality_of">validates_numericality_of(${value}, :message => "${message}")</template>
+
+<!-- validates_presence_of -->
+<template 
+	context="ruby" 
+	description="%validatePresenceOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validatePresenceOf1" 
+	name="validates_presence_of">validates_presence_of(${attributes}, :message => "${message}")</template>
+
+<!-- validates_size_of -->
+<template 
+	context="ruby" 
+	description="%validateSizeOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateSizeOf1" 
+	name="validates_size_of">validates_size_of(${attribute}, :maximum => ${max}, :message => "${message}")</template>
+
+<template 
+	context="ruby" 
+	description="%validateSizeOfTemplate2.description" 
+	id="org.radrails.rails.ui.templates.validateSizeOf2" 
+	name="validates_size_of">validates_size_of(${attribute}, :minimum => ${min}, :message => "${message}")</template>
+
+<template 
+	context="ruby" 
+	description="%validateSizeOfTemplate3.description" 
+	id="org.radrails.rails.ui.templates.validateSizeOf3" 
+	name="validates_size_of">validates_size_of(${attribute}, :in => ${range}, :message => "${message}")</template>
+
+
+<!-- validates_uniqueness_of -->
+<template 
+	context="ruby" 
+	description="%validateUniquenessOfTemplate1.description" 
+	id="org.radrails.rails.ui.templates.validateUniquenessOf1" 
+	name="validates_uniqueness_of">validates_uniqueness_of(${attributes}, :message => "${message}")</template>
+<template 
+	context="ruby" 
+	description="%validateUniquenessOfTemplate2.description" 
+	id="org.radrails.rails.ui.templates.validateUniquenessOf2" 
+	name="validates_uniqueness_of">validates_uniqueness_of(${attributes}, :message => "${message}", :scope => "${condition}")</template>
+
+
+<!-- Dr. Nic Williams' Templates -->
+	
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.assert_redirected_to_action"
+	description="tm - assert_redirected_to" 
+	enabled="true" 
+	name="art">assert_redirected_to :action =&gt; "${index}"</template>
+	
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	id="org.radrails.rails.ui.templates.tm.assert_assigns"
+	deleted="false" 
+	description="assert(var = assigns(:var), &quot;@${var} should be defined&quot;)" 
+	enabled="true" 
+	name="asa">assert(${var} = assigns(:${var}), "@${var} should be defined")</template>
+	
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.assert_redirected_to_path"
+	description="tm - assert_redirected_to(..)" 
+	enabled="true" 
+	name="asrdt">assert_redirected_to(${path}, '${message}')</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.assert_response"
+	description="tm - assert_response" 
+	enabled="true" 
+	name="asre">assert_response :${success}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.benchmark"
+	description="tm - Benchmark.bmbm(..) do .. end" 
+	enabled="true" 
+	name="bm">TESTS = ${10_000}
+Benchmark.bmbm(${10}) do |results|
+  ${cursor}
+end</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.belongs_to"
+	description="tm - belongs_to" 
+	enabled="true" 
+	name="bt">belongs_to :${object}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.belongs_to_detailed"
+	description="belongs_to, :class_name =&gt; 'NodeLink', :foreign_key =&gt; :reverse_id" 
+	enabled="true" 
+	name="btf">belongs_to :${object}, :class_name =&gt; '${class_name}', :foreign_key =&gt; :${foreign_key}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.flash"
+	description="tm - flash[…]" 
+	enabled="true" 
+	name="flash">flash[:${notice}] = "${Successfully}"${cursor}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.has_and_belongs_to_many"
+	description="tm - has_and_belongs_to_many" 
+	enabled="true" 
+	name="habtm">has_and_belongs_to_many :${object}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.has_many"
+	description="tm - has_many" 
+	enabled="true" 
+	name="hm">has_many :${models}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.has_many_detailed"
+	description="has_many, :class_name =&gt; '${class_name}', :foreign_key =&gt; :${foreign_key}" 
+	enabled="true" 
+	name="hmf">has_many :${models}, :class_name =&gt; '${class_name}', :foreign_key =&gt; :${foreign_key}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.has_many_through"
+	description="has_many :models, :through =&gt; :join_models" 
+	enabled="true" 
+	name="hmt">has_many :${models}, :through =&gt; :${join_models}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.has_one"
+	description="tm - has_one" 
+	enabled="true" 
+	name="ho">has_one :${model}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.has_one_detailed"
+	description="has_one, :class_name =&gt; '${class_name}', :foreign_key =&gt; :${foreign_key}" 
+	enabled="true" 
+	name="hof">has_one :${model}, :class_name =&gt; '${class_name}', :foreign_key =&gt; :${foreign_key}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.add_column"
+	description="tm - Add Column" 
+	enabled="true" 
+	name="mac">add_column :${table}, :${column}, :${string}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.create_column"
+	description="tm - Create Column in Table" 
+	enabled="true" 
+	name="mcc">t.column :${title}, :${string}${cursor}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.create_multiple_columns"
+	description="tm - Create Several Columns" 
+	enabled="true" 
+	name="mccc">t.column :${title}, :${string}
+mccc${cursor}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.create_table"
+	description="tm - Create Table" 
+	enabled="true" 
+	name="mct">create_table :${table} do |t|
+    ${cursor}
+end</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.drop_table"
+	description="tm - Drop Table" 
+	enabled="true" 
+	name="mdt">drop_table :${table}
+${cursor}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.rename_column"
+	description="tm - Rename Column" 
+	enabled="true" 
+	name="mnc">rename_column :${column}, :${new_column}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.rename_table"
+	description="tm - Rename Table" 
+	enabled="true" 
+	name="mnt">rename_table :${table}, :${new_name}${cursor}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.remove_column"
+	description="tm - Remove Column" 
+	enabled="true" 
+	name="mrc">remove_column :${table}, :${column}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.pstore_new"
+	description="tm - PStore.new( .. )" 
+	enabled="true" 
+	name="Pn">PStore.new(${file_name})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.params"
+	description="tm - params[…]" 
+	enabled="true" 
+	name="params">params[:${id}]</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.path_from_here"
+	description="tm - path_from_here( .. )" 
+	enabled="true" 
+	name="patfh">File.join(File.dirname(__FILE__), *%w[${here}])</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_action"
+	description="tm - render (action)" 
+	enabled="true" 
+	name="ra">render :action =&gt; "${action}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_action_layout"
+	description="tm - render (action, layout)" 
+	enabled="true" 
+	name="ral">render :action =&gt; "${action}", :layout =&gt; "${layoutname}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_component_action"
+	description="tm - render_component (action)" 
+	enabled="true" 
+	name="rcea">render_component :action =&gt; "${index}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_component_controller"
+	description="tm - render_component (controller)" 
+	enabled="true" 
+	name="rcec">render_component :controller =&gt; "${items}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_component_controller_action"
+	description="tm - render_component (controller, action)" 
+	enabled="true" 
+	name="rceca">render_component :controller =&gt; "${items}", :action =&gt; "${index}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.rails_default_logger_debug"
+	description="tm - RAILS_DEFAULT_LOGGER.debug" 
+	enabled="true" 
+	name="rdb">RAILS_DEFAULT_LOGGER.debug "${message}"${cursor}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.redirect_to_action"
+	description="tm - redirect_to (action)" 
+	enabled="true" 
+	name="rea">redirect_to :action =&gt; "${index}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.redirect_to_action_id"
+	description="tm - redirect_to (action, id)" 
+	enabled="true" 
+	name="reai">redirect_to :action =&gt; "${show}", :id =&gt; ${item}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.redirect_to_controller"
+	description="tm - redirect_to (controller)" 
+	enabled="true" 
+	name="rec">redirect_to :controller =&gt; "${items}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.redirect_to_controller_action"
+	description="tm - redirect_to (controller, action)" 
+	enabled="true" 
+	name="reca">redirect_to :controller =&gt; "${items}", :action =&gt; "${list}"</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.redirect_to_controller_action_id"
+	description="tm - redirect_to (controller, action, id)" 
+	enabled="true" 
+	name="recai">redirect_to :controller =&gt; "${items}", :action =&gt; "${show}", :id =&gt; ${item}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_file"
+	description="tm - render (file)" 
+	enabled="true" 
+	name="rf">render(:file =&gt; "${filepath}")</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_file_use_full_path"
+	description="tm - render (file, use_full_path)" 
+	enabled="true" 
+	name="rfu">render(:file =&gt; "${filepath}", :use_full_path =&gt; ${false})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_inline"
+	description="tm - render (inline)" 
+	enabled="true" 
+	name="ri">render(:inline =&gt; "${hello}")</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_inline_locals"
+	description="tm - render (inline, locals)" 
+	enabled="true" 
+	name="ril">render(:inline =&gt; "${hello}", :locals =&gt; { ${name} =&gt; "${value}"${4} })</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_inline_type"
+	description="tm - render (inline, type)" 
+	enabled="true" 
+	name="rit">render(:inline =&gt; "${hello}", :type =&gt; ${rxml})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_layout"
+	description="tm - render (layout)" 
+	enabled="true" 
+	name="rl">render(:layout =&gt; "${layoutname}")</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_nothing"
+	description="tm - render (nothing)" 
+	enabled="true" 
+	name="rn">render(:nothing =&gt; ${true})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_nothing_status"
+	description="tm - render (nothing, status)" 
+	enabled="true" 
+	name="rns">render(:nothing =&gt; ${true}, :status =&gt; ${401})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_partial"
+	description="tm - render (partial)" 
+	enabled="true" 
+	name="rp">render(:partial =&gt; "${item}")</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_collection"
+	description="tm - render (partial, collection)" 
+	enabled="true" 
+	name="rpc">render(:partial =&gt; "${item}", :collection =&gt; ${items})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_locals"
+	description="tm - render (partial, locals)" 
+	enabled="true" 
+	name="rpl">render(:partial =&gt; "${item}", :locals =&gt; { :${name} =&gt; ${value} })</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_object"
+	description="tm - render (partial, object)" 
+	enabled="true" 
+	name="rpo">render(:partial =&gt; "${item}", :object =&gt; ${object})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_partial_status"
+	description="tm - render (partial, status)" 
+	enabled="true" 
+	name="rps">render(:partial =&gt; "${item}", :status =&gt; ${500})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_text"
+	description="tm - render (text)" 
+	enabled="true" 
+	name="rt">render(:text =&gt; "${render}")</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_text_layout"
+	description="tm - render (text, layout)" 
+	enabled="true" 
+	name="rtl">render(:text =&gt; "${render}", :layout =&gt; "${layoutname}")</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_text_layout_true"
+	description="tm - render (text, layout =&gt; true)" 
+	enabled="true" 
+	name="rtlt">render(:text =&gt; "${render}", :layout =&gt; ${true})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.render_text_status"
+	description="tm - render (text, status)" 
+	enabled="true" 
+	name="rts">render(:text =&gt; "${render}", :status =&gt; ${401})</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.session"
+	description="tm - session[…]" 
+	enabled="true" 
+	name="session">session[:${User}]</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.transaction_block"
+	description="tm - transaction( .. ) { .. }" 
+	enabled="true" 
+	name="tra">transaction${1} { ${cursor} }</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_associated"
+	description="tm - validates_associated" 
+	enabled="true" 
+	name="va">validates_associated :${attribute}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_confirmation_of"
+	description="tm - validates_confirmation_of" 
+	enabled="true" 
+	name="vc">validates_confirmation_of :${attribute}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_exclusion_of"
+	description="tm - validates_exclusion_of" 
+	enabled="true" 
+	name="ve">validates_exclusion_of :${attribute}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.verify_redirect"
+	description="tm - verify — redirect" 
+	enabled="true" 
+	name="verify">verify :only =&gt; [:${1}], :session =&gt; :user, :params =&gt; :id, :redirect_to =&gt; {:action =&gt; '${index}'}
+</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.verify_render"
+	description="tm - verify — render" 
+	enabled="true" 
+	name="verify">verify :only =&gt; [:${1}], :method =&gt; :post, :render =&gt; {:status =&gt; 500, :text =&gt; "use HTTP-POST"}
+</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_length_of"
+	description="tm - validates_length_of" 
+	enabled="true" 
+	name="vl">validates_length_of :${attribute}, :within =&gt; ${20}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_presence_of"
+	description="tm - validates_presence_of" 
+	enabled="true" 
+	name="vp">validates_presence_of :${attribute}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_presence_of_if"
+	description="tm - validates_presence_of if" 
+	enabled="true" 
+	name="vpif">validates_presence_of :${attribute}, :if =&gt; proc { |obj| ${condition} }}</template>
+
+<template 
+	autoinsert="true" 
+	context="ruby" 
+	deleted="false" 
+	id="org.radrails.rails.ui.templates.tm.validates_uniqueness_of"
+	description="tm - validates_uniqueness_of" 
+	enabled="true" 
+	name="vu">validates_uniqueness_of :${attribute}</template>
+
+
+<!-- End of Rails templates -->
+</templates>

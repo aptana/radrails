@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+ <extension
+       point="org.eclipse.core.runtime.contentTypes">
+    <content-type
+          base-type="org.eclipse.core.runtime.text"
+          file-extensions="haml"
+          id="hamlSource"
+          name="%content-type.name.0"
+          priority="high">
+    </content-type>
+    <content-type
+          base-type="org.eclipse.core.runtime.text"
+          file-extensions="sass"
+          id="sassSource"
+          name="%content-type.name.1"
+          priority="high">
+    </content-type>
+ </extension>
+ 
+<!-- =================================================================================== -->
+<!-- Extension: HAML and SASS File Types                                                 -->
+<!-- =================================================================================== -->
+   <extension point="org.eclipse.team.core.fileTypes">
+      <fileTypes type="text" extension="sass"/>
+	  <fileTypes type="text" extension="haml"/>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="net.lucky_dip.hamleditor.editor.HamlEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            icon="icons/haml_small.gif"
+            id="net.lucky_dip.hamleditor.editor.HamlEditor"
+            name="%editor.name.0">
+         <contentTypeBinding
+               contentTypeId="net.lucky_dip.hamleditor.hamlSource">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   
+      <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="net.lucky_dip.sasseditor.editor.SassEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            icon="icons/sass_small.gif"
+            id="net.lucky_dip.sasseditor.editor.SassEditor"
+            name="%editor.name.1">
+         <contentTypeBinding
+               contentTypeId="net.lucky_dip.hamleditor.sassSource">
+         </contentTypeBinding>
+      </editor>
+   </extension>
+   <extension point="org.eclipse.core.filebuffers.documentSetup">
+	      <participant
+             class="net.lucky_dip.hamleditor.editor.HamlDocumentParticipant"
+             contentTypeId="net.lucky_dip.hamleditor.hamlSource"
+             extensions="haml"/>
+   </extension>
+   <extension point="org.eclipse.core.filebuffers.documentSetup">
+       <participant
+             class="net.lucky_dip.sasseditor.editor.SassDocumentParticipant"
+             contentTypeId="net.lucky_dip.hamleditor.sassSource"
+             extensions="sass"/>
+   </extension>
+ <extension
+       point="org.eclipse.ui.preferencePages">
+    <page
+          category="org.radrails.rails.ui.preferences.Rails"
+          class="net.lucky_dip.hamleditor.editor.HamlBasePreferencePage"
+          id="net.lucky-dip.hamleditor.editor.basepage"
+          name="%page.name.0"/>
+    <page
+          category="net.lucky-dip.hamleditor.editor.basepage"
+          class="net.lucky_dip.hamleditor.editor.HamlEditorPreferencePage"
+          id="net.lucky-dip.hamleditor.editor.preferences"
+          name="%page.name.1"/>
+    <page
+          category="net.lucky-dip.hamleditor.editor.basepage"
+          class="net.lucky_dip.sasseditor.editor.SassEditorPreferencePage"
+          id="net.lucky-dip.sasseditor.editor.preferences"
+          name="%page.name.2"/>
+ </extension>
+ <extension
+       point="org.eclipse.ui.newWizards">
+    <wizard
+          category="com.aptana.ide.core.ui.projects"
+          class="net.lucky_dip.hamleditor.wizards.HAMLNewFileWizard"
+          finalPerspective="org.radrails.rails.ui.PerspectiveRails"
+          icon="icons/haml_small.gif"
+          id="com.aptana.ide.editors.wizards.HAMLNewWizard"
+          name="%wizard.name.0"
+          preferredPerspectives="org.radrails.rails.ui.PerspectiveRails">
+    </wizard>
+    <wizard
+          category="com.aptana.ide.core.ui.projects"
+          class="net.lucky_dip.hamleditor.wizards.SassNewFileWizard"
+          finalPerspective="org.radrails.rails.ui.PerspectiveRails"
+          icon="icons/sass_small.gif"
+          id="com.aptana.ide.editors.wizards.SassNewWizard"
+          name="%wizard.name.1"
+          preferredPerspectives="org.radrails.rails.ui.PerspectiveRails">
+    </wizard>
+ </extension>
+ <extension
+       point="com.aptana.ide.core.ui.file_wizards">
+    <new-file-wizard
+          name="New HAML File"
+          wizard-id="com.aptana.ide.editors.wizards.HAMLNewWizard">
+    </new-file-wizard>
+    <new-file-wizard
+          name="New Sass File"
+          wizard-id="com.aptana.ide.editors.wizards.SassNewWizard">
+    </new-file-wizard>
+ </extension>
+ <extension
+       point="org.eclipse.core.runtime.preferences">
+    <initializer
+          class="net.lucky_dip.hamleditor.preferences.PreferenceInitializer">
+    </initializer>
+ </extension>
+</plugin>

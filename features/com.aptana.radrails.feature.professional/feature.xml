@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.aptana.radrails.feature.professional"
+      label="%featureName"
+      version="1.2.0.qualifier"
+      provider-name="%providerName"
+      plugin="com.aptana.rdt.profiling">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="https://pro.aptana.com/update/rails_pro/3.2/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.rubypeople.rdt.core" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.rubypeople.rdt.launching" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.rubypeople.rdt.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="com.aptana.ide.core.ui" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="com.aptana.ide.update" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="com.aptana.rdt" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.debug.core"/>
+   </requires>
+
+   <plugin
+         id="com.aptana.rdt.profiling"
+         download-size="131"
+         install-size="131"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.aptana.rdt.profiling.win32"
+         os="win32"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

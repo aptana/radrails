@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.aptana.radrails.sqlite;singleton:=true
+Bundle-Version: 1.2.1
+Bundle-Vendor: %Bundle-Vendor.0
+Require-Bundle: com.aptana.rdt
+Bundle-Localization: plugin

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Profiling Win32 Plug-in
+Bundle-SymbolicName: com.aptana.rdt.profiling.win32;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Vendor: Aptana, Inc.
+Require-Bundle: com.aptana.rdt;bundle-version="[1.0.0,2.0.0)"
+Eclipse-PlatformFilter: (osgi.os=win32)

@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Profiling Plug-in
+Bundle-SymbolicName: com.aptana.rdt.profiling;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Activator: com.aptana.rdt.profiling.ProfilingPlugin
+Bundle-Vendor: Aptana, Inc.
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.debug.core,
+ org.eclipse.ui,
+ org.eclipse.debug.ui,
+ org.eclipse.ui.console,
+ org.rubypeople.rdt.core;bundle-version="[1.0.0,2.0.0)",
+ org.rubypeople.rdt.launching;bundle-version="[1.0.0,2.0.0)",
+ org.rubypeople.rdt.ui;bundle-version="[1.0.0,2.0.0)",
+ com.aptana.ide.core.ui;bundle-version="[1.1.0,3.0.0)",
+ com.aptana.ide.update;bundle-version="[1.1.0,3.0.0)",
+ com.aptana.rdt;bundle-version="[1.0.0,2.0.0)"
+Bundle-ActivationPolicy: lazy

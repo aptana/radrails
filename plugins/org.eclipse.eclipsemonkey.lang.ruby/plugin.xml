@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension-point id="ruby_dom" name="Eclipse Monkey Ruby DOM" schema="schema/ruby_dom.exsd"/>
+   <extension
+         point="org.eclipse.eclipsemonkey.language">
+      <language
+            class="org.eclipse.eclipsemonkey.lang.ruby.RubyLanguageFactory"
+            id="org.eclipse.eclipsemonkey.lang.ruby.language"
+            languageExtension="rb,rbw"
+            languageName="Ruby"/>
+   </extension>
+   <extension
+         point="org.eclipse.eclipsemonkey.lang.ruby.ruby_dom">
+      <dom
+            class="org.eclipse.eclipsemonkey.lang.ruby.doms.editors.EditorsDOMFactory"
+            variableName="editors">
+      </dom>
+   </extension>
+</plugin>

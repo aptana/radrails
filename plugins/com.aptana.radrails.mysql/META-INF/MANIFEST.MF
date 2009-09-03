@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name.0
+Bundle-SymbolicName: com.aptana.radrails.mysql;singleton:=true
+Bundle-Version: 2.7.3.qualifier
+Bundle-Vendor: %Bundle-Vendor.0
+Require-Bundle: com.aptana.rdt
+Eclipse-PlatformFilter: (& (osgi.os=win32) (osgi.arch=x86) )
+Bundle-Localization: plugin
