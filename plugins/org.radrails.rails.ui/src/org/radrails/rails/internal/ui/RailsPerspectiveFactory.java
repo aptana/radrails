@@ -42,15 +42,17 @@ public class RailsPerspectiveFactory implements IPerspectiveFactory {
 		
 		// Bottom right: Console and Servers view
 		IFolderLayout consoleArea = layout.createFolder("consoleArea", IPageLayout.BOTTOM, 0.75f, editorArea);
-		consoleArea.addView(IRailsUIConstants.ID_SERVERS_VIEW);
-		consoleArea.addView(IRailsUIConstants.ID_GENERATORS_VIEW);
-		consoleArea.addView(IRakeUIConstants.ID_RAKE_VIEW);
-		consoleArea.addView(IConsoleConstants.ID_CONSOLE_VIEW);
+		consoleArea.addPlaceholder(IRailsUIConstants.ID_SERVERS_VIEW);
+		consoleArea.addPlaceholder(IRailsUIConstants.ID_GENERATORS_VIEW);
+		consoleArea.addPlaceholder(IRakeUIConstants.ID_RAKE_VIEW);		
 		consoleArea.addPlaceholder(IRailsUIConstants.ID_RAILS_PLUGINS_VIEW);	
+		consoleArea.addPlaceholder(IConsoleConstants.ID_CONSOLE_VIEW);
+		consoleArea.addView(IPageLayout.ID_PROBLEM_VIEW);
+		consoleArea.addView(IPageLayout.ID_TASK_LIST);
 		
 		// Top right: Outline view
-		IFolderLayout topRight = layout.createFolder("topRight", IPageLayout.RIGHT, 0.75f, editorArea);
-		topRight.addView(IPageLayout.ID_OUTLINE);
+		IFolderLayout outlineArea = layout.createFolder("topRight", IPageLayout.BOTTOM, 0.60f, "topLeft");
+		outlineArea.addView(IPageLayout.ID_OUTLINE);
 				
 		layout.addActionSet(IDebugUIConstants.LAUNCH_ACTION_SET);
 		layout.addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
