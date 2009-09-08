@@ -147,6 +147,10 @@
 			<param name="p2.installIU" value="com.aptana.ide.feature.feature.group" />
 			<param name="p2.repo" value="${ide-core.p2.repo}" />
 		</antcall>
+		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.server.cloud.feature.group" />
+			<param name="p2.repo" value="${cloud.p2.repo}" />
+		</antcall>
 		<!-- RDT is special because we re-package it in RadRails. So we can't just install it, since it won't have the non linux os specific plugins -->
 		<!-- install and then copy plugins over top too?! -->
 		<antcall target="run.director">
