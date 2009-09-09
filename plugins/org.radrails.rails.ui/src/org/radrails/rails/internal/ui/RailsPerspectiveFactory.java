@@ -12,6 +12,7 @@ import org.eclipse.debug.ui.IDebugUIConstants;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
+import org.eclipse.ui.IPlaceholderFolderLayout;
 import org.eclipse.ui.console.IConsoleConstants;
 import org.radrails.rails.ui.IRailsUIConstants;
 import org.radrails.rails.ui.RailsUI;
@@ -40,15 +41,15 @@ public class RailsPerspectiveFactory implements IPerspectiveFactory {
 		IFolderLayout topLeft = layout.createFolder("topLeft", IPageLayout.LEFT, 0.2f, editorArea);
 		topLeft.addView(RubyUI.ID_RUBY_EXPLORER);
 		
-		// Bottom right: Console and Servers view
-		IFolderLayout consoleArea = layout.createFolder("consoleArea", IPageLayout.BOTTOM, 0.75f, editorArea);
+		// Bottom right: Console, Servers, RubyGems, Rake, Problems, Tasks, Generators, Rails Plugins view
+		IPlaceholderFolderLayout consoleArea = layout.createPlaceholderFolder("consoleArea", IPageLayout.BOTTOM, 0.75f, editorArea);
 		consoleArea.addPlaceholder(IRailsUIConstants.ID_SERVERS_VIEW);
 		consoleArea.addPlaceholder(IRailsUIConstants.ID_GENERATORS_VIEW);
 		consoleArea.addPlaceholder(IRakeUIConstants.ID_RAKE_VIEW);		
 		consoleArea.addPlaceholder(IRailsUIConstants.ID_RAILS_PLUGINS_VIEW);	
 		consoleArea.addPlaceholder(IConsoleConstants.ID_CONSOLE_VIEW);
-		consoleArea.addView(IPageLayout.ID_PROBLEM_VIEW);
-		consoleArea.addView(IPageLayout.ID_TASK_LIST);
+		consoleArea.addPlaceholder(IPageLayout.ID_PROBLEM_VIEW);
+		consoleArea.addPlaceholder(IPageLayout.ID_TASK_LIST);
 		
 		// Top right: Outline view
 		IFolderLayout outlineArea = layout.createFolder("topRight", IPageLayout.BOTTOM, 0.60f, "topLeft");
