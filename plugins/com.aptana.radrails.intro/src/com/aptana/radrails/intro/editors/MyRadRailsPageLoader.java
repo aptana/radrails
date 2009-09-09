@@ -21,7 +21,7 @@ import com.aptana.radrails.intro.Activator;
 
 public class MyRadRailsPageLoader {
 
-    private static final String REMOTE_FILE_URL = "http://www.adobe.com/go/aptana"; //$NON-NLS-1$
+    private static final String REMOTE_FILE_URL = "http://content.aptana.com/radrails/my_radrails"; //$NON-NLS-1$
     private static final String LOCAL_URL = "/content/radrails_index.html"; //$NON-NLS-1$
     private static final String CACHED_FILENAME = "cached_my_radrails.html"; //$NON-NLS-1$
 
