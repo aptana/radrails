@@ -57,11 +57,6 @@
          <viewShortcut id="org.eclipse.ui.views.TaskList"/>
          <viewShortcut id="org.rubypeople.rdt.ui.views.RIView"/> 
 		 <viewShortcut id="org.rubypeople.rdt.ui.RDocView"/>
-         <view
-               relative="org.rubypeople.rdt.ui.RubyExplorer"
-               relationship="stack"
-               id="org.rubypeople.rdt.testunit.views.TestUnitView">
-         </view>
          <showInPart id="org.rubypeople.rdt.ui.RubyExplorer"/>
          <actionSet id="org.rubypeople.rdt.ui.rubyActionSet"/>
          <actionSet id="org.radrails.rails.ui.RailsElementCreationActionSet"/>
@@ -69,6 +64,12 @@
                id="org.rubypeople.rdt.ui.RubyExplorer"
                relationship="left"
                visible="true"/>
+         <view
+               id="com.aptana.ide.documentation.TutorialView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.ContentOutline">
+         </view>
       </perspectiveExtension>
       <perspectiveExtension targetID="com.aptana.ide.js.ui.WebPerspective">
 		 <perspectiveShortcut
