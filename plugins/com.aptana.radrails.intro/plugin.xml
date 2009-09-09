@@ -34,7 +34,7 @@
    <extension
          point="org.eclipse.ui.elementFactories">
       <factory
-            class="com.aptana.ide.adobe.editors.MyRadRailsElementFactory"
+            class="com.aptana.radrails.intro.editors.MyRadRailsElementFactory"
             id="com.aptana.radrails.MyRadRailsElementFactory">
       </factory>
    </extension>
