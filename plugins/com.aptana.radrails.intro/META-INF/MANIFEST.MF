@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: RadRails Intro
+Bundle-SymbolicName: com.aptana.radrails.intro;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.aptana.radrails.intro.Activator
+Bundle-Vendor: Aptana, Inc.
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.aptana.ide.documentation;bundle-version="1.5.0",
+ com.aptana.ide.intro;bundle-version="1.5.0",
+ com.aptana.ide.update.ui;bundle-version="1.5.0",
+ com.aptana.ide.core.ui;bundle-version="1.5.0",
+ com.aptana.ide.server.portal;bundle-version="1.5.0",
+ com.aptana.ide.server.jetty;bundle-version="1.5.0",
+ com.aptana.ide.core;bundle-version="1.5.0"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
