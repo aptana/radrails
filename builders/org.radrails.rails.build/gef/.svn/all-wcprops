@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/aptana/!svn/ver/25116/third_party/vendor/gef-3.5.0-rc2
+END
+site.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/aptana/!svn/ver/25012/third_party/vendor/gef-3.5.0-rc2/site.xml
+END
+content.jar
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/aptana/!svn/ver/25012/third_party/vendor/gef-3.5.0-rc2/content.jar
+END
+.project
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/aptana/!svn/ver/25012/third_party/vendor/gef-3.5.0-rc2/.project
+END
+artifacts.jar
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/aptana/!svn/ver/25012/third_party/vendor/gef-3.5.0-rc2/artifacts.jar
+END

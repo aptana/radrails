@@ -21,7 +21,7 @@ import org.rubypeople.rdt.launching.IRubyLaunchConfigurationConstants;
 
 /**
  * This class listens to launches and tries to hook up launches of servers to the Server object in the ServerManager.
- * This de-coupling allows us to handle servers launched form the Run or Dbeug menu equivalent to those launched from 
+ * This de-coupling allows us to handle servers launched form the Run or Debug menu equivalent to those launched from 
  * the Servers view.
  * 
  * TODO Still need to handle a server launched via Run/Debug menus that has no corresponding server in the ServerManager. Create one?

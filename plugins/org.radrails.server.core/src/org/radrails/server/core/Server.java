@@ -716,11 +716,9 @@ public class Server extends Observable
 				}
 				catch (NumberFormatException e)
 				{
-					// ignore
 					pid = -2;
 				}
 				monitor.removeListener(this);
-				// TODO If the server has started up and we still don't have pid, remove the monitor.
 			}
 		});
 	}
