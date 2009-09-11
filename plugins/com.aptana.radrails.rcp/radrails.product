@@ -4,7 +4,7 @@
 <product name="Aptana RadRails" id="com.aptana.radrails.rcp.product" application="com.aptana.radrails.rcp.application" version="0.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/com.aptana.radrails.rcp/content/about.gif"/>
+      <image path="/com.aptana.radrails.rcp/content/about.png"/>
       <text>
          Welcome to Aptana RadRails.
       </text>
@@ -45,8 +45,10 @@ com.aptana.ide.desktop.integration.Application</programArgs>
       </win>
    </launcher>
 
+
    <vm>
    </vm>
+
 
    <plugins>
    </plugins>
