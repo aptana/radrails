@@ -3,12 +3,12 @@
    <description url="http://update.aptana.com/update">
       Aptana Update Central. Version {version.full}
    </description>
-    <feature url="features/com.aptana.ide.feature.rcp_{version.full}.jar" id="com.aptana.ide.feature.rcp" version="{version.full}">
-      <category name="Aptana Studio RCP"/>
+    <feature url="features/com.aptana.radrails.feature.rcp_{version.full}.jar" id="com.aptana.radrails.feature.rcp" version="{version.full}">
+      <category name="Aptana RadRails RCP"/>
    </feature>
-   <category-def name="Aptana Studio RCP" label="Aptana Studio RCP">
+   <category-def name="Aptana RadRails RCP" label="Aptana RadRails RCP">
       <description>
-         Updates for Aptana as a standalone installation.
+         Updates for RadRails as a standalone installation.
       </description>
    </category-def>
 </site>
