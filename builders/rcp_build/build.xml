@@ -2,14 +2,14 @@
 <!-- ====================================================================== 
      Sep 1, 2009                                                        
 
-     Studio    
-     Builds the Studio RCP feature
+     RadRails    
+     Builds the RadRails RCP feature
                    
      cwilliams                                                                
      ====================================================================== -->
-<project name="Studio-RCP" default="build">
+<project name="RadRails-RCP" default="build">
 	<description>
-            Builds the Studio RCP feature
+            Builds the RadRails RCP feature
     </description>
 
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
@@ -23,7 +23,7 @@
 	<!-- ================================= 
           target: build              
          ================================= -->
-	<target name="build" description="Builds the Studio feature" depends="generate.build.properties,get.revision,replace.versions,generate.base">
+	<target name="build" description="Builds the RadRails RCP" depends="generate.build.properties,get.revision,replace.versions,generate.base">
 		<java jar="${baseLocation}/plugins/${launcher.plugin}.jar" fork="true" failonerror="yes">
 			<arg line="-application org.eclipse.ant.core.antRunner -buildfile ${baseLocation}/plugins/${builder.plugin}/scripts/productBuild/productBuild.xml -Dbuilder=${basedir} -Dbuild.revision=${build.revision} -nosplash" />
 		</java>
