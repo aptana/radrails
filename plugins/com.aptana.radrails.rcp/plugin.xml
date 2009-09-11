@@ -15,7 +15,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.aptana.radrails.rcp.application"
-            name="Aptana RadRails">
+            name="%product.name.AptanaRadRails">
          <property
                name="aboutText"
                value="Welcome to Aptana RadRails."/>
@@ -33,7 +33,7 @@
                value="0,268,590,5"/>
          <property
                name="appName"
-               value="Aptana RadRails">
+               value="%product.name.AptanaRadRails">
          </property>
          <property
                name="startupMessageRect"
@@ -41,7 +41,7 @@
          </property>
          <property
                name="startupForegroundColor"
-               value="515B6A">
+               value="FFFFFF">
          </property>
       </product>
    </extension>

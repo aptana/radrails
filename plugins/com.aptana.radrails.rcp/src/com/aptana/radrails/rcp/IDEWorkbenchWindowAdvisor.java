@@ -78,9 +78,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleException;
 
 import com.aptana.ide.core.StringUtils;
-import com.aptana.ide.core.ui.CoreUIPlugin;
 import com.aptana.ide.core.ui.WorkbenchHelper;
-import com.aptana.ide.update.FeatureUtil;
 
 /**
  * Window-level advisor for the IDE.
@@ -410,7 +408,7 @@ public class IDEWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 					title, workspaceLocation);
 		}
 
-//		title = title.replaceAll(" Aptana Studio", " Aptana Studio Community Edition"); //$NON-NLS-1$ //$NON-NLS-2$
+//		title = title.replaceAll(" Aptana RadRails", " Aptana RadRails Community Edition"); //$NON-NLS-1$ //$NON-NLS-2$
  
 		return title;
 	}
