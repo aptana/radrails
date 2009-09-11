@@ -27,7 +27,7 @@
                value="preference_customization.ini"/>
          <property
                name="windowImages"
-               value="content/window1616.gif,content/window3232.gif,content/window4848.gif,content/window6464.gif,content/window128128.gif"/>
+               value="content/window1616.png,content/window3232.png,content/window4848.png,content/window6464.png,content/window128128.png"/>
          <property
                name="startupProgressRect"
                value="0,268,590,5"/>

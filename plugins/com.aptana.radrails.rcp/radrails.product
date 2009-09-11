@@ -28,7 +28,7 @@ com.aptana.ide.desktop.integration.Application</programArgs>
       <vmArgsWin>-Djava.awt.headless=true</vmArgsWin>
    </launcherArgs>
 
-   <windowImages i16="/com.aptana.radrails.rcp/content/window1616.gif" i32="/com.aptana.radrails.rcp/content/window3232.gif" i48="/com.aptana.radrails.rcp/content/window4848.gif" i64="/com.aptana.radrails.rcp/content/window6464.gif" i128="/com.aptana.radrails.rcp/content/window128128.gif"/>
+   <windowImages i16="/com.aptana.radrails.rcp/content/window1616.png" i32="/com.aptana.radrails.rcp/content/window3232.png" i48="/com.aptana.radrails.rcp/content/window4848.png" i64="/com.aptana.radrails.rcp/content/window6464.png" i128="/com.aptana.radrails.rcp/content/window128128.png"/>
 
    <splash
       location="com.aptana.radrails.rcp"
