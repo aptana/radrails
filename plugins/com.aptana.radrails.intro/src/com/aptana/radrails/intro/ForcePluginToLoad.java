@@ -7,7 +7,7 @@ import org.osgi.service.prefs.BackingStoreException;
 
 import com.aptana.ide.documentation.DocumentationPlugin;
 import com.aptana.ide.intro.IntroPlugin;
-import com.aptana.ide.update.ui.UpdateUIActivator;
+//import com.aptana.ide.update.ui.UpdateUIActivator;
 import com.aptana.radrails.intro.editors.MyRadRailsEditor;
 
 public class ForcePluginToLoad implements IStartup
@@ -23,15 +23,15 @@ public class ForcePluginToLoad implements IStartup
 	{
 		// FIXME Uncomment when we're building against studio in git!
 		// Set up custom release_message URL prefix
-		IEclipsePreferences updateUIPrefs = new InstanceScope().getNode(UpdateUIActivator.PLUGIN_ID);
-		updateUIPrefs.put(
-				com.aptana.ide.update.preferences.IPreferenceConstants.RELEASE_MESSAGE_URL_PREFIX,
-				RADRAILS_RELEASE_MESSAGE_URL_PREFIX);
-		try {
-			updateUIPrefs.flush();
-		} catch (BackingStoreException e) {
-			// TODO
-		}
+//		IEclipsePreferences updateUIPrefs = new InstanceScope().getNode(UpdateUIActivator.PLUGIN_ID);
+//		updateUIPrefs.put(
+//				com.aptana.ide.update.preferences.IPreferenceConstants.RELEASE_MESSAGE_URL_PREFIX,
+//				RADRAILS_RELEASE_MESSAGE_URL_PREFIX);
+//		try {
+//			updateUIPrefs.flush();
+//		} catch (BackingStoreException e) {
+//			// TODO
+//		}
 
 		// make My Adobe editor as the default intro editor
 		IEclipsePreferences introPluginPrefs = new InstanceScope().getNode(IntroPlugin.PLUGIN_ID);
