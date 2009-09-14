@@ -161,11 +161,12 @@ public class RailsUIPlugin extends AbstractUIPlugin
 		ResourcesPlugin.getWorkspace().addResourceChangeListener(fRailsListener,
 				IResourceChangeEvent.PRE_DELETE | IResourceChangeEvent.POST_CHANGE);
 
-		Job job = new RailsShellOpenJob(context);
-		job.setSystem(!DISPLAY_JOBS);
-		job.schedule(1000);
+//		Simplification of RadRails perspective. Do not show the Rails Shell initially.
+//		Job job = new RailsShellOpenJob(context);
+//		job.setSystem(!DISPLAY_JOBS);
+//		job.schedule(1000);
 
-		job = new Job("Start DB Core plugin")
+		Job job = new Job("Start DB Core plugin")
 		{
 
 			@Override

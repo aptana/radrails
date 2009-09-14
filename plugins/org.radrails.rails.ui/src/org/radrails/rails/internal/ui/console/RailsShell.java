@@ -186,21 +186,11 @@ public class RailsShell extends IOConsole implements IPartListener, IDocumentLis
 		if (streamMonitor != null)
 		{
 			connect(streamMonitor, IDebugUIConstants.ID_STANDARD_ERROR_STREAM);
-			IOConsoleOutputStream stream = getStream(IDebugUIConstants.ID_STANDARD_ERROR_STREAM);
-			if (stream != null)
-			{
-				stream.setActivateOnWrite(store.getBoolean(IDebugPreferenceConstants.CONSOLE_OPEN_ON_ERR));
-			}
 		}
 		streamMonitor = streamsProxy.getOutputStreamMonitor();
 		if (streamMonitor != null)
 		{
 			connect(streamMonitor, IDebugUIConstants.ID_STANDARD_OUTPUT_STREAM);
-			IOConsoleOutputStream stream = getStream(IDebugUIConstants.ID_STANDARD_OUTPUT_STREAM);
-			if (stream != null)
-			{
-				stream.setActivateOnWrite(store.getBoolean(IDebugPreferenceConstants.CONSOLE_OPEN_ON_OUT));
-			}
 		}
 		if (readJob == null)
 		{
@@ -244,12 +234,38 @@ public class RailsShell extends IOConsole implements IPartListener, IDocumentLis
 
 			fFakeInputStream = newOutputStream();
 			fFakeInputStream.setColor(fColorProvider.getColor(IDebugUIConstants.ID_STANDARD_INPUT_STREAM));
-			write(
-					IDebugUIConstants.ID_STANDARD_INPUT_STREAM,
-					 "Welcome to the Rails Shell. This view is meant for advanced users and command line lovers as a text-based way\nto run rails "
-							+ "commands such as: rails, script/generate, script/plugin, gem, rake, etc.\nThis shell can replace the functionality of the "
-							+ "Rake Tasks, Rails Plugins, and generators views.\n\n" + IRailsShellConstants.PROMPT);
-
+			
+			// Enable activateOnWrite only after first prompt
+			IOConsoleOutputStream standardOutputStream = getStream(IDebugUIConstants.ID_STANDARD_OUTPUT_STREAM);
+			if (standardOutputStream != null)
+			{
+				standardOutputStream.setActivateOnWrite(false);
+			}
+			
+			IOConsoleOutputStream standardErrorStream = getStream(IDebugUIConstants.ID_STANDARD_ERROR_STREAM);
+			if (standardOutputStream != null)
+			{
+				standardOutputStream.setActivateOnWrite(false);
+			}
+			try {
+				write(
+						IDebugUIConstants.ID_STANDARD_INPUT_STREAM,
+						"Welcome to the Rails Shell. This view is meant for advanced users and command line lovers as a text-based way\nto run rails "
+						+ "commands such as: rails, script/generate, script/plugin, gem, rake, etc.\nThis shell can replace the functionality of the "
+						+ "Rake Tasks, Rails Plugins, and generators views.\n\n" + IRailsShellConstants.PROMPT);
+			} finally {
+				// Enable activateOnWrite only after first prompt
+				IPreferenceStore iPreferenceStore = DebugUIPlugin.getDefault().getPreferenceStore();
+				if (standardOutputStream != null)
+				{
+					standardOutputStream.setActivateOnWrite(iPreferenceStore.getBoolean(IDebugPreferenceConstants.CONSOLE_OPEN_ON_OUT));
+				}
+				if (standardOutputStream != null)
+				{
+					standardOutputStream.setActivateOnWrite(iPreferenceStore.getBoolean(IDebugPreferenceConstants.CONSOLE_OPEN_ON_OUT));
+				}				
+			}
+			
 			DebugPlugin.getDefault().addDebugEventListener(new IDebugEventSetListener()
 			{
 
