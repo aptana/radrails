@@ -12,7 +12,7 @@
             class="com.aptana.radrails.intro.editors.MyRadRailsEditor"
             icon="icons/aptana_home.png"
             id="com.aptana.radrails.MyRadRailsEditor"
-            name="My Aptana RadRails">
+            name="%Editor.myradrails.title">
       </editor>
    </extension>
    <extension
