@@ -101,7 +101,7 @@
 		</tstamp>
 		<echo message="Updating versions in feature and plugin manifests. Full version: ${version.full}, qualifier: ${build.revision}" />
 		<!-- Replace very specific files (taken from our old build) -->
-		<replace file="${buildDirectory}/plugins/com.aptana.radrails.rcp/ide.product" token="0.0.0.qualifier" value="${version.full}-${short.timestamp}" />
+		<replace file="${buildDirectory}/plugins/com.aptana.radrails.rcp/radrails.product" token="0.0.0.qualifier" value="${version.full}-${short.timestamp}" />
 		<replace file="${buildDirectory}/plugins/com.aptana.radrails.rcp/plugin.properties" token="0.0.0.qualifier" value="${version.full}" />
 		<replace file="${buildDirectory}/plugins/com.aptana.radrails.rcp/plugin.properties" token="%timestamp%" value="${timestamp}" />
 		<replace file="${buildDirectory}/features/com.aptana.radrails.feature.rcp/feature.properties" token="build.name" value="${build.name}" />
