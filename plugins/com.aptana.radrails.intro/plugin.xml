@@ -10,10 +10,26 @@
          point="org.eclipse.ui.editors">
       <editor
             class="com.aptana.radrails.intro.editors.MyRadRailsEditor"
-            icon="icons/aptana_home.png"
+            icon="icons/radrails_home.png"
             id="com.aptana.radrails.MyRadRailsEditor"
             name="%Editor.myradrails.title">
       </editor>
+   </extension>
+      <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="a.com.aptana.ide.core.ui.actionSet.ShowRadRails"
+            label="%ActionSet.radrails.label"
+            visible="true">
+         <action
+               class="com.aptana.ide.intro.actions.ShowMyAptanaAction"
+               icon="icons/radrails_home.png"
+               id="com.aptana.ide.core.ui.actionSet.myRadRails"
+               label="%Action.radrails_home.label"
+               style="pulldown"
+               toolbarPath="s.com.aptana.ide.core.ui.actionSet.ShowAptanaView/aptanatoolbar">
+         </action>
+      </actionSet>
    </extension>
    <extension
          point="org.eclipse.ui.elementFactories">

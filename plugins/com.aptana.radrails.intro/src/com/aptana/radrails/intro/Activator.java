@@ -63,11 +63,12 @@ public class Activator extends AbstractUIPlugin
 
 			public void perspectiveActivated(IWorkbenchPage page,
 					IPerspectiveDescriptor perspective) {
+				processPage(page);
 			}
 
 			public void perspectiveChanged(IWorkbenchPage page,
 					IPerspectiveDescriptor perspective, String changeId) {
-				if (changeId == IWorkbenchPage.CHANGE_RESET_COMPLETE) {
+				if (changeId == IWorkbenchPage.CHANGE_RESET_COMPLETE ) {
 					processPage(page);
 				}
 			}
