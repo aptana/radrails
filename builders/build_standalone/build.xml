@@ -312,8 +312,8 @@
 			<arg line="-roaming" />
 			<arg line="-profile ${p2.profile}" />
 			<arg line="-profileProperties org.eclipse.update.install.features=true" />
-			<arg line="-metadataRepository ${studio.p2.repo}" />
-			<arg line="-artifactRepository ${studio.p2.repo}" />
+			<arg line="-metadataRepository ${rcp.p2.repo}" />
+			<arg line="-artifactRepository ${rcp.p2.repo}" />
 			<arg line="-destination ${p2.director.install.path}" />
 			<arg line="-bundlepool ${p2.director.install.path}" />
 			<arg line="-vmargs" />
