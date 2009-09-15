@@ -22,7 +22,7 @@
             label="%ActionSet.radrails.label"
             visible="true">
          <action
-               class="com.aptana.ide.intro.actions.ShowMyAptanaAction"
+               class="com.aptana.radrails.intro.actions.ShowMyRadRailsAction"
                icon="icons/radrails_home.png"
                id="com.aptana.ide.core.ui.actionSet.myRadRails"
                label="%Action.radrails_home.label"
