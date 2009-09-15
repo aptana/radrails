@@ -3,7 +3,7 @@ package net.lucky_dip.sasseditor.editor;
 import java.util.ResourceBundle;
 
 import net.lucky_dip.hamleditor.Activator;
-import net.lucky_dip.hamleditor.editor.ColorManager;
+import net.lucky_dip.hamleditor.editor.HamlUIColorProvider;
 import net.lucky_dip.hamleditor.editor.HamlesqueEditor;
 
 import org.eclipse.jface.action.IAction;
@@ -28,7 +28,7 @@ public class SassEditor extends HamlesqueEditor {
 				new IPreferenceStore[] { eclipseUIStore, defaults });
 		setPreferenceStore(prefStore);
 
-		colorManager = new ColorManager(prefStore);
+		colorManager = HamlUIColorProvider.getInstance();
 		setSourceViewerConfiguration(new SassConfiguration(colorManager, this));
 	}
 

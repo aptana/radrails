@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Display;
  * @author mkent
  * 
  */
-public class HamlUIColorProvider {
+public class HamlUIColorProvider implements IColorManager{
 
 	private static HamlUIColorProvider instance;
 

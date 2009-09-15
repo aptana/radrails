@@ -2,6 +2,7 @@ package net.lucky_dip.hamleditor.editor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import net.lucky_dip.hamleditor.editor.contentassist.HamlContentAssistantProcessor;
 import net.lucky_dip.hamleditor.editor.scanners.DefaultScanner;
@@ -29,93 +30,102 @@ import org.eclipse.jface.text.source.SourceViewerConfiguration;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.rubypeople.rdt.internal.ui.text.ruby.AbstractRubyTokenScanner;
 
-public class HamlConfiguration extends SourceViewerConfiguration {
+public class HamlConfiguration extends SourceViewerConfiguration
+{
 	private HamlIndentLineAutoEditStrategy autoIndent;
-
 	private HamlElementScanner elementScanner;
-
-	private ColorManager colorManager;
-
+	private IColorManager colorManager;
 	private HamlClassScanner classScanner;
-
 	private HamlIDScanner idScanner;
-
 	private HamlCommentScanner commentScanner;
-
 	private HamlDoctypeScanner doctypeScanner;
-
 	private AbstractRubyTokenScanner rubyScanner;
-
 	private TextEditor editor;
 
-	public HamlConfiguration(ColorManager colorManager, TextEditor editor) {
+	public HamlConfiguration(IColorManager colorManager, TextEditor editor)
+	{
 		this.colorManager = colorManager;
 		this.editor = editor;
 	}
 
-	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
-		ArrayList types = new ArrayList();
+	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer)
+	{
+		List<String> types = new ArrayList<String>();
 		types.add(IDocument.DEFAULT_CONTENT_TYPE);
 		types.addAll(Arrays.asList(HamlPartitionScanner.HAML_PARTITION_TYPES));
-
 		return (String[]) types.toArray(new String[0]);
 	}
 
-	public String getConfiguredDocumentPartitioning(ISourceViewer sourceViewer) {
+	public String getConfiguredDocumentPartitioning(ISourceViewer sourceViewer)
+	{
 		return HamlEditor.HAML_PARTITIONING;
 	}
 
-	protected HamlElementScanner getElementScanner() {
-		if (elementScanner == null) {
+	protected HamlElementScanner getElementScanner()
+	{
+		if (elementScanner == null)
+		{
 			elementScanner = new HamlElementScanner(colorManager);
 		}
 		return elementScanner;
 	}
 
-	private HamlClassScanner getClassScanner() {
-		if (classScanner == null) {
+	private HamlClassScanner getClassScanner()
+	{
+		if (classScanner == null)
+		{
 			classScanner = new HamlClassScanner(colorManager);
 		}
 		return classScanner;
 	}
 
-	private ITokenScanner getIDScanner() {
-		if (idScanner == null) {
+	private ITokenScanner getIDScanner()
+	{
+		if (idScanner == null)
+		{
 			idScanner = new HamlIDScanner(colorManager);
 		}
 		return idScanner;
 	}
 
-	private ITokenScanner getCommentScanner() {
-		if (commentScanner == null) {
+	private ITokenScanner getCommentScanner()
+	{
+		if (commentScanner == null)
+		{
 			commentScanner = new HamlCommentScanner(colorManager);
 		}
 		return commentScanner;
 	}
 
-	private ITokenScanner getDoctypeScanner() {
-		if (doctypeScanner == null) {
+	private ITokenScanner getDoctypeScanner()
+	{
+		if (doctypeScanner == null)
+		{
 			doctypeScanner = new HamlDoctypeScanner(colorManager);
 		}
 		return doctypeScanner;
 	}
 
-	private ITokenScanner getRubyScanner() {
-		if (rubyScanner == null) {
+	private ITokenScanner getRubyScanner()
+	{
+		if (rubyScanner == null)
+		{
 			rubyScanner = new RubyExpressionScanner();
 		}
 		return rubyScanner;
 	}
-	
-	public IReconciler getReconciler(ISourceViewer sourceViewer) {
-		HamlReconcilingStrategy strategy = new HamlReconcilingStrategy((HamlEditor) editor);
-		
-		MonoReconciler reconciler = new MonoReconciler(strategy, false);
-		
-		return reconciler;
-	} 
 
-	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
+	public IReconciler getReconciler(ISourceViewer sourceViewer)
+	{
+		HamlReconcilingStrategy strategy = new HamlReconcilingStrategy((HamlEditor) editor);
+
+		MonoReconciler reconciler = new MonoReconciler(strategy, false);
+
+		return reconciler;
+	}
+
+	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer)
+	{
 		PresentationReconciler reconciler = new PresentationReconciler();
 		reconciler.setDocumentPartitioning(getConfiguredDocumentPartitioning(sourceViewer));
 
@@ -150,22 +160,27 @@ public class HamlConfiguration extends SourceViewerConfiguration {
 		return reconciler;
 	}
 
-	public int getTabWidth(ISourceViewer sourceViewer) {
+	public int getTabWidth(ISourceViewer sourceViewer)
+	{
 		return HamlIndentLineAutoEditStrategy.INDENT_STRING.length();
 	}
 
-	public String[] getIndentPrefixes(ISourceViewer sourceViewer, String contentType) {
+	public String[] getIndentPrefixes(ISourceViewer sourceViewer, String contentType)
+	{
 		return new String[] { HamlIndentLineAutoEditStrategy.INDENT_STRING };
 	}
 
-	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType) {
-		if (autoIndent == null) {
+	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType)
+	{
+		if (autoIndent == null)
+		{
 			autoIndent = new HamlIndentLineAutoEditStrategy();
 		}
 		return new IAutoEditStrategy[] { autoIndent };
 	}
 
-	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
+	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer)
+	{
 		ContentAssistant ca = new ContentAssistant();
 		ca.setDocumentPartitioning(HamlEditor.HAML_PARTITIONING);
 		IContentAssistProcessor pr = new HamlContentAssistantProcessor();

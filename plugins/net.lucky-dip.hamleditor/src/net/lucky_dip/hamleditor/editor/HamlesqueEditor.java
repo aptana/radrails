@@ -16,7 +16,7 @@ import org.eclipse.ui.texteditor.SourceViewerDecorationSupport;
 
 public abstract class HamlesqueEditor extends TextEditor {
 
-	protected ColorManager colorManager;
+	protected IColorManager colorManager;
 	protected ProjectionAnnotationModel annotationModel;
 	protected ProjectionSupport projectionSupport;
 	protected Annotation[] oldAnnotations;
