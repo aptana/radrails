@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.ide.update;bundle-version="1.4.0",
  com.aptana.ide.documentation;bundle-version="1.5.0",
  com.aptana.ide.intro;bundle-version="1.5.0",
- com.aptana.ide.update.ui;bundle-version="1.5.0"
+ com.aptana.ide.update.ui;bundle-version="1.5.0",
+ org.radrails.rails.core
 Bundle-Activator: com.aptana.radrails.intro.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

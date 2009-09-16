@@ -14,14 +14,17 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.osgi.framework.Version;
+import org.radrails.rails.internal.core.RailsPlugin;
 
 import com.aptana.ide.core.FileUtils;
+import com.aptana.ide.core.PluginUtils;
 import com.aptana.ide.core.online.OnlineDetectionService;
 import com.aptana.radrails.intro.Activator;
 
 public class MyRadRailsPageLoader {
 
-    private static final String REMOTE_FILE_URL = "http://www.aptana.com/tools/radrails/my_radrails"; //$NON-NLS-1$
+    private static final String REMOTE_FILE_URL = "http://www.aptana.com/tools/radrails/my_radrails?version=" + getRadRailsVersion(); //$NON-NLS-1$
     private static final String LOCAL_URL = "/content/radrails_index.html"; //$NON-NLS-1$
     private static final String CACHED_FILENAME = "cached_my_radrails.html"; //$NON-NLS-1$
 
@@ -117,5 +120,11 @@ public class MyRadRailsPageLoader {
     private static void error(Exception e) {
         Activator.log(IStatus.ERROR, e.getMessage(), e);
     }
+    
+	private static String getRadRailsVersion()
+	{
+		Version version = new Version(PluginUtils.getPluginVersion(RailsPlugin.getInstance()));
+		return "" + version.getMajor() + "." + version.getMinor() + "." + version.getMicro() + "." + version.getQualifier(); //$NON-NLS-1$ //$NON-NLS-2$
+	}
 
 }
