@@ -208,13 +208,12 @@
 		<touch file="build_number.${env.BUILD_NUMBER}"/>
 		<touch file="build_id.${env.BUILD_ID}"/>
 		<touch file="build_tag.${env.BUILD_TAG}"/>
-		<touch file="svn_revision.${env.SVN_REVISION}"/>
 	</target>
 
 	<target name="create-artifact-symlink">
 		<exec executable="unlink">
 			<arg value="${env.WORKSPACE}/build-artifacts" />
 		</exec>
-		<symlink link="${env.WORKSPACE}/build-artifacts" resource="${artifacts.dir}" failonerror="false"/>
+		<symlink link="${env.WORKSPACE}/build-artifacts" resource="${deploy.dir}" failonerror="false"/>
 	</target>
 </project>
