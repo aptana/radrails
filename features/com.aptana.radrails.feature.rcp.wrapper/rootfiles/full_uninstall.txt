@@ -10,8 +10,8 @@ eclipse.buildId=unknown
 java.version=1.6.0_01
 java.vendor=Sun Microsystems Inc.
 BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
-Framework arguments: C:\Program Files\Aptana\Aptana Studio\AptanaStudio.exe
-Command-line arguments: -os win32 -ws win32 -arch x86 C:\Program Files\Aptana\Aptana Studio\AptanaStudio.exe
+Framework arguments: C:\Program Files\Aptana\Aptana RadRails\AptanaRadRails.exe
+Command-line arguments: -os win32 -ws win32 -arch x86 C:\Program Files\Aptana\Aptana RadRails\AptanaradRails.exe
 
 !ENTRY org.eclipse.core.runtime 2007-06-05 18:03:19.640
 !MESSAGE Product com.aptana.radrails.rcp.product could not be found.
