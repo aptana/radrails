@@ -66,7 +66,6 @@ public class MyRadRailsEditor extends EditorPart {
 
     private Composite displayArea;
     private IBrowser browser;
-    private boolean startExternal;
 
     public MyRadRailsEditor() {
     }
@@ -169,20 +168,9 @@ public class MyRadRailsEditor extends EditorPart {
                 String location = event.location;
                 // For absolute URLs with http or https protocols 
                 if (location.startsWith("http:") || location.startsWith("https:")) { //$NON-NLS-1$ //$NON-NLS-2$
-                    // only start launching external browser after aptana.com is hit
-                    if (startExternal) {
-                        // Launch external browser
-                        CoreUIUtils.openBrowserURL(location);
-                        event.doit = false;
-                    } else {
-                        try {
-                            URL url = new URL(location);
-                            if (url.getHost().toLowerCase().endsWith("aptana.com")) { //$NON-NLS-1$
-                                startExternal = true;
-                            }
-                        } catch (MalformedURLException e) {
-                        }
-                    }
+                    // Launch external browser
+                    CoreUIUtils.openBrowserURL(location);
+                    event.doit = false;
                 }
             }
             
