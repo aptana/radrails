@@ -206,9 +206,13 @@
 		<unzip src="${p2.repo.dir}/binary/${mac.launcher}" dest="${mac.launcher.dir}" />
 		<delete file="${p2.repo.dir}/binary/${mac.launcher}" />
 		<!-- ...add our custom modifications... -->
+		<loadfile property="mac.cocoa.config.ini.pre" srcfile="${mac.launcher.dir}/configuration/config.ini" />
+		<echo message="Pre concat: ${mac.cocoa.config.ini.pre}" />
 		<concat destfile="${mac.launcher.dir}/configuration/config.ini" append="yes" eol="mac">
 			<filelist dir="${builder}/custom/macosx/" files="config.ini" />
 		</concat>
+		<loadfile property="mac.cocoa.config.ini.post" srcfile="${mac.launcher.dir}/configuration/config.ini" />
+		<echo message="Post concat: ${mac.cocoa.config.ini.post}" />
 		<copy file="${builder}/custom/macosx/Info.plist" tofile="${mac.launcher.dir}/${product.name}.app/Contents/Info.plist" overwrite="true" />
 		<copy file="${builder}/custom/macosx/${product.name}" tofile="${mac.launcher.dir}/${product.name}.app/Contents/MacOS/${product.name}" overwrite="true" />
 		<!-- ...then re-zip and delete the temp dir -->
