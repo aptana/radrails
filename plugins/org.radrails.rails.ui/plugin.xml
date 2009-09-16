@@ -64,6 +64,13 @@
                id="org.rubypeople.rdt.ui.RubyExplorer"
                relationship="left"
                visible="true"/>
+         <view
+               id="com.aptana.ide.documentation.TutorialView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.views.ContentOutline"
+               visible="false">
+         </view>      
       </perspectiveExtension>
       <perspectiveExtension targetID="com.aptana.ide.js.ui.WebPerspective">
 		 <perspectiveShortcut
