@@ -13,11 +13,11 @@ import com.aptana.radrails.intro.editors.MyRadRailsEditor;
 public class ForcePluginToLoad implements IStartup
 {
 
-	private static final String RADRAILS_GETTING_STARTED_URL = "http://content.aptana.com/radrails/tutorials/index.php"; //$NON-NLS-1$
-	private static final String RADRAILS_REMOTE_IMAGE_LOCATION = "http://content.aptana.com/radrails/content_ide/images/toolbar_intro.gif"; //$NON-NLS-1$
+	private static final String RADRAILS_GETTING_STARTED_URL = "http://www.aptana.com/tools/radrails/getting_started"; //$NON-NLS-1$
+	private static final String RADRAILS_REMOTE_IMAGE_LOCATION = "http://www.aptana.com/tools/radrails/images/my_radrails.gif"; //$NON-NLS-1$
 
 	// Custom release_message URL prefix
-	private static final String RADRAILS_RELEASE_MESSAGE_URL_PREFIX = "http://content.aptana.com/radrails/update/release-message/"; //$NON-NLS-1$
+	private static final String RADRAILS_RELEASE_MESSAGE_URL_PREFIX = "http://www.aptana.com/tools/radrails/release-message/"; //$NON-NLS-1$
 
 	public void earlyStartup()
 	{
