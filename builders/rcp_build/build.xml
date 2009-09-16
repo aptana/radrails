@@ -12,6 +12,8 @@
             Builds the RadRails RCP feature
     </description>
 
+	<property environment="env"/>
+	
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="lib/ant-contrib-0.6.jar" />
