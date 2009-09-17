@@ -70,7 +70,49 @@
                relationship="stack"
                relative="org.eclipse.ui.views.ContentOutline"
                visible="false">
-         </view>      
+         </view>
+         <view
+               id="com.aptana.ide.logging.LogView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.ide.server.ui.serversView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.ide.js.ui.views.problemsView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.ide.ui.ViewPlugins"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.rdt.ViewRakeTasks"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="org.rubypeople.rdt.ui.views.RIView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
       </perspectiveExtension>
       <perspectiveExtension targetID="com.aptana.ide.js.ui.WebPerspective">
 		 <perspectiveShortcut
@@ -107,12 +149,6 @@
             icon="icons/railsplugins_dir.gif"
             id="org.radrails.rails.ui.ViewRailsPlugins"
             name="%view.name.1"/>
-      <view
-            category="org.radrails.rails.ui.ViewCategoryRails"
-            class="org.radrails.rails.internal.ui.raketasks.RakeTasksView"
-            icon="icons/rake.png"
-            id="org.radrails.rails.ui.ViewRakeTasks"
-            name="%view.name.2"/>
       <view
             name="%view.name.4"
             icon="icons/rails.gif"
