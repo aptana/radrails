@@ -145,12 +145,12 @@
 			</fileset>
 		</delete>
 		<antcall target="run.director">
-			<param name="p2.installIU" value="com.aptana.ide.feature.secureftp.feature.group" />
-			<param name="p2.repo" value="file:${secureftp.p2.repo}" />
-		</antcall>
-		<antcall target="run.director">
 			<param name="p2.installIU" value="com.aptana.ide.feature.feature.group" />
 			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
+		</antcall>
+		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.secureftp.feature.group" />
+			<param name="p2.repo" value="file:${secureftp.p2.repo}" />
 		</antcall>
 		<!-- Copy the features and plugins over into a dropins folder. Installing makes it so that non-linux plugins/features won't be there! -->
 				<mkdir dir="${baseLocation}/dropins/eclipse" />
