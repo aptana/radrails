@@ -34,6 +34,7 @@ import org.eclipse.swt.dnd.DropTargetEvent;
 import org.eclipse.swt.dnd.FileTransfer;
 import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -84,6 +85,8 @@ import com.aptana.ide.core.ui.WorkbenchHelper;
  * Window-level advisor for the IDE.
  */
 public class IDEWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
+
+	private static final Point INITIAL_WINDOW_SIZE = new Point(1200, 940);
 
 	private static final String WELCOME_EDITOR_ID = "org.eclipse.ui.internal.ide.dialogs.WelcomeEditor"; //$NON-NLS-1$
 
@@ -216,6 +219,8 @@ public class IDEWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		configurer.setShowPerspectiveBar(true);
 		configurer.setShowFastViewBars(true);
 		configurer.setShowProgressIndicator(true);
+		
+		configurer.setInitialSize(INITIAL_WINDOW_SIZE);
 
 		// add the drag and drop support for the editor area
 		configurer.addEditorAreaTransfer(EditorInputTransfer.getInstance());
