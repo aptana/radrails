@@ -1,6 +1,6 @@
 package net.lucky_dip.sasseditor.editor.scanners;
 
-import net.lucky_dip.hamleditor.editor.ColorManager;
+import net.lucky_dip.hamleditor.editor.IColorManager;
 import net.lucky_dip.sasseditor.editor.ISassEditorColorConstants;
 import net.lucky_dip.sasseditor.editor.SassWordDetector;
 import net.lucky_dip.sasseditor.editor.rules.SassAttributeRule;
@@ -22,15 +22,12 @@ public class SassAttributeScanner extends RuleBasedScanner {
 		return new String[] { ISassEditorColorConstants.SASS_ATTRIBUTE };
 	}
 
-	public SassAttributeScanner(ColorManager manager) {
+	public SassAttributeScanner(IColorManager manager) {
 		IToken token = new Token(new TextAttribute(manager
 				.getColor(ISassEditorColorConstants.SASS_ATTRIBUTE)));
-
 		IRule[] rules = new IRule[2];
-
 		rules[0] = new WordPatternRule(new SassWordDetector(), ":", "", token);
 		rules[1] = new SassAttributeRule(token);
-
 		setRules(rules);
 	}
 }

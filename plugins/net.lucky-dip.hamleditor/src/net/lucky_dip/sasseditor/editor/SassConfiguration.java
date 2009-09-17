@@ -2,9 +2,10 @@ package net.lucky_dip.sasseditor.editor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-import net.lucky_dip.hamleditor.editor.ColorManager;
 import net.lucky_dip.hamleditor.editor.HamlReconcilingStrategy;
+import net.lucky_dip.hamleditor.editor.IColorManager;
 import net.lucky_dip.hamleditor.editor.scanners.DefaultScanner;
 import net.lucky_dip.sasseditor.editor.contentassist.SassContentAssistantProcessor;
 import net.lucky_dip.sasseditor.editor.scanners.SassAttributeScanner;
@@ -28,10 +29,11 @@ import org.eclipse.jface.text.rules.ITokenScanner;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.jface.text.source.SourceViewerConfiguration;
 
-public class SassConfiguration extends SourceViewerConfiguration {
+public class SassConfiguration extends SourceViewerConfiguration
+{
 	private SassIndentLineAutoEditStrategy autoIndent;
 
-	private ColorManager colorManager;
+	private IColorManager colorManager;
 	private SassEditor editor;
 
 	private SassClassScanner classScanner;
@@ -40,67 +42,79 @@ public class SassConfiguration extends SourceViewerConfiguration {
 	private SassConstantScanner constantScanner;
 	private SassTagScanner tagScanner;
 
-	public SassConfiguration(ColorManager colorManager, SassEditor editor) {
+	public SassConfiguration(IColorManager colorManager, SassEditor editor)
+	{
 		this.colorManager = colorManager;
 		this.editor = editor;
 	}
 
-	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
-		ArrayList types = new ArrayList();
+	public String[] getConfiguredContentTypes(ISourceViewer sourceViewer)
+	{
+		List<String> types = new ArrayList<String>();
 		types.add(IDocument.DEFAULT_CONTENT_TYPE);
 		types.addAll(Arrays.asList(SassPartitionScanner.SASS_PARTITION_TYPES));
-
 		return (String[]) types.toArray(new String[0]);
 	}
 
-	public String getConfiguredDocumentPartitioning(ISourceViewer sourceViewer) {
+	public String getConfiguredDocumentPartitioning(ISourceViewer sourceViewer)
+	{
 		return SassEditor.SASS_PARTITIONING;
 	}
 
-	public IReconciler getReconciler(ISourceViewer sourceViewer) {
+	public IReconciler getReconciler(ISourceViewer sourceViewer)
+	{
 		HamlReconcilingStrategy strategy = new HamlReconcilingStrategy(editor);
-
 		MonoReconciler reconciler = new MonoReconciler(strategy, false);
-
 		return reconciler;
 	}
 
-	private ITokenScanner getClassScanner() {
-		if (classScanner == null) {
+	private ITokenScanner getClassScanner()
+	{
+		if (classScanner == null)
+		{
 			classScanner = new SassClassScanner(colorManager);
 		}
 		return classScanner;
 	}
 
-	private ITokenScanner getIDScanner() {
-		if (idScanner == null) {
+	private ITokenScanner getIDScanner()
+	{
+		if (idScanner == null)
+		{
 			idScanner = new SassIDScanner(colorManager);
 		}
 		return idScanner;
 	}
 
-	private ITokenScanner getAttributeScanner() {
-		if (attributeScanner == null) {
+	private ITokenScanner getAttributeScanner()
+	{
+		if (attributeScanner == null)
+		{
 			attributeScanner = new SassAttributeScanner(colorManager);
 		}
 		return attributeScanner;
 	}
 
-	private ITokenScanner getConstantScanner() {
-		if (constantScanner == null) {
+	private ITokenScanner getConstantScanner()
+	{
+		if (constantScanner == null)
+		{
 			constantScanner = new SassConstantScanner(colorManager);
 		}
 		return constantScanner;
 	}
 
-	private ITokenScanner getTagScanner() {
-		if (tagScanner == null) {
+	private ITokenScanner getTagScanner()
+	{
+		if (tagScanner == null)
+		{
 			tagScanner = new SassTagScanner(colorManager);
 		}
 		return tagScanner;
 	}
 
-	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer) {
+	public IPresentationReconciler getPresentationReconciler(ISourceViewer sourceViewer)
+	{
 		PresentationReconciler reconciler = new PresentationReconciler();
 		reconciler.setDocumentPartitioning(getConfiguredDocumentPartitioning(sourceViewer));
 
@@ -131,22 +145,27 @@ public class SassConfiguration extends SourceViewerConfiguration {
 		return reconciler;
 	}
 
-	public int getTabWidth(ISourceViewer sourceViewer) {
+	public int getTabWidth(ISourceViewer sourceViewer)
+	{
 		return SassIndentLineAutoEditStrategy.INDENT_STRING.length();
 	}
 
-	public String[] getIndentPrefixes(ISourceViewer sourceViewer, String contentType) {
+	public String[] getIndentPrefixes(ISourceViewer sourceViewer, String contentType)
+	{
 		return new String[] { SassIndentLineAutoEditStrategy.INDENT_STRING };
 	}
 
-	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType) {
-		if (autoIndent == null) {
+	public IAutoEditStrategy[] getAutoEditStrategies(ISourceViewer sourceViewer, String contentType)
+	{
+		if (autoIndent == null)
+		{
 			autoIndent = new SassIndentLineAutoEditStrategy();
 		}
 		return new IAutoEditStrategy[] { autoIndent };
 	}
 
-	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer) {
+	public IContentAssistant getContentAssistant(ISourceViewer sourceViewer)
+	{
 		ContentAssistant ca = new ContentAssistant();
 		ca.setDocumentPartitioning(SassEditor.SASS_PARTITIONING);
 		IContentAssistProcessor pr = new SassContentAssistantProcessor();
