@@ -43,6 +43,7 @@
          <newWizardShortcut id="com.aptana.ide.editors.wizards.HtmlNewWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.CssNewWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.JsNewWizard"/>
+         <newWizardShortcut id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard"/>
          <viewShortcut id="org.rubypeople.rdt.testunit.views.TestUnitView"/>
          <viewShortcut id="org.rubypeople.rdt.ui.RubyExplorer"/>
          <viewShortcut id="org.radrails.rails.ui.ViewRailsPlugins"/>
