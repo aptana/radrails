@@ -11,7 +11,7 @@ SetCompressor /FINAL /SOLID lzma
 
 !define XPUI_DISABLEBG
 ;!define XPUI_LICENSEPAGE_CHECKBOX
-!define XPUI_BRANDINGTEXT "Aptana Studio"
+!define XPUI_BRANDINGTEXT "Aptana RadRails"
 !define XPUI_BRANDINGTEXT_COLOR_FG FFFFFF
 !define XPUI_TEXT_COLOR FFFFFF
 !define XPUI_ABORTWARNING
@@ -53,7 +53,7 @@ var IconLocation
 !insertmacro XPUI_LANGUAGE "English"
 !insertmacro XPUI_PAGE_STARTMENU_INIT App $SMFOLDER
 
-LangString WPTEXT1 ${LANG_ENGLISH} "Welcome to Aptana Studio installer."
+LangString WPTEXT1 ${LANG_ENGLISH} "Welcome to Aptana RadRails installer."
 LangString WPTEXT2 ${LANG_ENGLISH} "\r\n\r\nClick Next to start.\r\n\r\n"
 !define XPUI_WELCOMEPAGESTYLE2_TEXT_TOP "$(WPTEXT1)"
 !define XPUI_WELCOMEPAGESTYLE2_TEXT     "$(WPTEXT2)"
@@ -80,7 +80,7 @@ CRCCheck on
 XPStyle off
 ShowInstDetails hide
 VIProductVersion 1.0.0.0
-VIAddVersionKey ProductName "Aptana Studio"
+VIAddVersionKey ProductName "Aptana RadRails"
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
@@ -98,8 +98,8 @@ Section -Main SEC0000
     SetOverwrite on
 
     File "${INSTALL_FILES_ROOT}\.eclipseproduct"
-    File "${INSTALL_FILES_ROOT}\AptanaStudio.exe"
-    File "${INSTALL_FILES_ROOT}\AptanaStudio.ini"
+    File "${INSTALL_FILES_ROOT}\AptanaRadRails.exe"
+    File "${INSTALL_FILES_ROOT}\AptanaRadRails.ini"
     File "${INSTALL_FILES_ROOT}\artifacts.xml"
     File "${INSTALL_FILES_ROOT}\full_uninstall.txt"
     File "${INSTALL_FILES_ROOT}\version.txt"
@@ -137,10 +137,10 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
 
     # Write Desktop shortcut
-    CreateShortCut "$DESKTOP\$(^Name).lnk" "$INSTDIR\AptanaStudio.exe" ""
+    CreateShortCut "$DESKTOP\$(^Name).lnk" "$INSTDIR\AptanaRadRails.exe" ""
 
     # Create QuickLaunch shortcut
-    CreateShortCut "$QUICKLAUNCH\$(^Name).lnk" "$INSTDIR\AptanaStudio.exe" ""
+    CreateShortCut "$QUICKLAUNCH\$(^Name).lnk" "$INSTDIR\AptanaRadRails.exe" ""
     
     # Grab the first character of the SMFOLDER, if it is '>', then they don't want SM items
     StrCpy $R0 $SMFOLDER 1
@@ -150,37 +150,37 @@ Section -post SEC0001
         # Write Start Menu shortcuts    
         SetShellVarContext all
         SetOutPath $SMPROGRAMS\$StartMenuGroup
-        CreateShortCut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" "$INSTDIR\AptanaStudio.exe" ""
+        CreateShortCut "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk" "$INSTDIR\AptanaRadRails.exe" ""
         WriteINIStr "$SMPROGRAMS\$StartMenuGroup\Aptana Forums.url" "InternetShortcut" "URL" "http://www.aptana.com/forums/"
         WriteINIStr "$SMPROGRAMS\$StartMenuGroup\Aptana Website.url" "InternetShortcut" "URL" "http://www.aptana.com/"
         SetShellVarContext current
     ${endif}    
         
     # JS
-    WriteRegStr HKCR "AptanaStudio.js"                              ""                      "JSFile"
-    WriteRegStr HKCR ".js\OpenWithProgids"                          "AptanaStudio.js"       ""
-    WriteRegStr HKCR ".js\OpenWithList\aptanastudio.exe"            "aptanastudio.exe"            ""
+    WriteRegStr HKCR "AptanaRadRails.js"                              ""                      "JSFile"
+    WriteRegStr HKCR ".js\OpenWithProgids"                          "AptanaRadRails.js"       ""
+    WriteRegStr HKCR ".js\OpenWithList\aptanaradrails.exe"            "aptanaradrails.exe"            ""
     
     # SDOC
-    WriteRegStr HKCR "AptanaStudio.sdoc"                            ""                      "SDOCFile"
-    WriteRegStr HKCR ".sdoc\OpenWithProgids"                        "AptanaStudio.sdoc"     ""
-    WriteRegStr HKCR ".sdoc\OpenWithList\aptanastudio.exe"          "aptanastudio.exe"      ""
+    WriteRegStr HKCR "AptanaRadRails.sdoc"                            ""                      "SDOCFile"
+    WriteRegStr HKCR ".sdoc\OpenWithProgids"                        "AptanaRadRails.sdoc"     ""
+    WriteRegStr HKCR ".sdoc\OpenWithList\aptanaradrails.exe"          "aptanaradrails.exe"      ""
     
     # HTML
-    WriteRegStr HKCR "AptanaStudio.html"                            ""                      "htmlfile"
-    WriteRegStr HKCR ".htm\OpenWithProgids"                         "AptanaStudio.html"     ""
-    WriteRegStr HKCR ".htm\OpenWithList\aptanastudio.exe"           "aptanastudio.exe"      ""
-    WriteRegStr HKCR ".html\OpenWithProgids"                        "AptanaStudio.html"     ""
-    WriteRegStr HKCR ".html\OpenWithList\aptanastudio.exe"          "aptanastudio.exe"      ""
+    WriteRegStr HKCR "AptanaRadRails.html"                            ""                      "htmlfile"
+    WriteRegStr HKCR ".htm\OpenWithProgids"                         "AptanaRadRails.html"     ""
+    WriteRegStr HKCR ".htm\OpenWithList\aptanaradrails.exe"           "aptanaradrails.exe"      ""
+    WriteRegStr HKCR ".html\OpenWithProgids"                        "AptanaRadRails.html"     ""
+    WriteRegStr HKCR ".html\OpenWithList\aptanaradrails.exe"          "aptanaradrails.exe"      ""
 
     # CSS
     
     ; CSS is derived from HTML, so we do not need to add an explicit CSS entry here
     
     # XML
-    WriteRegStr HKCR "AptanaStudio.xml"                             ""                      "xmlfile"
-    WriteRegStr HKCR ".xml\OpenWithProgids"                         "AptanaStudio.xml"      ""
-    WriteRegStr HKCR ".xml\OpenWithList\aptanastudio.exe"           "aptanastudio.exe"            ""
+    WriteRegStr HKCR "AptanaRadRails.xml"                             ""                      "xmlfile"
+    WriteRegStr HKCR ".xml\OpenWithProgids"                         "AptanaRadRails.xml"      ""
+    WriteRegStr HKCR ".xml\OpenWithList\aptanaradrails.exe"           "aptanaradrails.exe"            ""
 
     # Now see which icon set we use, legacy or standard
     StrCmp $OnWindows2000 "1" ItIsWindows2000 ItIsNotWindows2000
@@ -202,14 +202,14 @@ Section -post SEC0001
     !insertmacro INSTALLOPTIONS_READ $R0 "associations.ini" "Field 1" "State" 
     ${if} $R0 == "1"
         WriteRegStr HKCR "CSSFile\DefaultIcon"          ""              "$INSTDIR\Icons\$IconLocation\aptana_file_css.ico"
-        WriteRegStr HKCR "CSSFile\shell\open\command"   ""              '"$INSTDIR\AptanaStudio.exe" "%1"'
+        WriteRegStr HKCR "CSSFile\shell\open\command"   ""              '"$INSTDIR\AptanaRadRails.exe" "%1"'
     ${endif}
     
     # JS
     !insertmacro INSTALLOPTIONS_READ $R0 "associations.ini" "Field 2" "State" 
     ${if} $R0 == "1"
         WriteRegStr HKCR "JSFile\DefaultIcon"           ""              "$INSTDIR\Icons\$IconLocation\aptana_file_js.ico"
-        WriteRegStr HKCR "JSFile\shell\open\command"    ""              '"$INSTDIR\AptanaStudio.exe" "%1"'
+        WriteRegStr HKCR "JSFile\shell\open\command"    ""              '"$INSTDIR\AptanaRadRails.exe" "%1"'
     ${endif}
   
     # SDOC
@@ -219,14 +219,14 @@ Section -post SEC0001
         WriteRegStr HKCR ".sdoc"                        "ContentType"   "text/plain"
         WriteRegStr HKCR ".sdoc"                        "PerceivedType" "text"
         WriteRegStr HKCR "SDOCFile\DefaultIcon"         ""              "$INSTDIR\Icons\$IconLocation\aptana_file_sdoc.ico"
-        WriteRegStr HKCR "SDOCFile\shell\open\command"  ""              '"$INSTDIR\AptanaStudio.exe" "%1"'
+        WriteRegStr HKCR "SDOCFile\shell\open\command"  ""              '"$INSTDIR\AptanaRadRails.exe" "%1"'
     ${endif}        
       
     # XML
     !insertmacro INSTALLOPTIONS_READ $R0 "associations.ini" "Field 4" "State" 
     ${if} $R0 == "1"
         WriteRegStr HKCR "xmlfile\DefaultIcon"          ""              "$INSTDIR\Icons\$IconLocation\aptana_file_xml.ico"
-        WriteRegStr HKCR "xmlfile\shell\open\command"   ""              '"$INSTDIR\AptanaStudio.exe" "%1"'
+        WriteRegStr HKCR "xmlfile\shell\open\command"   ""              '"$INSTDIR\AptanaRadRails.exe" "%1"'
     ${endif}
 
     
@@ -261,7 +261,7 @@ Function .onInit
     ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" "UninstallString"
     IfFileExists $R0 +1 NotInstalled
     
-    MessageBox MB_YESNO "Aptana Studio is apparently already installed. Would you like to Uninstall it now?" IDYES true IDNO false
+    MessageBox MB_YESNO "Aptana RadRails is apparently already installed. Would you like to Uninstall it now?" IDYES true IDNO false
     true:
         Exec $R0
     false:
@@ -316,7 +316,7 @@ Section /o -un.Main UNSEC0000
     ; Get the local time
     ${GetTime} "" "L" $0 $1 $2 $3 $4 $5 $6
     StrCpy $R1 '$0$1$2.$4$5$6'
-    Rename /REBOOTOK "$APPDATA\Aptana\Aptana Studio" "$APPDATA\Aptana\Aptana Studio.$R1"
+    Rename /REBOOTOK "$APPDATA\Aptana\Aptana RadRails" "$APPDATA\Aptana\Aptana RadRails.$R1"
     
     DeleteRegValue HKLM "${REGKEY}\Components" Main
 SectionEnd
@@ -341,23 +341,23 @@ Section -un.post UNSEC0001
     DeleteRegKey /IfEmpty HKLM "${REGKEY}\Components"
     DeleteRegKey /IfEmpty HKLM "${REGKEY}"
 
-    DeleteRegKey HKCR "AptanaStudio.js"
-    DeleteRegValue HKCR ".js\OpenWithProgids" "AptanaStudio.js"
-    DeleteRegKey HKCR ".js\OpenWithList\aptanastudio.exe"
+    DeleteRegKey HKCR "AptanaRadRails.js"
+    DeleteRegValue HKCR ".js\OpenWithProgids" "AptanaRadRails.js"
+    DeleteRegKey HKCR ".js\OpenWithList\aptanaradrails.exe"
 
-    DeleteRegKey HKCR "AptanaStudio.sdoc"
-    DeleteRegValue HKCR ".sdoc\OpenWithProgids" "AptanaStudio.js"
-    DeleteRegKey HKCR ".sdoc\OpenWithList\aptanastudio.exe"
+    DeleteRegKey HKCR "AptanaRadRails.sdoc"
+    DeleteRegValue HKCR ".sdoc\OpenWithProgids" "AptanaRadRails.js"
+    DeleteRegKey HKCR ".sdoc\OpenWithList\aptanaradrails.exe"
 
-    DeleteRegKey HKCR "AptanaStudio.html"
-    DeleteRegValue HKCR ".html\OpenWithProgids" "AptanaStudio.js"
-    DeleteRegKey HKCR ".html\OpenWithList\aptanastudio.exe"
-    DeleteRegValue HKCR ".htm\OpenWithProgids" "AptanaStudio.js"
-    DeleteRegKey HKCR ".htm\OpenWithList\aptanastudio.exe"
+    DeleteRegKey HKCR "AptanaRadRails.html"
+    DeleteRegValue HKCR ".html\OpenWithProgids" "AptanaRadRails.js"
+    DeleteRegKey HKCR ".html\OpenWithList\aptanaradrails.exe"
+    DeleteRegValue HKCR ".htm\OpenWithProgids" "AptanaRadRails.js"
+    DeleteRegKey HKCR ".htm\OpenWithList\aptanaradrails.exe"
 
-    DeleteRegKey HKCR "AptanaStudio.xml"
-    DeleteRegValue HKCR ".xml\OpenWithProgids" "AptanaStudio.js"
-    DeleteRegKey HKCR ".xml\OpenWithList\aptanastudio.exe"
+    DeleteRegKey HKCR "AptanaRadRails.xml"
+    DeleteRegValue HKCR ".xml\OpenWithProgids" "AptanaRadRails.js"
+    DeleteRegKey HKCR ".xml\OpenWithList\aptanaradrails.exe"
     
     #
     # Only remove the following if they were originally set by us
@@ -365,28 +365,28 @@ Section -un.post UNSEC0001
     
     # JS
     ReadRegStr $R0 HKCR "JSFile\shell\open\command" ""
-    ${if} $R0 == '"$INSTDIR\AptanaStudio.exe" "%1"'
+    ${if} $R0 == '"$INSTDIR\AptanaRadRails.exe" "%1"'
         DeleteRegKey HKCR "JSFile\DefaultIcon"
         DeleteRegKey HKCR "JSFile\shell\open\command"
     ${endif}
     
     # SDOC
     ReadRegStr $R0 HKCR "SDOCFile\shell\open\command" ""
-    ${if} $R0 == '"$INSTDIR\AptanaStudio.exe" "%1"'
+    ${if} $R0 == '"$INSTDIR\AptanaRadRails.exe" "%1"'
         DeleteRegKey HKCR "SDOCFile\DefaultIcon"
         DeleteRegKey HKCR "SDOCFile\shell\open\command"
     ${endif}
 
     # CSS
     ReadRegStr $R0 HKCR "CSSFile\shell\open\command" ""
-    ${if} $R0 == '"$INSTDIR\AptanaStudio.exe" "%1"'
+    ${if} $R0 == '"$INSTDIR\AptanaRadRails.exe" "%1"'
         DeleteRegKey HKCR "CSSFile\DefaultIcon"
         DeleteRegKey HKCR "CSSFile\shell\open\command"
     ${endif}
 
     # XML
     ReadRegStr $R0 HKCR "CSSFile\shell\open\command" ""
-    ${if} $R0 == '"$INSTDIR\AptanaStudio.exe" "%1"'
+    ${if} $R0 == '"$INSTDIR\AptanaRadRails.exe" "%1"'
         DeleteRegKey HKCR "xmlfile\DefaultIcon"
         DeleteRegKey HKCR "xmlfile\shell\open\command"
     ${endif}
