@@ -712,6 +712,27 @@
                file="contexts.xml">
          </contexts>
       </extension>
+      <extension
+            point="com.aptana.ide.core.ui.file_wizards">
+         <untitled-file-wizard
+               name="New Untitled Ruby File"
+               wizard-id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard">
+         </untitled-file-wizard>
+      </extension>
+      <extension
+            point="org.eclipse.ui.newWizards">
+         <wizard
+               canFinishEarly="true"
+               category="com.aptana.ide.core.ui"
+               class="org.radrails.rails.ui.wizards.RubyUntitledFileWizard"
+               finalPerspective="org.rubypeople.rdt.ui.PerspectiveRuby"
+               hasPages="false"
+               icon="icons/newfile_wiz.png"
+               id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard"
+               name="Untitled Ruby File"
+               preferredPerspectives="org.radrails.rails.ui.PerspectiveRails">
+         </wizard>
+      </extension>
 <!--      <extension
             point="com.aptana.ide.core.ui.perspectives">
             <perspective id="org.radrails.rails.ui.PerspectiveRails"></perspective>
