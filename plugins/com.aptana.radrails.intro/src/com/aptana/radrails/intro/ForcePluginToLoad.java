@@ -31,7 +31,7 @@ public class ForcePluginToLoad implements IStartup
 		// Set custom RadRails plugins.xml feed
 		new InstanceScope().getNode(com.aptana.ide.update.Activator.PLUGIN_ID).put(
 				com.aptana.ide.update.IPreferenceConstants.REMOTE_PLUGIN_LISTING_URL, RADRAILS_PLUGINS_XML_URL);
-		URL radrailsLocalListingURL = FileLocator.find(com.aptana.ide.update.Activator.getDefault().getBundle(), new Path(
+		URL radrailsLocalListingURL = FileLocator.find(Activator.getDefault().getBundle(), new Path(
 				RADRAILS_LOCAL_PLUGIN_LISTING_PATH), null);
 		if (radrailsLocalListingURL != null)
 		{
