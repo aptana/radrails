@@ -20,6 +20,11 @@
 			<pathelement location="ant-contrib/ant-contrib.jar" />
 		</classpath>
 	</taskdef>
+	<taskdef name="purge" classname="com.dallaway.ant.Purge">
+		<classpath>
+			<pathelement location="ant-contrib/purge.jar" />
+		</classpath>
+	</taskdef>
 
 	<!-- ================================= 
           target: main              
@@ -142,6 +147,12 @@
 			<filelist dir="${builder}/custom/macosx/" files="config.ini" />
 		</concat>
 		<delete file="${tmp.dir}/${collectingFolder}/${product.name}.app/Contents/MacOS/${product.name}.ini" />
+		<!-- Clean up old p2 profiles that eat up some space -->
+		<purge keep="1">
+			<fileset dir="${tmp.dir}/${collectingFolder}/p2/org.eclipse.equinox.p2.engine/profileRegistry/AptanaProfile.profile">
+	    		<include name="*.profile"/>
+			</fileset>
+		</purge>
 		<echo message="**  Rezipping Mac ZIP File  **" level="info" />
 		<zip destfile="${output.dir}/${archivePrefix}.macosx.cocoa.x86.zip" filesonly="false">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}/" includes="**/**" prefix="${zipFolder}">
