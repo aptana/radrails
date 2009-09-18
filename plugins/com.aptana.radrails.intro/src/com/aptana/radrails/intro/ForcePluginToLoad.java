@@ -1,5 +1,9 @@
 package com.aptana.radrails.intro;
 
+import java.net.URL;
+
+import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.ui.IStartup;
@@ -7,11 +11,13 @@ import org.osgi.service.prefs.BackingStoreException;
 
 import com.aptana.ide.documentation.DocumentationPlugin;
 import com.aptana.ide.intro.IntroPlugin;
-//import com.aptana.ide.update.ui.UpdateUIActivator;
 import com.aptana.radrails.intro.editors.MyRadRailsEditor;
 
 public class ForcePluginToLoad implements IStartup
 {
+	private static final String RADRAILS_PLUGINS_XML_URL = "http://download.aptana.com/tools/radrails/plugin/plugins_radrails1.3.1.xml"; //$NON-NLS-1$
+	private static final String RADRAILS_LOCAL_PLUGIN_LISTING_PATH = "plugins_radrails1.3.1.xml"; //$NON-NLS-1$
+
 
 	private static final String RADRAILS_GETTING_STARTED_URL = "http://www.aptana.com/tools/radrails/getting_started"; //$NON-NLS-1$
 	private static final String RADRAILS_REMOTE_IMAGE_LOCATION = "http://www.aptana.com/tools/radrails/images/my_radrails.gif"; //$NON-NLS-1$
@@ -21,6 +27,19 @@ public class ForcePluginToLoad implements IStartup
 
 	public void earlyStartup()
 	{
+		
+		// Set custom RadRails plugins.xml feed
+		new InstanceScope().getNode(com.aptana.ide.update.Activator.PLUGIN_ID).put(
+				com.aptana.ide.update.IPreferenceConstants.REMOTE_PLUGIN_LISTING_URL, RADRAILS_PLUGINS_XML_URL);
+		URL radrailsLocalListingURL = FileLocator.find(com.aptana.ide.update.Activator.getDefault().getBundle(), new Path(
+				RADRAILS_LOCAL_PLUGIN_LISTING_PATH), null);
+		if (radrailsLocalListingURL != null)
+		{
+			new InstanceScope().getNode(com.aptana.ide.update.Activator.PLUGIN_ID).put(
+					com.aptana.ide.update.IPreferenceConstants.LOCAL_PLUGIN_LISTING_URL,
+					radrailsLocalListingURL.toString());
+		}
+		
 		// FIXME Uncomment when we're building against studio in git!
 		// Set up custom release_message URL prefix
 //		IEclipsePreferences updateUIPrefs = new InstanceScope().getNode(UpdateUIActivator.PLUGIN_ID);
@@ -33,7 +52,7 @@ public class ForcePluginToLoad implements IStartup
 //			// TODO
 //		}
 
-		// make My Adobe editor as the default intro editor
+		// make My RadRails editor as the default intro editor
 		IEclipsePreferences introPluginPrefs = new InstanceScope().getNode(IntroPlugin.PLUGIN_ID);
 		introPluginPrefs
 				.put(com.aptana.ide.intro.preferences.IPreferenceConstants.INTRO_EDITOR_ID, MyRadRailsEditor.ID);
