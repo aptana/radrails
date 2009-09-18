@@ -216,7 +216,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/aflax.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
 	</plugin>
   <plugin>
 		<id>org.openrico.rico.2.0</id>
@@ -233,7 +233,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/rico.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
 	</plugin>
   <plugin>
 		<id>org.scriptaculous.1.8</id>
@@ -242,7 +242,7 @@
 		<description>Adds support for the Scriptaculous Ajax library</description>
 		<url>http://update.aptana.com/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#scriptaculous</more>
-		<sortweight>1</sortweight>
+		<sortweight>3</sortweight>
 		<release>
             <version>1.8.0</version>
 			<year>2008</year>
@@ -267,7 +267,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/spry.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
 	</plugin>
   <plugin>
 		<id>com.yahoo.yui.2.7</id>
@@ -284,7 +284,7 @@
 			<day>25</day>
 		</release>
 		<icon>images/ajax/yui.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
 	</plugin>
   <plugin>
 		<id>org.prototypejs.prototype.1.6</id>
@@ -293,7 +293,7 @@
 		<description>Adds support for the Prototype Ajax library</description>
 		<url>http://update.aptana.com/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#prototype</more>
-		<sortweight>1</sortweight>
+		<sortweight>3</sortweight>
 		<release>
             <version>1.6.0</version>
 			<year>2008</year>
@@ -318,7 +318,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/library.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
 	</plugin>
   <plugin>
 		<id>net.mootools.1.2</id>
@@ -335,7 +335,7 @@
 			<day>31</day>
 		</release>
 		<icon>images/ajax/mootools.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
 	</plugin>
   <plugin>
 		<id>com.jquery.1.3</id>
@@ -344,7 +344,7 @@
 		<description>Adds support for the jQuery Ajax library</description>
 		<url>http://update.aptana.com/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#jquery</more>
-		<sortweight>-1</sortweight>
+		<sortweight>0</sortweight>
 		<release>
             <version>1.3.2</version>
 			<year>2009</year>
@@ -369,7 +369,7 @@
 			<day>26</day>
 		</release>
 		<icon>images/ajax/ext.gif</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
   </plugin>
   <plugin>
 		<id>org.dojotoolkit.dojo.1.3</id>
@@ -386,7 +386,7 @@
 			<day>19</day>
 		</release>
 		<icon>images/ajax/dojo.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
   </plugin>
   <plugin>
 		<id>com.mochikit.1.4</id>
@@ -403,7 +403,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/mochikit.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.others</installer_id>
   </plugin>
 
 </plugins>
