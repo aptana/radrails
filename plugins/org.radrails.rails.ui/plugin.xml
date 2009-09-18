@@ -43,6 +43,7 @@
          <newWizardShortcut id="com.aptana.ide.editors.wizards.HtmlNewWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.CssNewWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.JsNewWizard"/>
+         <newWizardShortcut id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard"/>
          <viewShortcut id="org.rubypeople.rdt.testunit.views.TestUnitView"/>
          <viewShortcut id="org.rubypeople.rdt.ui.RubyExplorer"/>
          <viewShortcut id="org.radrails.rails.ui.ViewRailsPlugins"/>
@@ -70,7 +71,49 @@
                relationship="stack"
                relative="org.eclipse.ui.views.ContentOutline"
                visible="false">
-         </view>      
+         </view>
+         <view
+               id="com.aptana.ide.logging.LogView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.ide.server.ui.serversView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.ide.js.ui.views.problemsView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.ide.ui.ViewPlugins"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="com.aptana.rdt.ViewRakeTasks"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
+         <view
+               id="org.rubypeople.rdt.ui.views.RIView"
+               minimized="false"
+               relationship="stack"
+               relative="org.eclipse.ui.console.ConsoleView"
+               visible="false">
+         </view>
       </perspectiveExtension>
       <perspectiveExtension targetID="com.aptana.ide.js.ui.WebPerspective">
 		 <perspectiveShortcut
@@ -107,12 +150,6 @@
             icon="icons/railsplugins_dir.gif"
             id="org.radrails.rails.ui.ViewRailsPlugins"
             name="%view.name.1"/>
-      <view
-            category="org.radrails.rails.ui.ViewCategoryRails"
-            class="org.radrails.rails.internal.ui.raketasks.RakeTasksView"
-            icon="icons/rake.png"
-            id="org.radrails.rails.ui.ViewRakeTasks"
-            name="%view.name.2"/>
       <view
             name="%view.name.4"
             icon="icons/rails.gif"
@@ -675,6 +712,27 @@
          <contexts
                file="contexts.xml">
          </contexts>
+      </extension>
+      <extension
+            point="com.aptana.ide.core.ui.file_wizards">
+         <untitled-file-wizard
+               name="New Untitled Ruby File"
+               wizard-id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard">
+         </untitled-file-wizard>
+      </extension>
+      <extension
+            point="org.eclipse.ui.newWizards">
+         <wizard
+               canFinishEarly="true"
+               category="com.aptana.ide.core.ui"
+               class="org.radrails.rails.ui.wizards.RubyUntitledFileWizard"
+               finalPerspective="org.rubypeople.rdt.ui.PerspectiveRuby"
+               hasPages="false"
+               icon="icons/newfile_wiz.png"
+               id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard"
+               name="Untitled Ruby File"
+               preferredPerspectives="org.radrails.rails.ui.PerspectiveRails">
+         </wizard>
       </extension>
 <!--      <extension
             point="com.aptana.ide.core.ui.perspectives">

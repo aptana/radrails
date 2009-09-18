@@ -2,14 +2,6 @@
 <?eclipse version="3.0"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.views">
-      <view
-            class="org.radrails.server.internal.ui.ServersView"
-            icon="icons/server.gif"
-            id="org.radrails.server.ui.ViewServers"
-            name="%view.name.0"/>
-   </extension>
-   <extension
          point="org.eclipse.ui.newWizards">
       <wizard
             category="org.radrails.rails.ui.NewWizardCategoryRails"
