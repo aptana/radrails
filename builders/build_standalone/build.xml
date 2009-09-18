@@ -20,6 +20,11 @@
 			<pathelement location="ant-contrib/ant-contrib.jar" />
 		</classpath>
 	</taskdef>
+	<taskdef name="purge" classname="com.dallaway.ant.Purge">
+		<classpath>
+			<pathelement location="ant-contrib/purge.jar" />
+		</classpath>
+	</taskdef>
 
 	<!-- ================================= 
           target: main              
@@ -110,6 +115,7 @@
 			<filelist dir="${builder}/custom/macosx/" files="config.ini" />
 		</concat>
 		<delete file="${tmp.dir}/${collectingFolder}/${product.name}.app/Contents/MacOS/${product.name}.ini" />
+		<antcall target="clean.old.profiles" />
 		<echo message="**  Rezipping Mac ZIP File  **" level="info" />
 		<zip destfile="${output.dir}/${archivePrefix}.macosx.carbon.zip" filesonly="false">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}/" includes="**/**" prefix="${zipFolder}">
@@ -123,6 +129,18 @@
 		</zip>
 		<delete dir="${tmp.dir}" />
 	</target>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: clean.old.profiles                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="clean.old.profiles">
+    	<!-- Clean up old p2 profiles that eat up some space -->
+   		<purge keep="1">
+   			<fileset dir="${tmp.dir}/${collectingFolder}/p2/org.eclipse.equinox.p2.engine/profileRegistry/AptanaProfile.profile">
+   	    		<include name="*.profile"/>
+   			</fileset>
+   		</purge>
+    </target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
 	          target: mac.cocoa.standalone                      
@@ -142,6 +160,7 @@
 			<filelist dir="${builder}/custom/macosx/" files="config.ini" />
 		</concat>
 		<delete file="${tmp.dir}/${collectingFolder}/${product.name}.app/Contents/MacOS/${product.name}.ini" />
+		<antcall target="clean.old.profiles" />
 		<echo message="**  Rezipping Mac ZIP File  **" level="info" />
 		<zip destfile="${output.dir}/${archivePrefix}.macosx.cocoa.x86.zip" filesonly="false">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}/" includes="**/**" prefix="${zipFolder}">
@@ -173,6 +192,7 @@
 			<filelist dir="${tmp.dir}/" files="config.ini" />
 			<filelist dir="${builder}/custom/win32/" files="config_xp.ini" />
 		</concat>
+		<antcall target="clean.old.profiles" />
 		<zip destfile="${output.dir}/${archivePrefix}.win32.x86.zip">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}" includes="**/**" prefix="${zipFolder}" />
 		</zip>
@@ -196,6 +216,7 @@
 			<filelist dir="${tmp.dir}/" files="config.ini" />
 			<filelist dir="${builder}/custom/win32/" files="config_xp.ini" />
 		</concat>
+		<antcall target="clean.old.profiles" />
 		<zip destfile="${output.dir}/${archivePrefix}.win32.x86_64.zip">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}" includes="**/**" prefix="${zipFolder}" />
 		</zip>
@@ -216,6 +237,7 @@
 		<concat destfile="${tmp.dir}/${collectingFolder}/configuration/config.ini" append="yes" eol="unix">
 			<filelist dir="${builder}/custom/linux/" files="config.ini" />
 		</concat>
+		<antcall target="clean.old.profiles" />
 		<!-- Update linux zip file -->
 		<zip destfile="${output.dir}/${archivePrefix}.linux.gtk.x86.zip" filesonly="false">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}" includes="**/**" prefix="${zipFolder}">
@@ -242,6 +264,7 @@
 		<concat destfile="${tmp.dir}/${collectingFolder}/configuration/config.ini" append="yes" eol="unix">
 			<filelist dir="${builder}/custom/linux/" files="config.ini" />
 		</concat>
+		<antcall target="clean.old.profiles" />
 		<!-- Update linux zip file -->
 		<zip destfile="${output.dir}/${archivePrefix}.linux.gtk.x86_64.zip" filesonly="false">
 			<zipfileset dir="${tmp.dir}/${collectingFolder}" includes="**/**" prefix="${zipFolder}">

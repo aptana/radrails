@@ -44,14 +44,6 @@
          version="0.0.0"
          search-location="both"/>
 
-   <includes
-         id="com.aptana.ide.feature.xul"
-         version="0.0.0"/>
-         
-   <includes
-         id="com.aptana.ide.feature.secureftp"
-         version="0.0.0"/>
-
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
