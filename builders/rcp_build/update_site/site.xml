@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site digestURL="site.xml.digest">
-   <description url="http://update.aptana.com/update">
-      Aptana Update Central. Version {version.full}
+   <description url="http://download.aptana.com/tools/radrails/plugin">
+      Aptana RadRails Update Central. Version {version.full}
    </description>
     <feature url="features/com.aptana.radrails.feature.rcp_{version.full}.jar" id="com.aptana.radrails.feature.rcp" version="{version.full}">
       <category name="Aptana RadRails RCP"/>
