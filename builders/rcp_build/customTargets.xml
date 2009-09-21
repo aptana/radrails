@@ -99,17 +99,6 @@
 		<tstamp>
 			<format property="short.timestamp" pattern="ddMMyyyyHHmmss" locale="en" />
 		</tstamp>
-		<pathconvert property="studio.version">
-			<fileset dir="${p2.repo.dir}/features">
-				<include name="com.aptana.ide.feature_*.jar" />
-			</fileset>
-			<mapper>
-				<chainedmapper>
-					<flattenmapper />
-					<globmapper from="com.aptana.ide.feature_*.jar" to="*" casesensitive="yes" />
-				</chainedmapper>
-			</mapper>
-		</pathconvert>
 		<echo message="Updating versions in feature and plugin manifests. Full version: ${version.full}, qualifier: ${build.revision}" />
 		<!-- Replace very specific files (taken from our old build) -->
 		<replace file="${buildDirectory}/plugins${product}" token="0.0.0.qualifier" value="${version.full}-${short.timestamp}" />
