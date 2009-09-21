@@ -503,7 +503,6 @@
                   label="%action.label.11"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.9">
             </action>
             <action
@@ -515,7 +514,6 @@
                   label="%action.label.12"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.10">
             </action>
             <action
@@ -527,7 +525,6 @@
                   label="%action.label.13"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.11">
             </action>
             <action
@@ -539,7 +536,6 @@
                   label="%action.label.14"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.12">
             </action>
             <action
@@ -551,7 +547,6 @@
                   label="%action.label.15"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.13">
             </action>
          </editorContribution>
@@ -567,7 +562,6 @@
                   label="%action.label.16"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.14">
             </action>
             <action
@@ -579,7 +573,6 @@
                   label="%action.label.17"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.15">
             </action>
             <action
@@ -591,7 +584,6 @@
                   label="%action.label.18"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.16">
             </action>
             <action
@@ -603,7 +595,6 @@
                   label="%action.label.19"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.17">
             </action>
             <action
@@ -615,7 +606,6 @@
                   label="%action.label.20"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.18">
             </action>
          </editorContribution>
@@ -631,7 +621,6 @@
                   label="%action.label.21"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.19">
             </action>
             <action
@@ -643,7 +632,6 @@
                   label="%action.label.22"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.20">
             </action>
             <action
@@ -655,7 +643,6 @@
                   label="%action.label.23"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.21">
             </action>
             <action
@@ -667,7 +654,6 @@
                   label="%action.label.24"
                   menubarPath="navigate/open.ext"
                   style="push"
-                  toolbarPath="Normal/Rails"
                   tooltip="%action.tooltip.22">
             </action>
          </editorContribution>
