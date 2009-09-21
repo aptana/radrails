@@ -29,7 +29,7 @@ public class StandardVMProfiler extends StandardVMRunner {
 		subMonitor.beginTask(LaunchingMessages.StandardVMRunner_Launching_VM____1, 2); 
 		subMonitor.subTask(LaunchingMessages.StandardVMRunner_Constructing_command_line____2); 
 		
-		List<String> arguments= constructProgramString(config);
+		List<String> arguments= constructProgramString(config, monitor);
 				
 		// VM args are the first thing after the ruby program so that users can specify
 		// options like '-client' & '-server' which are required to be the first option
