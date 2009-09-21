@@ -149,6 +149,13 @@
 			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
 		</antcall>
 		<!--
+		While we are building against aptana_studio_1.5 branch we have to install pro features to pick up SecureFTP.
+		-->
+		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.professional.feature.group" />
+			<param name="p2.repo" value="file:${ide-pro.p2.repo}" />
+		</antcall>
+		<!--
 		<antcall target="run.director">
 			<param name="p2.installIU" value="com.aptana.ide.feature.secureftp.feature.group" />
 			<param name="p2.repo" value="file:${secureftp.p2.repo}" />
@@ -158,6 +165,13 @@
 		<mkdir dir="${baseLocation}/dropins/eclipse" />
 		<copy todir="${baseLocation}/dropins/eclipse">
 			<fileset dir="${ide-core.p2.repo}" defaultexcludes="true">
+				<include name="features/*" />
+				<include name="plugins/*" />
+			</fileset>
+			<!--
+			While we are building against aptana_studio_1.5 branch we have to install pro features to pick up SecureFTP.
+			-->
+			<fileset dir="${ide-pro.p2.repo}" defaultexcludes="true">
 				<include name="features/*" />
 				<include name="plugins/*" />
 			</fileset>
