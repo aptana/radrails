@@ -13,7 +13,7 @@
     </description>
 
 	<property environment="env"/>
-	
+
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="lib/ant-contrib-0.6.jar" />
@@ -102,7 +102,18 @@
 				<include name="plugins/*" />
 			</fileset>
 		</copy>
-		
+		<pathconvert property="studio.version">
+			<fileset dir="${baseLocation}/dropins/eclipse/features">
+				<include name="com.aptana.ide.feature_*.jar" />
+			</fileset>
+			<mapper>
+				<chainedmapper>
+					<flattenmapper />
+					<globmapper from="com.aptana.ide.feature_*.jar" to="*" casesensitive="yes" />
+				</chainedmapper>
+			</mapper>
+		</pathconvert>
+
 		<!-- Unjar the features -->
 		<for param="file">
 			<path>
