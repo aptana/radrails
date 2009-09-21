@@ -70,7 +70,7 @@
           target: buildZip           
          ================================= -->
 	<target name="buildZip" depends="generate.build.properties" description="Build the update site zip">
-		<pathconvert property="site.version.full">
+		<pathconvert property="version.full">
 			<fileset dir="${p2.repo.dir}/features">
 				<include name="${topLevelElementId}_*.jar" />
 			</fileset>
@@ -81,11 +81,11 @@
 				</chainedmapper>
 			</mapper>
 		</pathconvert>
-		<zip destfile="${buildDirectory}/${topLevelElementId}-${site.version.full}.zip">
+		<zip destfile="${buildDirectory}/${topLevelElementId}-${version.full}.zip">
 			<fileset dir="${deploy.dir}" defaultexcludes="false" />
 		</zip>
-		<move file="${buildDirectory}/${topLevelElementId}-${site.version.full}.zip" todir="${deploy.dir}" />
-		<replace token="ZIP_FILE" value="${topLevelElementId}-${site.version.full}.zip" file="${deploy.dir}/index.html" />
+		<move file="${buildDirectory}/${topLevelElementId}-${version.full}.zip" todir="${deploy.dir}" />
+		<replace token="ZIP_FILE" value="${topLevelElementId}-${version.full}.zip" file="${deploy.dir}/index.html" />
 	</target>
 
 	<!-- ================================= 
