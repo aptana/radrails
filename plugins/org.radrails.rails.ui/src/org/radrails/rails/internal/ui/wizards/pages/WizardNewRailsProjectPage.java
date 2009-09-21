@@ -221,6 +221,13 @@ public class WizardNewRailsProjectPage extends WizardNewProjectCreationPage
 		boolean result = super.validatePage();
 		if (!result)
 			return false;
+		String projectName = getProjectName();
+		if (projectName != null) {
+			if (projectName.contains("'") || projectName.contains("\"")) {
+				setMessage(WizardMessages.WizardNewRailsProjectPage_Invalid_Project_Name_msg, IMessageProvider.ERROR);
+				return false;
+			}
+		}
 		if (getGenerateButtonSelection() && railsNotInstalled())
 		{
 			setMessage(WizardMessages.WizardNewRailsProjectPage_Rails_not_installed_msg, IMessageProvider.WARNING);
