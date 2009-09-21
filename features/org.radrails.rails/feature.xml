@@ -19,7 +19,7 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://update.aptana.com/update/rails/"/>
+      <update label="%updateSiteName" url="http://download.aptana.com/tools/radrails/plugin/rails/"/>
       <discovery label="Git plugin (Eclipse 3.4+)" url="http://www.jgit.org/update-site/"/>
    </url>
 

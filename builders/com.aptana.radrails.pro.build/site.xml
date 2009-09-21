@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site pack200="true"> 
-    <description url="http://update.aptana.com/update/rails_pro/">RadRails Professional</description> 
+    <description url="http://download.aptana.com/tools/radrails/plugin/rails_pro/">RadRails Professional</description> 
 	<feature url="features/com.aptana.radrails.feature.professional_{version.full}.jar" id="com.aptana.radrails.feature.professional" version="{version.full}">
 		<category name="Aptana RadRails Pro"/>
 	</feature>				
