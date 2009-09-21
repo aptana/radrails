@@ -10,6 +10,7 @@ public class WizardMessages extends NLS {
 	public static String NewRailsProjectWizardAction_description;
 	public static String NewRailsProjectWizardAction_tooltip;
 
+	public static String WizardNewRailsProjectPage_Invalid_Project_Name_msg;
 	public static String WizardNewRailsProjectPage_Rails_not_installed_msg;
 	public static String WizardNewRailsProjectPage_Generate_project_skeleton;
 	public static String WizardNewRailsProjectPage_Options_group_heading;

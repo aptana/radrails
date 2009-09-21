@@ -44,6 +44,11 @@
          version="0.0.0"
          search-location="both"/>
    
+   <includes
+         id="com.aptana.ide.feature.professional"
+         version="0.0.0"
+         search-location="both"/>
+   
    <!--
    <includes
          id="com.aptana.ide.feature.secureftp"
