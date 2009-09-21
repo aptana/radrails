@@ -1,14 +1,8 @@
 <plugins>
 	<installer>
-		<id>installer.radrails</id>
-		<category>Ruby on Rails</category>
+		<id>installer.featured</id>
+		<category>Featured Plugins</category>
 		<sortweight>0</sortweight>
-		<collapse>false</collapse>
-	</installer>
-	<installer>
-		<id>installer.ajax</id>
-		<category>Ajax Libraries</category>
-		<sortweight>1</sortweight>
 		<collapse>false</collapse>
 	</installer>
 	<installer>
@@ -24,16 +18,21 @@
 		<collapse>true</collapse>
 	</installer>
 	<installer>
-		<id>installer.others.scm</id>
-		<category>SCM Plugins</category>
-		<parent>installer.others</parent>
+		<id>installer.community.scm</id>
+		<category>Community Plugins - Source Control</category>
+		<sortweight>12</sortweight>
+		<collapse>true</collapse>
+	</installer>
+	<installer>
+		<id>installer.ajax</id>
+		<category>Ajax Libraries</category>
 		<sortweight>10</sortweight>
 		<collapse>true</collapse>
 	</installer>
 	<installer>
-		<id>installer.others</id>
-		<category>Others</category>
-		<sortweight>12</sortweight>
+		<id>installer.community.mobile</id>
+		<category>Community Plugins - Mobile</category>
+		<sortweight>14</sortweight>
 		<collapse>true</collapse>
 	</installer>
 	<plugin>
@@ -67,7 +66,7 @@
 		  <month>5</month>
 		  <day>6</day>
 		</release>
-		<installer_id>installer.others.scm</installer_id>
+		<installer_id>installer.community.scm</installer_id>
 	</plugin>
 	<plugin>
 		<id>com.aptana.ide.feature.svn</id>
@@ -83,7 +82,7 @@
 		  <month>2</month>
 		  <day>17</day>
 		</release>
-		<installer_id>installer.others.scm</installer_id>
+		<installer_id>installer.community.scm</installer_id>
 	</plugin>
 	<plugin>
 		<id>com.perforce.p4wsad</id>
@@ -99,7 +98,7 @@
 		  <month>4</month>
 		  <day>12</day>
 		</release>
-		<installer_id>installer.others.scm</installer_id>
+		<installer_id>installer.community.scm</installer_id>
 	</plugin>
 	<plugin>
 		<id>com.aptana.ide.feature.editor.php</id>
@@ -183,7 +182,7 @@
 			<month>1</month>
 			<day>22</day>
 		</release>
-		<installer_id>installer.others.scm</installer_id>
+		<installer_id>installer.community.scm</installer_id>
 	</plugin>
     <plugin>
 		<id>org.eclipse.egit</id>
@@ -199,7 +198,7 @@
 			<month>7</month>
 			<day>8</day>
 		</release>
-		<installer_id>installer.radrails</installer_id>
+		<installer_id>installer.featured</installer_id>
     </plugin>
   <plugin>
 		<id>org.aflax.1.0</id>
@@ -216,7 +215,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/aflax.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
 		<id>org.openrico.rico.2.0</id>
@@ -233,7 +232,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/rico.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
 		<id>org.scriptaculous.1.8</id>
@@ -250,7 +249,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/scriptaculous.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.featured</installer_id>
 	</plugin>
   <plugin>
 		<id>com.adobe.spry.1.6</id>
@@ -267,7 +266,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/spry.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
 		<id>com.yahoo.yui.2.7</id>
@@ -284,7 +283,7 @@
 			<day>25</day>
 		</release>
 		<icon>images/ajax/yui.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
 		<id>org.prototypejs.prototype.1.6</id>
@@ -301,7 +300,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/prototype.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.featured</installer_id>
 	</plugin>
   <plugin>
 		<id>com.ms.ajax.3.5</id>
@@ -318,7 +317,7 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/library.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
 		<id>net.mootools.1.2</id>
@@ -335,7 +334,7 @@
 			<day>31</day>
 		</release>
 		<icon>images/ajax/mootools.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
 		<id>com.jquery.1.3</id>
@@ -344,7 +343,7 @@
 		<description>Adds support for the jQuery Ajax library</description>
 		<url>http://update.aptana.com/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#jquery</more>
-		<sortweight>0</sortweight>
+		<sortweight>1</sortweight>
 		<release>
             <version>1.3.2</version>
 			<year>2009</year>
@@ -352,7 +351,7 @@
 			<day>19</day>
 		</release>
 		<icon>images/ajax/jquery.png</icon>
-		<installer_id>installer.ajax</installer_id>
+		<installer_id>installer.featured</installer_id>
   </plugin>
   <plugin>
 		<id>com.extjs.ext.2.2</id>
@@ -369,7 +368,7 @@
 			<day>26</day>
 		</release>
 		<icon>images/ajax/ext.gif</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
   </plugin>
   <plugin>
 		<id>org.dojotoolkit.dojo.1.3</id>
@@ -386,7 +385,7 @@
 			<day>19</day>
 		</release>
 		<icon>images/ajax/dojo.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
   </plugin>
   <plugin>
 		<id>com.mochikit.1.4</id>
@@ -403,7 +402,23 @@
 			<day>23</day>
 		</release>
 		<icon>images/ajax/mochikit.png</icon>
-		<installer_id>installer.others</installer_id>
+		<installer_id>installer.ajax</installer_id>
   </plugin>
-
+  <plugin>      
+        <id>com.nokia.wrt.feature</id>
+        <name>Nokia WRT Plug-in for Aptana Studio</name>
+        <category>Featured</category>
+        <description>Build, preview, and debug Web and Ajax apps for S60 phones</description>
+        <url>http://tools.ext.nokia.com/wrt/prod/aptana/v2.1/</url>
+        <more>http://www.forum.nokia.com/Resources_and_Information/Tools/Runtimes/Web_Runtime/Aptana_Plugin/</more>
+        <sortweight>1</sortweight>
+        <release>
+          <version>2.1</version>
+          <year>2009</year>
+          <month>07</month>
+          <day>06</day>
+        </release>
+        <icon>http://ide.aptana.com/content_ide/images/feature_nokia.png</icon>
+        <installer_id>installer.community.mobile</installer_id>
+  </plugin>
 </plugins>
