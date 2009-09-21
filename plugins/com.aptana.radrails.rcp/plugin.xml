@@ -18,7 +18,7 @@
             name="%product.name.AptanaRadRails">
          <property
                name="aboutText"
-               value="Welcome to Aptana RadRails."/>
+               value="%aboutText"/>
          <property
                name="aboutImage"
                value="content/about.gif"/>
