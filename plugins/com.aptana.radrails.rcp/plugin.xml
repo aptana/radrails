@@ -4,7 +4,8 @@
    <extension
          id="application"
          point="org.eclipse.core.runtime.applications">
-      <application>
+      <application
+            icon="radrails32.png">
          <run
                class="com.aptana.radrails.rcp.IDEApplication">
          </run>
