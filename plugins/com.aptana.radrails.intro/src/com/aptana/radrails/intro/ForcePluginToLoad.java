@@ -15,8 +15,8 @@ import com.aptana.radrails.intro.editors.MyRadRailsEditor;
 
 public class ForcePluginToLoad implements IStartup
 {
-	private static final String RADRAILS_PLUGINS_XML_URL = "http://download.aptana.com/tools/radrails/plugin/plugins_radrails1.3.1.xml"; //$NON-NLS-1$
-	private static final String RADRAILS_LOCAL_PLUGIN_LISTING_PATH = "plugins_radrails1.3.1.xml"; //$NON-NLS-1$
+	private static final String RADRAILS_PLUGINS_XML_URL = "http://download.aptana.com/tools/radrails/plugin/plugins_radrails_1.5.xml"; //$NON-NLS-1$
+	private static final String RADRAILS_LOCAL_PLUGIN_LISTING_PATH = "plugins_radrails_1.5.xml"; //$NON-NLS-1$
 
 
 	private static final String RADRAILS_GETTING_STARTED_URL = "http://www.aptana.com/tools/radrails/getting_started"; //$NON-NLS-1$
