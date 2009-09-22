@@ -46,7 +46,7 @@
 		<name>Aptana Cloud</name>
 		<category>Platforms</category> 
 		<description>Easy Hosting and Development Services</description>
-		<url>http://download.aptana.org/tools/studio/plugin/install/cloud/</url>
+		<url>http://download.aptana.com/tools/studio/plugin/install/cloud/</url>
         <more>http://www.aptana.com/cloud/</more>
 		<sortweight>0</sortweight>
 		<release>
@@ -106,29 +106,28 @@
 		</release>
 		<installer_id>installer.community.scm</installer_id>
 	</plugin>
-	<plugin>
-		<id>com.aptana.ide.feature.editor.php</id>
-		<name>Aptana PHP</name>
-		<category>Platforms</category>
-		<description>Edit, preview and debug PHP files.</description>
-		<url>http://download.php.org/tools/php/plugin/install/php/</url>
-        <more>http://www.aptana.com/php</more>
-		<sortweight>0</sortweight>
-		<release>
-		    <version>1.0.1</version>
-			<year>2008</year>
-			<month>11</month>
-			<day>10</day>
-		</release>
-		<icon>images/feature_php.png</icon>
-		<installer_id>installer.platforms</installer_id>
-	</plugin>
+  	<plugin>
+  		<id>org.eclipse.php</id>
+  		<name>PHP Development Tools (PDT)</name>
+  		<category>Featured</category>
+  		<description>This project encompasses all development components necessary to develop PHP and facilitate extensibility.</description>
+  		<url>http://download.eclipse.org/tools/pdt/updates/2.0/</url>
+  		<more>http://www.eclipse.org/pdt/</more>
+  		<sortweight>1</sortweight>
+  		<release>
+  			<version>2.1.2</version>
+  			<day>26</day>
+  			<month>08</month>
+  			<year>2009</year></release>
+  		<icon>http://ide.aptana.com/content_ide/images/feature_pdt.png</icon>
+  		<installer_id>installer.platforms</installer_id>
+  	</plugin>
     <plugin>
         <id>org.python.pydev.feature</id>
         <name>Aptana PyDev</name>
         <category>Platforms</category> 
         <description>Python support</description>
-        <url>http://download.pydev.org/tools/pydev/plugin/install/pydev/</url>
+        <url>http://pydev.org/updates</url>
         <more>http://www.aptana.com/pydev</more>
         <sortweight>3</sortweight>
         <release>
@@ -156,23 +155,6 @@
         </release>
 		<icon>images/feature_air.png</icon>
 		<installer_id>installer.desktop</installer_id>
-    </plugin>
-    <plugin>
-        <id>com.aptana.ide.feature.framework.jaxer</id>
-        <name>Aptana Jaxer</name>
-        <category>Platforms</category>
-        <description>Server side Ajax</description>
-        <url>http://download.jaxer.com/tools/studio/plugin/install/jaxer/</url>
-        <more>http://www.aptana.com/jaxer</more>
-        <sortweight>2</sortweight>
-        <release>
-            <version>1.5.0</version>
-            <year>2009</year>
-            <month>7</month>
-            <day>8</day>
-        </release>
-		<icon>images/feature_jaxer.png</icon>
-		<installer_id>installer.platforms</installer_id>
     </plugin>
 	<plugin>
 		<id>org.eclipse.cvs</id>
