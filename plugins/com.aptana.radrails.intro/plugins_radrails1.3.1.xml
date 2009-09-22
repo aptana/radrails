@@ -18,6 +18,12 @@
 		<collapse>true</collapse>
 	</installer>
 	<installer>
+		<id>installer.desktop</id>
+		<category>Desktop Application Platforms</category>
+		<sortweight>9</sortweight>
+		<collapse>true</collapse>
+	</installer>
+	<installer>
 		<id>installer.community.scm</id>
 		<category>Community Plugins - Source Control</category>
 		<sortweight>12</sortweight>
@@ -40,7 +46,7 @@
 		<name>Aptana Cloud</name>
 		<category>Platforms</category> 
 		<description>Easy Hosting and Development Services</description>
-		<url>http://update.aptana.com/install/cloud/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/cloud/</url>
         <more>http://www.aptana.com/cloud/</more>
 		<sortweight>0</sortweight>
 		<release>
@@ -73,7 +79,7 @@
 		<name>Subclipse</name>
 		<category>Utilities</category> 
 		<description>Subversion SCM integration</description>
-		<url>http://update.aptana.com/install/svn/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/svn/</url>
         <more>http://subclipse.tigris.org/</more>
 		<sortweight>0</sortweight>
 		<release>
@@ -105,7 +111,7 @@
 		<name>Aptana PHP</name>
 		<category>Platforms</category>
 		<description>Edit, preview and debug PHP files.</description>
-		<url>http://update.aptana.com/install/php/</url>
+		<url>http://download.php.org/tools/php/plugin/install/php/</url>
         <more>http://www.aptana.com/php</more>
 		<sortweight>0</sortweight>
 		<release>
@@ -122,7 +128,7 @@
         <name>Aptana PyDev</name>
         <category>Platforms</category> 
         <description>Python support</description>
-        <url>http://update.aptana.com/install/pydev/</url>
+        <url>http://download.pydev.org/tools/pydev/plugin/install/pydev/</url>
         <more>http://www.aptana.com/pydev</more>
         <sortweight>3</sortweight>
         <release>
@@ -139,7 +145,7 @@
         <name>Aptana Adobe AIR 1.5 Development</name>
         <category>Platforms</category>
         <description>Tools for creating desktop Ajax apps with Adobe AIR</description>
-        <url>http://update.aptana.com/install/air/</url>
+        <url>http://download.aptana.org/tools/studio/plugin/install/air/</url>
         <more>http://www.aptana.com/air</more>
         <sortweight>1</sortweight>
         <release>
@@ -156,7 +162,7 @@
         <name>Aptana Jaxer</name>
         <category>Platforms</category>
         <description>Server side Ajax</description>
-        <url>http://update.aptana.com/install/jaxer/</url>
+        <url>http://download.jaxer.com/tools/studio/plugin/install/jaxer/</url>
         <more>http://www.aptana.com/jaxer</more>
         <sortweight>2</sortweight>
         <release>
