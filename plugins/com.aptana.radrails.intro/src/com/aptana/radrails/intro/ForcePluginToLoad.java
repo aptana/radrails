@@ -27,6 +27,8 @@ public class ForcePluginToLoad implements IStartup
 
 	public void earlyStartup()
 	{
+		// Override the URL for Help > Aptana Help > Release Notes
+		System.setProperty(DocumentationPlugin.RELEASE_NOTES_URL_SYSTEM_PROPERTY, "http://www.aptana.com/tools/radrails/releasenotes/");
 		
 		// Set custom RadRails plugins.xml feed
 		new InstanceScope().getNode(com.aptana.ide.update.Activator.PLUGIN_ID).put(
