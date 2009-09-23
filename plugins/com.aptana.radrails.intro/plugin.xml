@@ -15,7 +15,7 @@
             name="%Editor.myradrails.title">
       </editor>
    </extension>
-      <extension
+   <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
             id="a.com.aptana.ide.core.ui.actionSet.ShowRadRails"
@@ -28,6 +28,22 @@
                label="%Action.radrails_home.label"
                style="pulldown"
                toolbarPath="s.com.aptana.ide.core.ui.actionSet.ShowAptanaView/aptanatoolbar">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="x.com.aptana.ide.core.ui.actionSet.ShowRadRails"
+            label="%ActionSet.radrails.label"
+            visible="true">
+         <action
+               class="com.aptana.radrails.intro.actions.ShowMyRadRailsAction"
+               icon="icons/radrails_home.png"
+               id="com.aptana.ide.core.ui.actionSet.myRadRails"
+               label="%Action.radrails_home.label"
+               menubarPath="window/showView"
+               style="push">
          </action>
       </actionSet>
    </extension>

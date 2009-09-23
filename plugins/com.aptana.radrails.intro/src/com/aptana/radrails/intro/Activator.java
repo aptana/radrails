@@ -78,6 +78,7 @@ public class Activator extends AbstractUIPlugin
 
     private static void processPage(IWorkbenchPage page) {
     	page.hideActionSet("a.com.aptana.ide.core.ui.actionSet.myaptana"); //$NON-NLS-1$
+    	page.hideActionSet("x.com.aptana.ide.core.ui.actionSet.myaptana"); //$NON-NLS-1$
     }
 
 	private static Activator instance;
