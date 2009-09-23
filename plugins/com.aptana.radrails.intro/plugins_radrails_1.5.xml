@@ -193,7 +193,7 @@
 		<name>Aflax</name>
 		<category>Ajax</category> 
 		<description>Adds support for the Aflax Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#aflax</more>
 		<sortweight>3</sortweight>
 		<release>
@@ -210,7 +210,7 @@
 		<name>OpenRico</name>
 		<category>Ajax</category> 
 		<description>Adds support for the OpenRico Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#rico</more>
 		<sortweight>2</sortweight>
 		<release>
@@ -227,7 +227,7 @@
 		<name>Scriptaculous</name>
 		<category>Ajax</category> 
 		<description>Adds support for the Scriptaculous Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#scriptaculous</more>
 		<sortweight>3</sortweight>
 		<release>
@@ -244,7 +244,7 @@
 		<name>Adobe Spry</name>
 		<category>Ajax</category>
 		<description>Adds support for the Adobe Spry Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#spry</more>
 		<sortweight>2</sortweight>
 		<release>
@@ -261,7 +261,7 @@
 		<name>Yahoo! User Interface (YUI) Support</name>
 		<category>Ajax</category>
 		<description>Adds support for the YUI Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#yui</more>
 		<sortweight>0</sortweight>
 		<release>
@@ -278,7 +278,7 @@
 		<name>Prototype</name>
 		<category>Ajax</category>
 		<description>Adds support for the Prototype Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#prototype</more>
 		<sortweight>3</sortweight>
 		<release>
@@ -295,7 +295,7 @@
 		<name>Microsoft ASP.NET Ajax Controls</name>
 		<category>Ajax</category>
 		<description>Adds support for the Microsoft Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#msajax</more>
 		<sortweight>2</sortweight>
 		<release>
@@ -312,7 +312,7 @@
 		<name>Mootools</name>
 		<category>Ajax</category>
 		<description>Adds support for the Mootools Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#mootools</more>
 		<sortweight>1</sortweight>
 		<release>
@@ -329,7 +329,7 @@
 		<name>jQuery Support</name>
 		<category>Ajax</category>
 		<description>Adds support for the jQuery Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#jquery</more>
 		<sortweight>1</sortweight>
 		<release>
@@ -346,7 +346,7 @@
 		<name>Ext JS</name>
 		<category>Ajax</category>
 		<description>Adds support for the Ext JS Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#ext</more>
 		<sortweight>1</sortweight>
 		<release>
@@ -363,7 +363,7 @@
 		<name>Dojo</name>
 		<category>Ajax</category>
 		<description>Adds support for the Dojo Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#dojo</more>
 		<sortweight>0</sortweight>
 		<release>
@@ -380,7 +380,7 @@
 		<name>MochiKit</name>
 		<category>Ajax</category>
 		<description>Adds support for the MochiKit Ajax library</description>
-		<url>http://update.aptana.com/install/frameworks/</url>
+		<url>http://download.aptana.org/tools/studio/plugin/install/frameworks/</url>
         <more>http://www.aptana.com/plugins#mochikit</more>
 		<sortweight>2</sortweight>
 		<release>
