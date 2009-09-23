@@ -166,6 +166,35 @@
 				<delete file="@{file}" />
 			</sequential>
 		</for>
+			<if>
+						<isset property="dbtools.p2.repo" />
+						<then>
+							<property name="gef.p2.repo" value="file:${basedir}/gef/site.xml" />
+							<antcall target="run.director">
+								<param name="p2.installIU" value="org.eclipse.gef.feature.group" />
+								<param name="p2.repo" value="${gef.p2.repo}" />
+							</antcall>
+							<antcall target="run.director">
+								<param name="p2.installIU" value="com.aptana.ide.feature.db.feature.group" />
+								<param name="p2.repo" value="${dbtools.p2.repo}" />
+							</antcall>
+						</then>
+					</if>
+					<antcall target="run.director">
+						<param name="p2.installIU" value="com.aptana.ide.feature.server.cloud.feature.group" />
+						<param name="p2.repo" value="${cloud.p2.repo}" />
+					</antcall>
+					<!-- RDT is special because we re-package it in RadRails. So we can't just install it, since it won't have the non linux os specific plugins -->
+					<!-- install and then copy plugins over top too?! -->
+					<antcall target="run.director">
+						<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
+						<param name="p2.repo" value="${rdt.p2.repo}" />
+					</antcall>
+					<copy todir="${baseLocation}/plugins">
+						<fileset dir="${rdt.dir}/plugins" defaultexcludes="false">
+							<exclude name="org.jruby_*" />
+						</fileset>
+					</copy>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
