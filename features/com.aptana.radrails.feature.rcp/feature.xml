@@ -44,6 +44,11 @@
          version="0.0.0"
          search-location="both"/>
 
+   <includes
+         id="org.radrails.rails_feature"
+         version="0.0.0"
+         search-location="both"/>
+
    <requires>
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.core.runtime"/>
