@@ -43,11 +43,15 @@ namespace :deploy do
     files = File.join(release_version, "**", "*")
     Dir.glob(files).each do |filename|
       next if File.directory?(filename)
-      # push this sucker to S3!
       puts "Pushing #{filename}..."
       remote_path = "#{application}/" + filename
       AWS::S3::S3Object.store(remote_path, open(filename), bucket_name, :access => :public_read)
     end
+  end
+  
+  desc "Cleans up the extract build artifacts locally"
+  task :clean do
+    run_locally("rm -rf #{application}")
   end
   
   desc "Run all the necessary deploy tasks in the correct order"
@@ -57,5 +61,6 @@ namespace :deploy do
     deploy.uncompress
     deploy.rename
     deploy.push
+    deploy.clean
   end
 end
