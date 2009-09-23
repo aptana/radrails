@@ -38,15 +38,4 @@
          version="0.0.0"
          name="HAML and Sass Editors"
          optional="true"/>
-
-   <includes
-         id="com.aptana.ide.feature"
-         version="0.0.0"
-         search-location="both"/>
-
-   <includes
-         id="com.aptana.ide.feature.professional"
-         version="0.0.0"
-         search-location="both"/>
-
 </feature>
