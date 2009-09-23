@@ -2,7 +2,8 @@ role :files, "10.10.1.21", :user => 'hudson'
 
 set :application, "rails" # Which project are we pushing (this controls folder name used from Hudson and s3)
 set :branch, "trunk" # which branch was it built on?
-set :bucket_name, 'update-1.5.x-production' # Which bucket are we pushing it to?
+set :bucket_name, 'download.aptana.com' # Which bucket are we pushing it to?
+set :bucket_path_pref, "tools/radrails/plugin/update/#{application}"
 set :build_artifact_path, "/var/update-site/update/#{branch}" # Where does it live on the build file server?
 set :compressed_filename, "#{application}.tar.gz"
 
@@ -35,16 +36,13 @@ namespace :deploy do
   desc "Push the build artifacts up to S3"
   task :push, :depends => [:rename] do
     require 'aws/s3'
-    # TODO Store the S3 credentials in a YAML config file?
-    AWS::S3::Base.establish_connection!(
-    :access_key_id     => '0ZA7YV7DBK6JCYAV77G2',
-    :secret_access_key => 'MHKoSpej/rtUezG0wfbb12ZIeqayOLFJ/C7n8O/L'
-    )    
+    require 'yaml'
+    AWS::S3::Base.establish_connection!(YAML.load_file('config/s3.yml'))    
     files = File.join(release_version, "**", "*")
     Dir.glob(files).each do |filename|
       next if File.directory?(filename)
       puts "Pushing #{filename}..."
-      remote_path = "#{application}/" + filename
+      remote_path = "#{bucket_path_pref}/" + filename
       AWS::S3::S3Object.store(remote_path, open(filename), bucket_name, :access => :public_read)
     end
   end
