@@ -12,7 +12,7 @@
             Builds the RadRails RCP feature
     </description>
 
-	<property environment="env"/>
+	<property environment="env" />
 
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
@@ -85,6 +85,10 @@
 	          target: generate.base                      
 	         - - - - - - - - - - - - - - - - - -->
 	<target name="generate.base" depends="copy.base.windows,copy.base">
+		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.feature.group" />
+			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
+		</antcall>
 		<!-- Copy the features and plugins over into a dropins folder. Installing makes it so that non-linux plugins/features won't be there! -->
 		<mkdir dir="${baseLocation}/dropins/eclipse" />
 		<copy todir="${baseLocation}/dropins/eclipse">
@@ -166,35 +170,35 @@
 				<delete file="@{file}" />
 			</sequential>
 		</for>
-			<if>
-						<isset property="dbtools.p2.repo" />
-						<then>
-							<property name="gef.p2.repo" value="file:${basedir}/gef/site.xml" />
-							<antcall target="run.director">
-								<param name="p2.installIU" value="org.eclipse.gef.feature.group" />
-								<param name="p2.repo" value="${gef.p2.repo}" />
-							</antcall>
-							<antcall target="run.director">
-								<param name="p2.installIU" value="com.aptana.ide.feature.db.feature.group" />
-								<param name="p2.repo" value="${dbtools.p2.repo}" />
-							</antcall>
-						</then>
-					</if>
-					<antcall target="run.director">
-						<param name="p2.installIU" value="com.aptana.ide.feature.server.cloud.feature.group" />
-						<param name="p2.repo" value="${cloud.p2.repo}" />
-					</antcall>
-					<!-- RDT is special because we re-package it in RadRails. So we can't just install it, since it won't have the non linux os specific plugins -->
-					<!-- install and then copy plugins over top too?! -->
-					<antcall target="run.director">
-						<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
-						<param name="p2.repo" value="${rdt.p2.repo}" />
-					</antcall>
-					<copy todir="${baseLocation}/plugins">
-						<fileset dir="${rdt.dir}/plugins" defaultexcludes="false">
-							<exclude name="org.jruby_*" />
-						</fileset>
-					</copy>
+		<if>
+			<isset property="dbtools.p2.repo" />
+			<then>
+				<property name="gef.p2.repo" value="file:${basedir}/gef/site.xml" />
+				<antcall target="run.director">
+					<param name="p2.installIU" value="org.eclipse.gef.feature.group" />
+					<param name="p2.repo" value="${gef.p2.repo}" />
+				</antcall>
+				<antcall target="run.director">
+					<param name="p2.installIU" value="com.aptana.ide.feature.db.feature.group" />
+					<param name="p2.repo" value="${dbtools.p2.repo}" />
+				</antcall>
+			</then>
+		</if>
+		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.server.cloud.feature.group" />
+			<param name="p2.repo" value="${cloud.p2.repo}" />
+		</antcall>
+		<!-- RDT is special because we re-package it in RadRails. So we can't just install it, since it won't have the non linux os specific plugins -->
+		<!-- install and then copy plugins over top too?! -->
+		<antcall target="run.director">
+			<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
+			<param name="p2.repo" value="${rdt.p2.repo}" />
+		</antcall>
+		<copy todir="${baseLocation}/plugins">
+			<fileset dir="${rdt.dir}/plugins" defaultexcludes="false">
+				<exclude name="org.jruby_*" />
+			</fileset>
+		</copy>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -257,18 +261,18 @@
 	</target>
 
 	<target name="touch-info">
-		<touch file="build_number.${env.BUILD_NUMBER}"/>
-		<touch file="build_id.${env.BUILD_ID}"/>
-		<touch file="build_tag.${env.BUILD_TAG}"/>
+		<touch file="build_number.${env.BUILD_NUMBER}" />
+		<touch file="build_id.${env.BUILD_ID}" />
+		<touch file="build_tag.${env.BUILD_TAG}" />
 	</target>
 
 	<target name="create-artifact-symlink">
 		<exec executable="unlink">
 			<arg value="${env.WORKSPACE}/build-artifacts" />
 		</exec>
-		<symlink link="${env.WORKSPACE}/build-artifacts" resource="${deploy.dir}" failonerror="false"/>
+		<symlink link="${env.WORKSPACE}/build-artifacts" resource="${deploy.dir}" failonerror="false" />
 	</target>
-	
+
 	<!-- - - - - - - - - - - - - - - - - - 
 		  target: run.director                      
 		 - - - - - - - - - - - - - - - - - -->
