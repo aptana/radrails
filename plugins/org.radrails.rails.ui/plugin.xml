@@ -159,7 +159,7 @@
             name="%view.name.1"/>
       <view
             name="%view.name.4"
-            icon="icons/rails.gif"
+            icon="icons/book.png"
             category="org.radrails.rails.ui.ViewCategoryRails"
             class="org.radrails.rails.internal.ui.RailsAPIView"
             id="com.aptana.rdt.ui.views.RailsAPIView">
