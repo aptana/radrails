@@ -89,10 +89,30 @@
 			<param name="p2.installIU" value="com.aptana.ide.feature.feature.group" />
 			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
 		</antcall>
+		<antcall target="run.director">
+			<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
+			<param name="p2.repo" value="${rdt.p2.repo}" />
+		</antcall>
+		<antcall target="run.director">
+			<param name="p2.installIU" value="org.radrails.rails_feature.feature.group" />
+			<param name="p2.repo" value="${rails.p2.repo}" />
+		</antcall>
 		<!-- Copy the features and plugins over into a dropins folder. Installing makes it so that non-linux plugins/features won't be there! -->
 		<mkdir dir="${baseLocation}/dropins/eclipse" />
 		<copy todir="${baseLocation}/dropins/eclipse">
 			<fileset dir="${ide-core.p2.repo}" defaultexcludes="true">
+				<include name="features/*" />
+				<include name="plugins/*" />
+			</fileset>
+		</copy>
+		<copy todir="${baseLocation}/plugins">
+			<fileset dir="${rdt.dir}/plugins" defaultexcludes="true">
+				<include name="features/*" />
+				<include name="plugins/*" />
+			</fileset>
+		</copy>
+		<copy todir="${baseLocation}/dropins/eclipse">
+			<fileset dir="${rails.dir}" defaultexcludes="true">
 				<include name="features/*" />
 				<include name="plugins/*" />
 			</fileset>
@@ -160,6 +180,7 @@
 					<include name="com.aptana.ide.server.jetty_*.jar" />
 					<include name="com.aptana.ide.js.docgen_*.jar" />
 					<include name="org.eclipse.eclipsemonkey_*.jar" />
+					<include name="org.jruby_*.jar" />
 				</fileset>
 			</path>
 			<sequential>
@@ -170,32 +191,11 @@
 				<delete file="@{file}" />
 			</sequential>
 		</for>
-		<!-- RDT is special because we re-package it in RadRails. So we can't just install it, since it won't have the non linux os specific plugins -->
-		<!-- install and then copy plugins over top too?! -->
-		<antcall target="run.director">
-			<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
-			<param name="p2.repo" value="${rdt.p2.repo}" />
-		</antcall>
-		<copy todir="${baseLocation}/plugins">
-			<fileset dir="${rdt.dir}/plugins" defaultexcludes="false">
-				<exclude name="org.jruby_*" />
-			</fileset>
-		</copy>
-		<antcall target="run.director">
-			<param name="p2.installIU" value="org.radrails.rails_feature.feature.group" />
-			<param name="p2.repo" value="${rails.p2.repo}" />
-		</antcall>
-		<copy todir="${baseLocation}/dropins/eclipse">
-			<fileset dir="${rails.dir}" defaultexcludes="true">
-				<include name="features/*" />
-				<include name="plugins/*" />
-			</fileset>
-		</copy>
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}">
-				<include name="plugins/**/*"/>
-				<exclude name="plugins/com.aptana.radrails.rcp/**/*"/>
-				<exclude name="plugins/com.aptana.radrails.rcp.main/**/*"/>
+				<include name="plugins/**/*" />
+				<exclude name="plugins/com.aptana.radrails.rcp/**/*" />
+				<exclude name="plugins/com.aptana.radrails.rcp.main/**/*" />
 			</fileset>
 		</delete>
 	</target>
