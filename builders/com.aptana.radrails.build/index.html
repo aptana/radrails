@@ -53,7 +53,9 @@
 <script type="text/javascript">
     var location2 = window.location
     var parent = location2.toString().substring(0, location2.toString().lastIndexOf('/') + 1);
-    document.getElementById("sitename").innerHTML = parent
+    var siteElement = document.getElementById("sitename");
+	siteElement.innerHTML = parent
+	siteElement.setAttribute("href",parent);
 </script>
         </div>
     </body>

@@ -145,7 +145,7 @@
 
 	<target name="updateSite">
 		<copy file="${builder}/site.xml" tofile="${p2.repo.dir}/site.xml" />
-		<pathconvert property="site.version.full">
+		<pathconvert property="version.full">
 			<fileset dir="${p2.repo.dir}/features">
 				<include name="${topLevelElementId}_*.jar" />
 			</fileset>
@@ -156,7 +156,7 @@
 				</chainedmapper>
 			</mapper>
 		</pathconvert>
-		<replace token="{version.full}" value="${site.version.full}" file="${p2.repo.dir}/site.xml" />
+		<replace token="{version.full}" value="${version.full}" file="${p2.repo.dir}/site.xml" />
 		<copy file="${builder}/index.html" tofile="${p2.repo.dir}/index.html" />
 	</target>
 
