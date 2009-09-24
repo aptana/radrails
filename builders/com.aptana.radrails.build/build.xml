@@ -175,7 +175,7 @@
 				<include name="plugins/*" />
 			</fileset>
 			-->
-			<fileset dir="${rails.dir}/plugins" defaultexcludes="false">
+			<fileset dir="${rails.dir}" defaultexcludes="true">
 				<include name="features/*" />
 				<include name="plugins/*" />
 			</fileset>
