@@ -181,6 +181,7 @@
 					<include name="com.aptana.ide.js.docgen_*.jar" />
 					<include name="org.eclipse.eclipsemonkey_*.jar" />
 					<include name="org.jruby_*.jar" />
+					<include name="com.aptana.radrails.sqlite3.win32_*.jar" />
 				</fileset>
 			</path>
 			<sequential>
