@@ -194,7 +194,8 @@
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}">
 				<include name="plugins/**/*"/>
-				<exclude name="plugin/*rcp*/**/*"/>
+				<exclude name="plugins/com.aptana.radrails.rcp/**/*"/>
+				<exclude name="plugins/com.aptana.radrails.rcp.main/**/*"/>
 			</fileset>
 		</delete>
 	</target>
