@@ -239,7 +239,7 @@
 		</for>
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}">
-				<include name="plugins/**/*" />
+				<include name="plugins/*" />
 			</fileset>
 		</delete>
 	</target>
