@@ -191,6 +191,12 @@
 				<include name="plugins/*" />
 			</fileset>
 		</copy>
+		<delete verbose="true">
+			<fileset dir="${buildDirectory}">
+				<include name="plugins/**/*"/>
+				<exclude name="plugin/*rcp*/**/*"/>
+			</fileset>
+		</delete>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
