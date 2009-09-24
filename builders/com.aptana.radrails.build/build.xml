@@ -40,17 +40,17 @@
 	<!-- ================================= 
           target: categorize              
          ================================= -->
-    <target name="categorize" description="categorize the update site">
-    	<java jar="${baseLocation}/plugins/${launcher.plugin}.jar" fork="true" failonerror="yes">
-    		<arg line="-application org.eclipse.equinox.p2.publisher.CategoryPublisher -nosplash -console -consolelog -metadataRepository file:${deploy.dir} -categoryDefinition file:${deploy.dir}/site.xml" />
-    	</java>
-    	<!-- Re-JAR the content.xml file! -->
-    	<jar destfile="${deploy.dir}/content.jar">
-    		<fileset file="${deploy.dir}/content.xml" />
-    	</jar>
-    	<delete file="${deploy.dir}/content.xml" />
-    </target>
-	
+	<target name="categorize" description="categorize the update site">
+		<java jar="${baseLocation}/plugins/${launcher.plugin}.jar" fork="true" failonerror="yes">
+			<arg line="-application org.eclipse.equinox.p2.publisher.CategoryPublisher -nosplash -console -consolelog -metadataRepository file:${deploy.dir} -categoryDefinition file:${deploy.dir}/site.xml" />
+		</java>
+		<!-- Re-JAR the content.xml file! -->
+		<jar destfile="${deploy.dir}/content.jar">
+			<fileset file="${deploy.dir}/content.xml" />
+		</jar>
+		<delete file="${deploy.dir}/content.xml" />
+	</target>
+
 	<!-- ================================= 
           target: generate.build.properties              
          ================================= -->
@@ -148,12 +148,20 @@
 			<param name="p2.installIU" value="com.aptana.ide.feature.feature.group" />
 			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
 		</antcall>
+		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.professional.feature.group" />
+			<param name="p2.repo" value="file:${ide-pro.p2.repo}" />
+		</antcall>
 		<!--
 		<antcall target="run.director">
 			<param name="p2.installIU" value="com.aptana.ide.feature.secureftp.feature.group" />
 			<param name="p2.repo" value="file:${secureftp.p2.repo}" />
 		</antcall>
 		-->
+		<antcall target="run.director">
+			<param name="p2.installIU" value="org.radrails.rails_feature.feature.group" />
+			<param name="p2.repo" value="${rails.p2.repo}" />
+		</antcall>
 		<!-- Copy the features and plugins over into a dropins folder. Installing makes it so that non-linux plugins/features won't be there! -->
 		<mkdir dir="${baseLocation}/dropins/eclipse" />
 		<copy todir="${baseLocation}/dropins/eclipse">
@@ -167,6 +175,10 @@
 				<include name="plugins/*" />
 			</fileset>
 			-->
+			<fileset dir="${rails.dir}/plugins" defaultexcludes="false">
+				<include name="features/*" />
+				<include name="plugins/*" />
+			</fileset>
 		</copy>
 
 		<!-- Unjar the features -->
@@ -213,6 +225,8 @@
 					<include name="com.aptana.ide.js.docgen_*.jar" />
 					<include name="org.eclipse.eclipsemonkey_*.jar" />
 					<include name="com.aptana.ide.desktop.integration.protocolhandler_*.jar" />
+					<include name="org.jruby_*.jar" />
+					<include name="com.aptana.radrails.sqlite3.win32_*.jar" />
 				</fileset>
 			</path>
 			<sequential>
@@ -223,35 +237,11 @@
 				<delete file="@{file}" />
 			</sequential>
 		</for>
-		<if>
-			<isset property="dbtools.p2.repo" />
-			<then>
-				<property name="gef.p2.repo" value="file:${basedir}/gef/site.xml" />
-				<antcall target="run.director">
-					<param name="p2.installIU" value="org.eclipse.gef.feature.group" />
-					<param name="p2.repo" value="${gef.p2.repo}" />
-				</antcall>
-				<antcall target="run.director">
-					<param name="p2.installIU" value="com.aptana.ide.feature.db.feature.group" />
-					<param name="p2.repo" value="${dbtools.p2.repo}" />
-				</antcall>
-			</then>
-		</if>
-		<antcall target="run.director">
-			<param name="p2.installIU" value="com.aptana.ide.feature.server.cloud.feature.group" />
-			<param name="p2.repo" value="${cloud.p2.repo}" />
-		</antcall>
-		<!-- RDT is special because we re-package it in RadRails. So we can't just install it, since it won't have the non linux os specific plugins -->
-		<!-- install and then copy plugins over top too?! -->
-		<antcall target="run.director">
-			<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
-			<param name="p2.repo" value="${rdt.p2.repo}" />
-		</antcall>
-		<copy todir="${baseLocation}/plugins">
-			<fileset dir="${rdt.dir}/plugins" defaultexcludes="false">
-				<exclude name="org.jruby_*" />
+		<delete verbose="true">
+			<fileset dir="${buildDirectory}">
+				<include name="plugins/**/*" />
 			</fileset>
-		</copy>
+		</delete>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
@@ -313,11 +303,11 @@
 			</sequential>
 		</for>
 	</target>
-	
+
 	<target name="create-artifact-symlink">
 		<exec executable="unlink">
 			<arg value="${env.WORKSPACE}/build-artifacts" />
 		</exec>
-		<symlink link="${env.WORKSPACE}/build-artifacts" resource="${deploy.dir}" failonerror="false"/>
+		<symlink link="${env.WORKSPACE}/build-artifacts" resource="${deploy.dir}" failonerror="false" />
 	</target>
 </project>
