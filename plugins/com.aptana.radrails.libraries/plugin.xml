@@ -2,18 +2,18 @@
 <?eclipse version="3.2"?>
 <plugin>
    <extension point="com.aptana.rdt.gems">
-   	  <gem path="lib/activesupport-2.2.2.gem" auto-install="true"/>      
-      <gem path="lib/actionpack-2.2.2.gem" auto-install="true">
-        <dependency name="activesupport" version="= 2.2.2"/>
+   	  <gem path="lib/activesupport-2.3.4.gem" auto-install="true"/>      
+      <gem path="lib/actionpack-2.3.4.gem" auto-install="true">
+        <dependency name="activesupport" version="= 2.3.4"/>
       </gem>
-      <gem path="lib/activerecord-2.2.2.gem" auto-install="true">
-        <dependency name="activesupport" version="= 2.2.2"/>
+      <gem path="lib/activerecord-2.3.4.gem" auto-install="true">
+        <dependency name="activesupport" version="= 2.3.4"/>
       </gem>      
-      <gem path="lib/activeresource-2.2.2.gem" auto-install="true">
-        <dependency name="activesupport" version="= 2.2.2"/>
+      <gem path="lib/activeresource-2.3.4.gem" auto-install="true">
+        <dependency name="activesupport" version="= 2.3.4"/>
       </gem>
-      <gem path="lib/actionmailer-2.2.2.gem" auto-install="true">
-        <dependency name="actionpack" version="= 2.2.2"/>
+      <gem path="lib/actionmailer-2.3.4.gem" auto-install="true">
+        <dependency name="actionpack" version="= 2.3.4"/>
       </gem>
       <gem path="lib/cgi_multipart_eof_fix-2.5.0.gem" auto-install="true"/>
       <gem path="lib/gem_plugin-0.2.3.gem" auto-install="true"/>
@@ -25,16 +25,16 @@
         <dependency name="gem_plugin" version="&gt;= 0.2.3"/>
       	<dependency name="cgi_multipart_eof_fix" version="&gt;= 2.4"/>
       </gem>      
-      <gem path="lib/rails-2.2.2.gem" auto-install="true">
+      <gem path="lib/rails-2.3.4.gem" auto-install="true">
       	<dependency name="rake" version="&gt;= 0.8.3"/>
-      	<dependency name="activesupport" version="= 2.2.2"/>
-      	<dependency name="activerecord" version="= 2.2.2"/>
-      	<dependency name="actionpack" version="= 2.2.2"/>
-      	<dependency name="actionmailer" version="= 2.2.2"/>
-      	<dependency name="activeresource" version="= 2.2.2"/>
+      	<dependency name="activesupport" version="= 2.3.4"/>
+      	<dependency name="activerecord" version="= 2.3.4"/>
+      	<dependency name="actionpack" version="= 2.3.4"/>
+      	<dependency name="actionmailer" version="= 2.3.4"/>
+      	<dependency name="activeresource" version="= 2.3.4"/>
       </gem>
-      <gem path="lib/activerecord-jdbc-adapter-0.9.gem" name="activerecord-jdbc-adapter" version="0.9.0" platform="java" auto-install="true"/>    
- 	  <gem path="lib/fastthread-1.0.1.gem" auto-install="true" platform="ruby" compiles="true" />
+      <gem path="lib/activerecord-jdbc-adapter-0.9.1.gem" name="activerecord-jdbc-adapter" version="0.9.1" platform="java" auto-install="true"/>    
+ 	  <gem path="lib/fastthread-1.0.7.gem" auto-install="true" platform="ruby" compiles="true" />
    </extension>
 
 </plugin>
