@@ -19,9 +19,19 @@ namespace :deploy do
   end
   
   namespace :plugin do
+    desc "Set up variables for RCP deployment"
+    task :init do 
+      set :application, "rails"      
+      set :containing_folder_name, "rails"
+      set :compressed_filename, "rails-rcp.tar.gz"
+    end
+    
+    # TODO Move all deploy:plugin tasks (except init) to deploy namespace since they're shared by all but standalone deployment
+    
     # TODO I think I can just grab the zip file that's already in the artifacts and download that only!
     desc "Compress the contents of the build artifacts to speed up downloading them locally"
     task :compress, :roles => :files do
+      sudo "rm -f /var/#{compressed_filename}"
       sudo "tar -pczf /var/#{compressed_filename} -C #{build_artifact_path} #{application}"
     end
     
@@ -84,6 +94,7 @@ namespace :deploy do
     
     desc "Run all the necessary deploy tasks in the correct order for pushing out the plugin"
     task :default do
+      deploy.plugin.init
       deploy.plugin.compress
       deploy.plugin.grab
       deploy.plugin.uncompress
@@ -158,20 +169,50 @@ namespace :deploy do
   
   # TODO Need to add tasks for pushing RCP!
   namespace :rcp do
+    desc "Set up variables for RCP deployment"
+    task :init do 
+      set :application, "radrails-rcp"      
+      set :containing_folder_name, "radrails-rcp"
+      set :compressed_filename, "radrails-rcp.tar.gz"
+    end
+    
     task :default do
-      puts "Not implemented (at all)!"
+      deploy.rcp.init
+      deploy.plugin.compress
+      deploy.plugin.grab
+      deploy.plugin.uncompress
+      deploy.plugin.rename
+      deploy.plugin.push
+      deploy.plugin.clean
     end
   end
   
   namespace :bundle do
-    # TODO Need to add tasks for pushing bundled plugin with studio!
+    
+    desc "Set up variables for bundle tasks"
+    task :init do
+      # FIXME Job set to push to "rails-bundle", Sandip has "radrails-bundle"
+      set :application, "rails-bundle"      
+      set :containing_folder_name, "radrails-bundle"
+      set :compressed_filename, "radrails-bundle.tar.gz"
+    end
+    
+    desc "Run all the necessary deploy tasks in the correct order for pushing out the Rails + Studio bundle plugin"
     task :default do
-      puts "Not implemented (at all)!"
+      deploy.bundle.init
+      deploy.plugin.compress
+      deploy.plugin.grab
+      deploy.plugin.uncompress
+      deploy.plugin.rename
+      deploy.plugin.push
+      deploy.plugin.clean
     end
   end
   
   task :default do
     # TODO Prompt user if they're trying to push out the plugin, bundle, rcp or the standalone
     deploy.bundle
+    deploy.rcp
+    deploy.standalone
   end
 end
