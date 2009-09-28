@@ -19,11 +19,11 @@ namespace :deploy do
   end
   
   namespace :plugin do
-    desc "Set up variables for RCP deployment"
+    desc "Set up variables for plugin deployment (for standalone studio users)"
     task :init do 
-      set :application, "rails"      
+      set :application, "rails"
       set :containing_folder_name, "rails"
-      set :compressed_filename, "rails-rcp.tar.gz"
+      set :compressed_filename, "rails.tar.gz"
     end
     
     # TODO Move all deploy:plugin tasks (except init) to deploy namespace since they're shared by all but standalone deployment
@@ -171,7 +171,7 @@ namespace :deploy do
   namespace :rcp do
     desc "Set up variables for RCP deployment"
     task :init do 
-      set :application, "radrails-rcp"      
+      set :application, "radrails-rcp"
       set :containing_folder_name, "radrails-rcp"
       set :compressed_filename, "radrails-rcp.tar.gz"
     end
@@ -191,8 +191,8 @@ namespace :deploy do
     
     desc "Set up variables for bundle tasks"
     task :init do
-      # FIXME Job set to push to "rails-bundle", Sandip has "radrails-bundle"
-      set :application, "rails-bundle"      
+      # FIXME Job set to push to "rails-bundle", Sandip has "radrails-bundle" for update site folder name
+      set :application, "rails-bundle"
       set :containing_folder_name, "radrails-bundle"
       set :compressed_filename, "radrails-bundle.tar.gz"
     end
@@ -210,7 +210,7 @@ namespace :deploy do
   end
   
   task :default do
-    # TODO Prompt user if they're trying to push out the plugin, bundle, rcp or the standalone
+    # TODO Prompt user if they're trying to push out the plugin, bundle, rcp or the standalone; and then invoke the right one
     deploy.bundle
     deploy.rcp
     deploy.standalone
