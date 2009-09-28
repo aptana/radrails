@@ -31,4 +31,8 @@
          id="com.aptana.ide.feature"
          version="0.0.0"/>
 
+   <includes
+         id="com.aptana.ide.feature.professional"
+         version="0.0.0"/>
+
 </feature>
