@@ -1,9 +1,12 @@
 role :files, "10.10.1.21", :user => 'hudson'
 
-# Plugin
 set :application, "rails" # Which project are we pushing (this controls folder name used from Hudson and s3)
 set :branch, "master" # which branch was it built on?
-set :bucket_name, 'download.aptana.com' # Which bucket are we pushing it to?
+# Actual production bucket. Uncomment once we know these scripts are working as we want
+#set :bucket_name, 'download.aptana.com' # Which bucket are we pushing it to?
+# Testing bucket
+set :bucket_name, 'cap-deploy-bundle-test'
+
 set :containing_folder_name, "#{application}"
 set :bucket_path_prefix, "tools/radrails/plugin/install"
 set :build_artifact_path, "/var/update-site/update/#{branch}" # Where does it live on the build file server?
