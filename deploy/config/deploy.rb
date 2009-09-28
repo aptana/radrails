@@ -156,8 +156,22 @@ namespace :deploy do
     end
   end
   
+  # TODO Need to add tasks for pushing RCP!
+  namespace :rcp do
+    task :default do
+      puts "Not implemented (at all)!"
+    end
+  end
+  
+  namespace :bundle do
+    # TODO Need to add tasks for pushing bundled plugin with studio!
+    task :default do
+      puts "Not implemented (at all)!"
+    end
+  end
+  
   task :default do
-    # TODO Prompt user if they're trying to push out the plugin, rcp or the standalone
-    deploy.plugin
+    # TODO Prompt user if they're trying to push out the plugin, bundle, rcp or the standalone
+    deploy.bundle
   end
 end
