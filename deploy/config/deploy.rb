@@ -1,15 +1,17 @@
 role :files, "10.10.1.21", :user => 'hudson'
 
-set :application, "rails" # Which project are we pushing (this controls folder name used from Hudson and s3)
+# Typically static variables
 set :branch, "master" # which branch was it built on?
 # Actual production bucket. Uncomment once we know these scripts are working as we want
 #set :bucket_name, 'download.aptana.com' # Which bucket are we pushing it to?
 # Testing bucket
 set :bucket_name, 'cap-deploy-bundle-test'
-
-set :containing_folder_name, "#{application}"
 set :bucket_path_prefix, "tools/radrails/plugin/install"
 set :build_artifact_path, "/var/update-site/update/#{branch}" # Where does it live on the build file server?
+
+# Variables that we change in tasks depending on what we're pushing
+set :application, "rails" # Which project are we pushing (this controls folder name used from Hudson and s3)
+set :containing_folder_name, "#{application}"
 set :compressed_filename, "#{application}.tar.gz"
 
 namespace :deploy do
@@ -51,12 +53,12 @@ namespace :deploy do
     end
     
     # Used in our "legacy" update scheme where we assume unique version numbers to releases and then do apache redirects
-    #  desc "Extract version number and set up so we store under the version name as folder in S3"
-    #  task :extract_version, :depends => [:uncompress] do
-    #    value = Dir.glob("#{application}/*-*.zip")
-    #    set :containing_folder_name, value[0].match(/.+(\d+\.\d+\.\d+\.\d+).+/)[1]
-    #    set :bucket_path_prefix, "#{bucket_path_prefix}/#{application}"
-    #  end
+    desc "Extract version number and set up so we store under the version name as folder in S3"
+    task :extract_version, :depends => [:uncompress] do
+      value = Dir.glob("#{application}/*-*.zip")
+      set :bucket_path_prefix, "#{bucket_path_prefix}/#{containing_folder_name}"
+      set :containing_folder_name, value[0].match(/.+(\d+\.\d+\.\d+\.\d+).+/)[1]      
+    end
     
     desc "Change the directory name to what we'll use on S3"
     task :rename do
@@ -87,7 +89,7 @@ namespace :deploy do
       end
     end
     
-    desc "Cleans up the extract build artifacts locally"
+    desc "Cleans up the extracted build artifacts locally"
     task :clean do
       run_locally("rm -rf #{containing_folder_name}")
     end
@@ -95,15 +97,21 @@ namespace :deploy do
     before "deploy:plugin:clean_s3", "deploy:connect_s3"
     before "deploy:plugin:push", "deploy:connect_s3", "deploy:plugin:clean_s3"
     
-    desc "Run all the necessary deploy tasks in the correct order for pushing out the plugin"
-    task :default do
-      deploy.plugin.init
+    desc "A task meant to gather together the common tasks re-used for any plugin type deployment"
+    task :do_it do
       deploy.plugin.compress
       deploy.plugin.grab
       deploy.plugin.uncompress
+      deploy.plugin.extract_version
       deploy.plugin.rename
       deploy.plugin.push
       deploy.plugin.clean
+    end
+    
+    desc "Run all the necessary deploy tasks in the correct order for pushing out the plugin"
+    task :default do
+      deploy.plugin.init
+      deploy.plugin.do_it
     end
   end
   
@@ -114,6 +122,11 @@ namespace :deploy do
       puts "Not fully implemented yet!!!"
       deploy.standalone.grab
       deploy.standalone.push
+    end
+    
+    desc "clean up local copies of artifacts"
+    task :clean do
+      run_locally("rm -rf standalone")
     end
     
     desc "Make the local file structure"
@@ -148,6 +161,7 @@ namespace :deploy do
       deploy.standalone.grab_installers
     end
     
+    before "deploy:standalone:mkdirs", "deploy:standalone:clean"
     before "deploy:standalone:grab", "deploy:standalone:mkdirs"
     
     desc "Push the build artifacts up to S3"
@@ -163,14 +177,8 @@ namespace :deploy do
     end
     
     before "deploy:standalone:push", "deploy:connect_s3"
-    
-    desc "clean up local copies of artifacts"
-    task :clean do
-      run_locally("rm -rf standalone")
-    end
   end
   
-  # TODO Need to add tasks for pushing RCP!
   namespace :rcp do
     desc "Set up variables for RCP deployment"
     task :init do 
@@ -181,17 +189,11 @@ namespace :deploy do
     
     task :default do
       deploy.rcp.init
-      deploy.plugin.compress
-      deploy.plugin.grab
-      deploy.plugin.uncompress
-      deploy.plugin.rename
-      deploy.plugin.push
-      deploy.plugin.clean
+      deploy.plugin.do_it
     end
   end
   
   namespace :bundle do
-    
     desc "Set up variables for bundle tasks"
     task :init do
       # FIXME Job set to push to "rails-bundle", Sandip has "radrails-bundle" for update site folder name
@@ -203,12 +205,7 @@ namespace :deploy do
     desc "Run all the necessary deploy tasks in the correct order for pushing out the Rails + Studio bundle plugin"
     task :default do
       deploy.bundle.init
-      deploy.plugin.compress
-      deploy.plugin.grab
-      deploy.plugin.uncompress
-      deploy.plugin.rename
-      deploy.plugin.push
-      deploy.plugin.clean
+      deploy.plugin.do_it
     end
   end
   
