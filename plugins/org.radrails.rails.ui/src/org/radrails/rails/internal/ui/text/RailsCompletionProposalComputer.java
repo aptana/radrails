@@ -59,65 +59,66 @@ import org.rubypeople.rdt.ui.text.ruby.ContentAssistInvocationContext;
 import org.rubypeople.rdt.ui.text.ruby.IRubyCompletionProposal;
 import org.rubypeople.rdt.ui.text.ruby.IRubyCompletionProposalComputer;
 
-public class RailsCompletionProposalComputer implements
-		IRubyCompletionProposalComputer {
+public class RailsCompletionProposalComputer implements IRubyCompletionProposalComputer
+{
 
 	private ContentAssistInvocationContext fContext;
 
-	private static final String[] TableNameFirstArgs = new String[] {
-			"rename_column", "drop_table", "remove_column", "remove_index",
-			"add_column", "add_index", "change_column", "create_table" };
+	private static final String[] TableNameFirstArgs = new String[] { "rename_column", "drop_table", "remove_column",
+			"remove_index", "add_column", "add_index", "change_column", "create_table" };
 
-	private static final String[] ColumnNameSecondArgs = new String[] {
-			"rename_column", "remove_column", "add_index", "change_column" };
+	private static final String[] ColumnNameSecondArgs = new String[] { "rename_column", "remove_column", "add_index",
+			"change_column" };
 
-	public List computeCompletionProposals(
-			ContentAssistInvocationContext context, IProgressMonitor monitor) {
+	public List computeCompletionProposals(ContentAssistInvocationContext context, IProgressMonitor monitor)
+	{
 		this.fContext = context;
 		List<ICompletionProposal> list = new ArrayList<ICompletionProposal>();
 
 		// Completions for :controller, or :action
-		Map<String, File> completions = RailsHeuristicCompletionComputer
-				.getControllerCompletions(getControllersFolder(context),
-						context.getDocument(), context.getInvocationOffset());
-		completions.putAll(RailsHeuristicCompletionComputer
-				.getActionCompletions(getControllersFolder(context), context
-						.getDocument(), context.getInvocationOffset()));
-		for (String replacement : completions.keySet()) {
-			ICompletionProposal prop = new RubyCompletionProposal(replacement,
-					context.getInvocationOffset(), 0, null, replacement, 10000);
+		Map<String, File> completions = RailsHeuristicCompletionComputer.getControllerCompletions(
+				getControllersFolder(context), context.getDocument(), context.getInvocationOffset());
+		completions.putAll(RailsHeuristicCompletionComputer.getActionCompletions(getControllersFolder(context), context
+				.getDocument(), context.getInvocationOffset()));
+		for (String replacement : completions.keySet())
+		{
+			ICompletionProposal prop = new RubyCompletionProposal(replacement, context.getInvocationOffset(), 0, null,
+					replacement, 10000);
 			list.add(prop);
 		}
 
-		if (context instanceof RubyContentAssistInvocationContext) {
+		if (context instanceof RubyContentAssistInvocationContext)
+		{
 			RubyContentAssistInvocationContext rubyContext = (RubyContentAssistInvocationContext) context;
 			IType type = getInferredActiveRecord(rubyContext);
-			if (type != null) {
+			if (type != null)
+			{
 				list.addAll(addActiveRecordFieldMethods(type, rubyContext)); // Completions
-																				// for
-																				// db
-																				// fields
-																				// /
-																				// finders
-																				// on
-																				// ActiveRecord
-																				// models
+				// for
+				// db
+				// fields
+				// /
+				// finders
+				// on
+				// ActiveRecord
+				// models
 				list.addAll(addActiveRecordAssociations(type, rubyContext)); // Completions
-																				// for
-																				// associations
-																				// of
-																				// model
+				// for
+				// associations
+				// of
+				// model
 			}
 			list.addAll(addMigrationMethods(rubyContext)); // Completions for
-															// methods available
-															// in migrations
+			// methods available
+			// in migrations
 			list.addAll(addMigrationMethodArgumentSuggestions(rubyContext));
 		}
 		fContext = null;
 		return list;
 	}
 
-	private String getArgumentsToMethodCall() {
+	private String getArgumentsToMethodCall()
+	{
 		String prefix = getStatementPrefix();
 		String methodCall = getMethodName();
 		String args = prefix.trim().substring(methodCall.length());
@@ -126,22 +127,26 @@ public class RailsCompletionProposalComputer implements
 		return args;
 	}
 
-	private String getMethodName() {
+	private String getMethodName()
+	{
 		String prefix = getStatementPrefix();
 		String methodCall = prefix.trim();
 		int space = methodCall.indexOf(" ");
-		if (space != -1) {
+		if (space != -1)
+		{
 			methodCall = methodCall.substring(0, space);
 		}
 		space = methodCall.indexOf("(");
-		if (space != -1) {
+		if (space != -1)
+		{
 			methodCall = methodCall.substring(0, space);
 		}
 		return methodCall;
 	}
 
 	private Collection<? extends ICompletionProposal> addMigrationMethodArgumentSuggestions(
-			RubyContentAssistInvocationContext context) {
+			RubyContentAssistInvocationContext context)
+	{
 		IRubyScript script = getScript(context);
 		if (!isDBMigration(script))
 			return Collections.emptyList();
@@ -151,17 +156,19 @@ public class RailsCompletionProposalComputer implements
 		String methodName = getMethodName();
 		String args = getArgumentsToMethodCall();
 		int argumentIndex = calculateArgIndex(args);
-		if (contains(methodName, TableNameFirstArgs)) {
+		if (contains(methodName, TableNameFirstArgs))
+		{
 			// offer up the table names for first arg
-			if (argumentIndex == 0) {
+			if (argumentIndex == 0)
+			{
 				Collection<String> tableNames = getDBTableNames(script);
-				for (String tableName : tableNames) {
+				for (String tableName : tableNames)
+				{
 					if (!tableName.startsWith(":"))
 						tableName = ":" + tableName;
 					if (tableName.equals(":table_name"))
 						continue;
-					CompletionProposal proposal = new CompletionProposal(
-							CompletionProposal.KEYWORD, tableName, 201);
+					CompletionProposal proposal = new CompletionProposal(CompletionProposal.KEYWORD, tableName, 201);
 					proposal.setName(tableName);
 					int start = context.getInvocationOffset();
 					proposal.setReplaceRange(start, start + tableName.length());
@@ -169,17 +176,18 @@ public class RailsCompletionProposalComputer implements
 				}
 			}
 		}
-		if (contains(methodName, ColumnNameSecondArgs)) {
-			if (argumentIndex == 1) { // suggest field names!
+		if (contains(methodName, ColumnNameSecondArgs))
+		{
+			if (argumentIndex == 1)
+			{ // suggest field names!
 				String tableName = getArgAt(0, args).trim().substring(1); // drop
-																			// the
-																			// ":"
-				Collection<String> fieldNames = getDBFieldNames(script,
-						Inflector.singularize(tableName));
-				for (String fieldName : fieldNames) {
+				// the
+				// ":"
+				Collection<String> fieldNames = getDBFieldNames(script, Inflector.singularize(tableName));
+				for (String fieldName : fieldNames)
+				{
 					fieldName = "'" + fieldName + "'";
-					CompletionProposal proposal = new CompletionProposal(
-							CompletionProposal.KEYWORD, fieldName, 201);
+					CompletionProposal proposal = new CompletionProposal(CompletionProposal.KEYWORD, fieldName, 201);
 					proposal.setName(fieldName);
 					int start = context.getInvocationOffset();
 					proposal.setReplaceRange(start, start + fieldName.length());
@@ -190,23 +198,28 @@ public class RailsCompletionProposalComputer implements
 		return Arrays.asList(completion.getRubyCompletionProposals());
 	}
 
-	private boolean contains(String methodName, String[] array) {
-		for (int i = 0; i < array.length; i++) {
+	private boolean contains(String methodName, String[] array)
+	{
+		for (int i = 0; i < array.length; i++)
+		{
 			if (array[i].equals(methodName))
 				return true;
 		}
 		return false;
 	}
 
-	private String getArgAt(int i, String argsRaw) {
+	private String getArgAt(int i, String argsRaw)
+	{
 		String[] args = argsRaw.split(",");
 		return args[i];
 	}
 
-	private int calculateArgIndex(String prefix) {
+	private int calculateArgIndex(String prefix)
+	{
 		// TODO Auto-generated method stub
 		String[] args = prefix.split(",");
-		if (args.length == 1) {
+		if (args.length == 1)
+		{
 			if (prefix.indexOf(",") == -1)
 				return 0;
 			return 1;
@@ -214,33 +227,33 @@ public class RailsCompletionProposalComputer implements
 		return args.length;
 	}
 
-	private Collection<? extends ICompletionProposal> addActiveRecordAssociations(
-			IType type, RubyContentAssistInvocationContext context) {
+	private Collection<? extends ICompletionProposal> addActiveRecordAssociations(IType type,
+			RubyContentAssistInvocationContext context)
+	{
 		if (type == null)
 			return Collections.emptyList();
 		IRubyScript script = type.getRubyScript();
-		RootNode ast = ASTProvider.getASTProvider().getAST(script,
-				ASTProvider.WAIT_YES, new NullProgressMonitor());
+		RootNode ast = ASTProvider.getASTProvider().getAST(script, ASTProvider.WAIT_YES, new NullProgressMonitor());
 		if (ast == null)
 			return Collections.emptyList();
 		ActiveRecordAssociationsVisitor visitor = new ActiveRecordAssociationsVisitor();
 		ast.accept(visitor);
 		List<IMethod> fields = visitor.getMethods();
 		CompletionProposalCollector collector = createCollector(context);
-		for (IMethod method : fields) {
-			collector.accept(createProposal(context, type.getElementName(),
-					method));
+		for (IMethod method : fields)
+		{
+			collector.accept(createProposal(context, type.getElementName(), method));
 		}
 		return Arrays.asList(collector.getRubyCompletionProposals());
 	}
 
-	protected CompletionProposalCollector createCollector(
-			RubyContentAssistInvocationContext context) {
+	protected CompletionProposalCollector createCollector(RubyContentAssistInvocationContext context)
+	{
 		return new CompletionProposalCollector(context);
 	}
 
-	private Collection<? extends ICompletionProposal> addMigrationMethods(
-			RubyContentAssistInvocationContext context) {
+	private Collection<? extends ICompletionProposal> addMigrationMethods(RubyContentAssistInvocationContext context)
+	{
 		if (getStatementPrefix().trim().length() > 0)
 			return Collections.emptyList();
 		IRubyScript script = getScript(context);
@@ -250,58 +263,65 @@ public class RailsCompletionProposalComputer implements
 		CompletionProposalCollector completion = createCollector(context);
 		String typeName = "ActiveRecord::ConnectionAdapters::SchemaStatements";
 		List<IType> types = findTypeDeclarations(typeName, script);
-		try {
-			for (IType type : types) {
+		try
+		{
+			for (IType type : types)
+			{
 				IMethod[] methods = type.getMethods();
-				for (int i = 0; i < methods.length; i++) {
+				for (int i = 0; i < methods.length; i++)
+				{
 					IMethod method = methods[i];
 					if (method == null || !method.isPublic())
 						continue;
-					completion
-							.accept(createProposal(context, typeName, method));
+					completion.accept(createProposal(context, typeName, method));
 				}
 			}
 
-		} catch (CoreException e) {
+		}
+		catch (CoreException e)
+		{
 			RailsUILog.log(e);
 		}
 		return Arrays.asList(completion.getRubyCompletionProposals());
 	}
 
-	private boolean isDBMigration(IRubyScript script) {
+	private boolean isDBMigration(IRubyScript script)
+	{
+		if (script == null)
+			return false;
 		IPath path = script.getPath();
 		return getMigrationPath(script).isPrefixOf(path);
 	}
 
-	private IPath getMigrationPath(IRubyScript script) {
-		IPath railsRoot = RailsPlugin.findRailsRoot(script.getRubyProject()
-				.getProject());
-		return script.getRubyProject().getPath().append(railsRoot).append("db")
-				.append("migrate");
+	private IPath getMigrationPath(IRubyScript script)
+	{
+		if (script == null)
+			return null;
+		IPath railsRoot = RailsPlugin.findRailsRoot(script.getRubyProject().getProject());
+		return script.getRubyProject().getPath().append(railsRoot).append("db").append("migrate");
 	}
 
-	private List<IType> findTypeDeclarations(String typeName, IRubyScript script) {
+	private List<IType> findTypeDeclarations(String typeName, IRubyScript script)
+	{
 		List<IType> types = new ArrayList<IType>();
-		try {
+		try
+		{
 			SearchEngine engine = new SearchEngine();
-			SearchPattern pattern = SearchPattern.createPattern(
-					IRubyElement.TYPE, typeName,
-					IRubySearchConstants.DECLARATIONS,
-					SearchPattern.R_EXACT_MATCH);
-			SearchParticipant[] participants = new SearchParticipant[] { SearchEngine
-					.getDefaultSearchParticipant() };
-			IRubySearchScope scope = SearchEngine
-					.createRubySearchScope(new IRubyElement[] { script
-							.getRubyProject() });
+			SearchPattern pattern = SearchPattern.createPattern(IRubyElement.TYPE, typeName,
+					IRubySearchConstants.DECLARATIONS, SearchPattern.R_EXACT_MATCH);
+			SearchParticipant[] participants = new SearchParticipant[] { SearchEngine.getDefaultSearchParticipant() };
+			IRubySearchScope scope = SearchEngine.createRubySearchScope(new IRubyElement[] { script.getRubyProject() });
 			CollectingSearchRequestor requestor = new CollectingSearchRequestor();
-			engine.search(pattern, participants, scope, requestor,
-					new NullProgressMonitor());
+			engine.search(pattern, participants, scope, requestor, new NullProgressMonitor());
 			List<SearchMatch> matches = requestor.getResults();
-			for (SearchMatch match : matches) {
+			for (SearchMatch match : matches)
+			{
 				IType type = (IType) match.getElement();
 				types.add(type);
 			}
-		} catch (CoreException e) {
+		}
+		catch (CoreException e)
+		{
 			RailsUILog.log(e);
 		}
 		return types;
@@ -315,27 +335,28 @@ public class RailsCompletionProposalComputer implements
 	 * @param method
 	 * @return
 	 */
-	private CompletionProposal createProposal(
-			ContentAssistInvocationContext context, String typeName,
-			IMethod method) {
+	private CompletionProposal createProposal(ContentAssistInvocationContext context, String typeName, IMethod method)
+	{
 		String methodName = method.getElementName();
 		CharSequence prefix = "";
-		try {
+		try
+		{
 			prefix = context.computeIdentifierPrefix();
-		} catch (BadLocationException e) {
+		}
+		catch (BadLocationException e)
+		{
 			RailsUILog.log(e);
 		}
 
 		if (!methodName.startsWith(prefix.toString()))
 			return null;
-		CompletionProposal proposal = new CompletionProposal(
-				CompletionProposal.METHOD_REF, methodName, 101); // 101
-																	// relevance
-																	// to push
-																	// it over
-																	// the
-																	// standard
-																	// completions
+		CompletionProposal proposal = new CompletionProposal(CompletionProposal.METHOD_REF, methodName, 101); // 101
+		// relevance
+		// to push
+		// it over
+		// the
+		// standard
+		// completions
 		proposal.setDeclaringType(typeName);
 		proposal.setElement(method);
 		proposal.setName(methodName);
@@ -356,52 +377,59 @@ public class RailsCompletionProposalComputer implements
 	 * @param context
 	 * @return
 	 */
-	private List<IType> inferType(RubyContentAssistInvocationContext context) {
+	private List<IType> inferType(RubyContentAssistInvocationContext context)
+	{
 		List<IType> inferred = new ArrayList<IType>();
 		IRubyScript script = getScript(context);
 		if (script == null)
 			return inferred;
 
-		try {
-			CompletionContext myContext = new CompletionContext(script, context
-					.getInvocationOffset() - 1);
-			Collection<ITypeGuess> guesses = getTypeInferrer().infer(
-					myContext.getCorrectedSource(), myContext.getOffset());
+		try
+		{
+			CompletionContext myContext = new CompletionContext(script, context.getInvocationOffset() - 1);
+			Collection<ITypeGuess> guesses = getTypeInferrer().infer(myContext.getCorrectedSource(),
+					myContext.getOffset());
 			if (guesses == null)
 				return inferred;
 			RubyElementRequestor requestor = new RubyElementRequestor(script);
-			for (ITypeGuess guess : guesses) {
+			for (ITypeGuess guess : guesses)
+			{
 				IType[] types = requestor.findType(guess.getType());
 				if (types != null && types.length > 0)
 					inferred.add(new LogicalType(types));
 			}
-		} catch (RubyModelException e) {
+		}
+		catch (RubyModelException e)
+		{
 			RailsUILog.log(e);
 		}
 		return inferred;
 	}
 
-	protected ITypeInferrer getTypeInferrer() {
+	protected ITypeInferrer getTypeInferrer()
+	{
 		return RubyCore.getTypeInferrer();
 	}
 
 	/**
-	 * Infer the receiver, and if it could possibly be an ActiveRecord, return
-	 * that type guess.
+	 * Infer the receiver, and if it could possibly be an ActiveRecord, return that type guess.
 	 * 
 	 * @param context
-	 * @return an IType of an ActiveRecord model that we have inferred may be
-	 *         our receiver
+	 * @return an IType of an ActiveRecord model that we have inferred may be our receiver
 	 */
-	private IType getInferredActiveRecord(
-			RubyContentAssistInvocationContext context) {
+	private IType getInferredActiveRecord(RubyContentAssistInvocationContext context)
+	{
 		List<IType> types = inferType(context);
-		for (IType type : types) {
-			try {
+		for (IType type : types)
+		{
+			try
+			{
 				// FIXME Check up the entire hierarchy!
 				if ("ActiveRecord::Base".equals(type.getSuperclassName()))
 					return type;
-			} catch (RubyModelException e) {
+			}
+			catch (RubyModelException e)
+			{
 				RailsUILog.log(e);
 			}
 		}
@@ -409,88 +437,94 @@ public class RailsCompletionProposalComputer implements
 	}
 
 	/**
-	 * Infer the type we're being invoked on. If it's an ActiveRecord model,
-	 * then suggest each DB field (as defined in migrations) accessor, writer
-	 * and find_by finder method.
+	 * Infer the type we're being invoked on. If it's an ActiveRecord model, then suggest each DB field (as defined in
+	 * migrations) accessor, writer and find_by finder method.
 	 * 
 	 * @param context
 	 * @return
 	 */
-	private List<IRubyCompletionProposal> addActiveRecordFieldMethods(
-			IType type, RubyContentAssistInvocationContext context) {
+	private List<IRubyCompletionProposal> addActiveRecordFieldMethods(IType type,
+			RubyContentAssistInvocationContext context)
+	{
 		if (type == null)
 			return Collections.EMPTY_LIST;
 
 		CompletionProposalCollector collector = createCollector(context);
-		Set<String> fieldNames = getDBFieldNames(getScript(context), type
-				.getElementName());
-		for (String fieldName : fieldNames) {
+		Set<String> fieldNames = getDBFieldNames(getScript(context), type.getElementName());
+		for (String fieldName : fieldNames)
+		{
 			// add accessor
-			collector.accept(createProposal(context, type.getElementName(),
-					new PsuedoMethod(fieldName, null, Flags.AccPublic)));
+			collector.accept(createProposal(context, type.getElementName(), new PsuedoMethod(fieldName, null,
+					Flags.AccPublic)));
 
 			// add writer
-			collector.accept(createProposal(context, type.getElementName(),
-					new PsuedoMethod(fieldName + "=",
-							new String[] { fieldName }, Flags.AccPublic)));
+			collector.accept(createProposal(context, type.getElementName(), new PsuedoMethod(fieldName + "=",
+					new String[] { fieldName }, Flags.AccPublic)));
 
 			// add dynamic finders
-			collector.accept(createProposal(context, type.getElementName(),
-					new PsuedoMethod("find_by_" + fieldName,
-							new String[] { fieldName }, Flags.AccPublic
-									| Flags.AccStatic)));
-			collector.accept(createProposal(context, type.getElementName(),
-					new PsuedoMethod("find_all_by_" + fieldName,
-							new String[] { fieldName }, Flags.AccPublic
-									| Flags.AccStatic)));
+			collector.accept(createProposal(context, type.getElementName(), new PsuedoMethod("find_by_" + fieldName,
+					new String[] { fieldName }, Flags.AccPublic | Flags.AccStatic)));
+			collector.accept(createProposal(context, type.getElementName(), new PsuedoMethod(
+					"find_all_by_" + fieldName, new String[] { fieldName }, Flags.AccPublic | Flags.AccStatic)));
 		}
 		// TODO Add more complicated finder methods that combine multiple
 		// fields?
 		return Arrays.asList(collector.getRubyCompletionProposals());
 	}
 
-	private IRubyScript getScript(RubyContentAssistInvocationContext context) {
+	private IRubyScript getScript(RubyContentAssistInvocationContext context)
+	{
 		return context.getRubyScript();
 	}
 
-	private Set<String> getDBFieldNames(IRubyScript script, String modelName) {
+	private Set<String> getDBFieldNames(IRubyScript script, String modelName)
+	{
 		Set<String> fieldNames = new HashSet<String>();
 		File[] scripts = getMigrationScripts(script);
-		for (int j = 0; j < scripts.length; j++) {
-			IFile iFile = ResourcesPlugin.getWorkspace().getRoot()
-					.getFileForLocation(new Path(scripts[j].getAbsolutePath()));
+		for (int j = 0; j < scripts.length; j++)
+		{
+			IFile iFile = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(
+					new Path(scripts[j].getAbsolutePath()));
 			IRubyScript migrateScript = RubyCore.create(iFile);
 			RootNode ast = null;
-			if (migrateScript.isWorkingCopy()) {
-				try {
+			if (migrateScript.isWorkingCopy())
+			{
+				try
+				{
 					String prefix = getStatementPrefix();
 					int fudgeFactor = 1;
-					while (prefix.endsWith(" ")) {
+					while (prefix.endsWith(" "))
+					{
 						fudgeFactor++;
 						prefix = prefix.substring(0, prefix.length() - 1);
 					}
-					CompletionContext correctingContext = new CompletionContext(
-							migrateScript, fContext.getInvocationOffset()
-									- fudgeFactor);
-					if (correctingContext.isBroken()) {
-						try {
+					CompletionContext correctingContext = new CompletionContext(migrateScript, fContext
+							.getInvocationOffset()
+							- fudgeFactor);
+					if (correctingContext.isBroken())
+					{
+						try
+						{
 							RubyParser parser = new RubyParser();
-							ast = (RootNode) parser.parse(
-									correctingContext.getCorrectedSource())
-									.getAST();
-						} catch (SyntaxException e) {
+							ast = (RootNode) parser.parse(correctingContext.getCorrectedSource()).getAST();
+						}
+						catch (SyntaxException e)
+						{
 							// ignore
 						}
 					}
-				} catch (RubyModelException e) {
+				}
+				catch (RubyModelException e)
+				{
 					RailsUILog.log(e);
 				}
 			}
-			if (ast == null) {
-				ast = RubyPlugin.getDefault().getASTProvider().getAST(
-						migrateScript, ASTProvider.WAIT_YES,
+			if (ast == null)
+			{
+				ast = RubyPlugin.getDefault().getASTProvider().getAST(migrateScript, ASTProvider.WAIT_YES,
 						new NullProgressMonitor());
-				if (ast == null) {
+				if (ast == null)
+				{
 					ast = (RootNode) ((RubyScript) migrateScript).lastGoodAST;
 				}
 			}
@@ -498,32 +532,37 @@ public class RailsCompletionProposalComputer implements
 				continue;
 			MigrationVisitor visitor = new MigrationVisitor();
 			ast.accept(visitor);
-			fieldNames.addAll(visitor.getFieldNames(Inflector
-					.pluralize(modelName)));
+			fieldNames.addAll(visitor.getFieldNames(Inflector.pluralize(modelName)));
 		}
 		return fieldNames;
 	}
 
-	private String getStatementPrefix() {
-		try {
+	private String getStatementPrefix()
+	{
+		try
+		{
 			return fContext.computeStatementPrefix().toString();
-		} catch (BadLocationException e) {
+		}
+		catch (BadLocationException e)
+		{
 			RailsUILog.log(e);
 			return "";
 		}
 	}
 
-	private Set<String> getDBTableNames(IRubyScript script) {
+	private Set<String> getDBTableNames(IRubyScript script)
+	{
 		Set<String> fieldNames = new HashSet<String>();
 		File[] scripts = getMigrationScripts(script);
-		for (int j = 0; j < scripts.length; j++) {
-			IFile iFile = ResourcesPlugin.getWorkspace().getRoot()
-					.getFileForLocation(new Path(scripts[j].getAbsolutePath()));
+		for (int j = 0; j < scripts.length; j++)
+		{
+			IFile iFile = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(
+					new Path(scripts[j].getAbsolutePath()));
 			IRubyScript migrateScript = RubyCore.create(iFile);
-			RootNode ast = RubyPlugin.getDefault().getASTProvider().getAST(
-					migrateScript, ASTProvider.WAIT_YES,
+			RootNode ast = RubyPlugin.getDefault().getASTProvider().getAST(migrateScript, ASTProvider.WAIT_YES,
 					new NullProgressMonitor());
-			if (ast == null) {
+			if (ast == null)
+			{
 				ast = (RootNode) ((RubyScript) migrateScript).lastGoodAST;
 			}
 			if (ast == null)
@@ -535,26 +574,28 @@ public class RailsCompletionProposalComputer implements
 		return fieldNames;
 	}
 
-	private File[] getMigrationScripts(IRubyScript script) {
+	private File[] getMigrationScripts(IRubyScript script)
+	{
 		IPath migrationFolder = getMigrationPath(script);
 		if (migrationFolder == null)
 			return new File[0];
-		migrationFolder = ResourcesPlugin.getWorkspace().getRoot().getFolder(
-				migrationFolder).getLocation();
-		File[] scripts = migrationFolder.toFile().listFiles(
-				new FilenameFilter() {
+		migrationFolder = ResourcesPlugin.getWorkspace().getRoot().getFolder(migrationFolder).getLocation();
+		File[] scripts = migrationFolder.toFile().listFiles(new FilenameFilter()
+		{
 
-					public boolean accept(File dir, String name) {
-						return name.endsWith(".rb");
-					}
+			public boolean accept(File dir, String name)
+			{
+				return name.endsWith(".rb");
+			}
 
-				});
+		});
 		if (scripts == null)
 			return new File[0];
 		return scripts;
 	}
 
-	private File getControllersFolder(ContentAssistInvocationContext context) {
+	private File getControllersFolder(ContentAssistInvocationContext context)
+	{
 		if (!(context instanceof RubyContentAssistInvocationContext))
 			return null;
 		RubyContentAssistInvocationContext rContext = (RubyContentAssistInvocationContext) context;
@@ -563,26 +604,28 @@ public class RailsCompletionProposalComputer implements
 			return null;
 		IProject project = script.getRubyProject().getProject();
 		IPath path = RailsPlugin.findRailsRoot(project);
-		IFolder folder = project.getFolder(path.append("app").append(
-				"controllers"));
+		IFolder folder = project.getFolder(path.append("app").append("controllers"));
 		if (folder == null)
 			return null;
 		return folder.getLocation().toFile();
 	}
 
-	public List computeContextInformation(
-			ContentAssistInvocationContext context, IProgressMonitor monitor) {
+	public List computeContextInformation(ContentAssistInvocationContext context, IProgressMonitor monitor)
+	{
 		return Collections.EMPTY_LIST;
 	}
 
-	public String getErrorMessage() {
+	public String getErrorMessage()
+	{
 		return null;
 	}
 
-	public void sessionEnded() {
+	public void sessionEnded()
+	{
 	}
 
-	public void sessionStarted() {
+	public void sessionStarted()
+	{
 	}
 
 }
