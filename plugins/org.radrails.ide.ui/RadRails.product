@@ -4,7 +4,7 @@
 <product name="Aptana RadRails" id="org.radrails.ide.ui.radrails" application="org.radrails.ide.ui.application" version="0.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
-      <image path="/org.radrails.ide.ui/icons/rails_logo_remix.gif"/>
+      <image path="/org.radrails.rails.ui/icons/rails3232.png"/>
       <text>
          Welcome to Aptana RadRails.
       </text>
@@ -55,12 +55,13 @@ com.aptana.ide.desktop.integration.Application</programArgs>
    <vm>
    </vm>
 
+
    <plugins>
-      <plugin id="com.ibmdb2.driver" fragment=""/>
+      <plugin id="com.ibmdb2.driver"/>
       <plugin id="com.jcraft.jsch"/>
-      <plugin id="com.mysql.driver" fragment=""/>
-      <plugin id="com.oracle.driver" fragment=""/>
-      <plugin id="com.sqlserver.driver" fragment=""/>
+      <plugin id="com.mysql.driver"/>
+      <plugin id="com.oracle.driver"/>
+      <plugin id="com.sqlserver.driver"/>
       <plugin id="org.apache.ant"/>
       <plugin id="org.apache.lucene"/>
       <plugin id="org.eclipse.ant.core"/>
@@ -122,7 +123,7 @@ com.aptana.ide.desktop.integration.Application</programArgs>
       <plugin id="org.eclipse.update.ui"/>
       <plugin id="org.epic.regexp" fragment=""/>
       <plugin id="org.kxml2"/>
-      <plugin id="org.postgresql.driver" fragment=""/>
+      <plugin id="org.postgresql.driver"/>
       <plugin id="org.radrails.db.core"/>
       <plugin id="org.radrails.db.ui" fragment=""/>
       <plugin id="org.radrails.ide.ui"/>
@@ -139,10 +140,10 @@ com.aptana.ide.desktop.integration.Application</programArgs>
       <plugin id="org.rubypeople.rdt.source" fragment=""/>
       <plugin id="org.rubypeople.rdt.testunit"/>
       <plugin id="org.rubypeople.rdt.ui"/>
-      <plugin id="org.sqlite.driver" fragment=""/>
+      <plugin id="org.sqlite.driver"/>
       <plugin id="org.tigris.subversion.subclipse" fragment=""/>
-      <plugin id="org.tigris.subversion.subclipse.core" fragment=""/>
-      <plugin id="org.tigris.subversion.subclipse.ui" fragment=""/>
+      <plugin id="org.tigris.subversion.subclipse.core"/>
+      <plugin id="org.tigris.subversion.subclipse.ui"/>
    </plugins>
 
    <features>

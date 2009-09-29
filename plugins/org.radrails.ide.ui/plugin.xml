@@ -22,7 +22,7 @@
                value="plugin_customization.ini"/>
          <property
                name="aboutImage"
-               value="icons/rails_logo_remix.gif"/>
+               value="icons/rails3232.png"/>
          <property
                name="aboutText"
                value="RadRails&#x0A;&#x0A;Version: 0.8.0.qualifier&#x0A;&#x0A;(c) Copyright Marc Baumbach, Matt Kent, Kyle Shank, Andy Gianfagna, Ryan Lowe and others 2005, 2007.  All rights reserved.&#x0A;Visit http://www.aptana.com and development at http://hog.Aptana, Inc./radrails&#x0A;&#x0A;RadRails includes software developed by&#x0A;Subclipse http://subclipse.tigris.org&#x0A;RDT http://rubyeclipse.sf.net"/>
