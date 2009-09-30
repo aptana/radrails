@@ -90,6 +90,10 @@
 			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
 		</antcall>
 		<antcall target="run.director">
+			<param name="p2.installIU" value="com.aptana.ide.feature.professional.feature.group" />
+			<param name="p2.repo" value="file:${ide-pro.p2.repo}" />
+		</antcall>
+		<antcall target="run.director">
 			<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
 			<param name="p2.repo" value="${rdt.p2.repo}" />
 		</antcall>
