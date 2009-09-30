@@ -10,7 +10,7 @@
 	<target name="clean">
 		<echo message="Cleaning old installer artifacts" />
 		<delete file="windows-nsis/local_settings.nsh" />
-		<delete file="windows-nsis/Aptana_Studio_Setup.exe" />
+		<delete file="windows-nsis/Aptana_RadRails_Setup.exe" />
 		<delete file="${staging.dir}/aptana.zip"/>
 		<delete dir="${staging.dir}" />
 	</target>
@@ -50,18 +50,18 @@
 		<exec executable="windows-nsis\Tools\signtool\signtool.exe">
 			<arg value="sign" />
 			<arg value="/f ${signkey}" />
-			<arg value='/d "Aptana Studio"' />
+			<arg value='/d "Aptana RadRails"' />
 			<arg value="/du http://www.aptana.com" />
 			<arg value="/t http://timestamp.verisign.com/scripts/timestamp.dll" />
 			<arg value="/v" />
 			<arg value="/p aptkey1010" />
-			<arg value="${basedir}\windows-nsis\Aptana_Studio_Setup.exe" />
+			<arg value="${basedir}\windows-nsis\Aptana_RadRails_Setup.exe" />
 		</exec>
 -->
 		<exec executable="${basedir}\windows-nsis\Tools\signtool\signit.bat" dir="${basedir}\windows-nsis\Tools\signtool"/>
 	</target>
 	
 	<target name="move-exe" depends="sign">
-		<move file="${basedir}\windows-nsis\Aptana_Studio_Setup.exe" tofile="${staging.dir}\${target.exe.name}"/>
+		<move file="${basedir}\windows-nsis\Aptana_RadRails_Setup.exe" tofile="${staging.dir}\${target.exe.name}"/>
 	</target>
 </project>

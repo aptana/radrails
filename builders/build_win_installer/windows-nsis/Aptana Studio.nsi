@@ -75,7 +75,7 @@ Page custom SetAssociations
 !insertmacro XPUI_PAGE_ABORT
 
 # Installer attributes
-OutFile Aptana_Studio_Setup.exe
+OutFile Aptana_RadRails_Setup.exe
 CRCCheck on
 XPStyle off
 ShowInstDetails hide
