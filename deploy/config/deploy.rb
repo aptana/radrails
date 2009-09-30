@@ -13,6 +13,7 @@ set :build_artifact_path, "/var/update-site/update/#{branch}" # Where does it li
 set :application, "rails" # Which project are we pushing (this controls folder name used from Hudson and s3)
 set :containing_folder_name, "#{application}"
 set :compressed_filename, "#{application}.tar.gz"
+set :push_to_update_too, true
 
 namespace :deploy do
   
@@ -29,6 +30,7 @@ namespace :deploy do
       set :application, "rails"
       set :containing_folder_name, "rails"
       set :compressed_filename, "rails.tar.gz"
+      set :push_to_update_too, true
     end
     
     # TODO Move all deploy:plugin tasks (except init) to deploy namespace since they're shared by all but standalone deployment
@@ -57,7 +59,7 @@ namespace :deploy do
     task :extract_version, :depends => [:uncompress] do
       value = Dir.glob("#{application}/*-*.zip")
       set :bucket_path_prefix, "#{bucket_path_prefix}/#{containing_folder_name}"
-      set :containing_folder_name, value[0].match(/.+(\d+\.\d+\.\d+\.\d+).+/)[1]      
+      set :containing_folder_name, value[0].match(/.+(\d+\.\d+\.\d+\.\d+).+/)[1]
     end
     
     desc "Change the directory name to what we'll use on S3"
@@ -67,15 +69,20 @@ namespace :deploy do
     
     desc "Cleans any existing release on s3 before pushing over top"
     task :clean_s3 do
-      objects = []
+      
+      prefixes = [bucket_path_prefix]
+      prefixes << bucket_path_prefix.sub(/install/, 'update') if push_to_update_too
       # Apparently this doesn't return everything, so we have to keep looping until empty
-      begin
-        objects = AWS::S3::Bucket.objects(bucket_name, :prefix => "#{bucket_path_prefix}/#{containing_folder_name}")
-        objects.each do |object|
-          puts "Removing old #{object.key}"
-          object.delete
-        end
-      end while !objects.empty?
+      prefixes.each do |prefix|
+        objects = []
+        begin
+          objects = AWS::S3::Bucket.objects(bucket_name, :prefix => "#{prefix}/#{containing_folder_name}")
+          objects.each do |object|
+            puts "Removing old #{object.key}"
+            object.delete
+          end
+        end while !objects.empty?
+      end
     end
     
     desc "Push the build artifacts up to S3"
@@ -86,6 +93,10 @@ namespace :deploy do
         puts "Pushing #{filename}..."
         remote_path = "#{bucket_path_prefix}/" + filename
         AWS::S3::S3Object.store(remote_path, open(filename), bucket_name, :access => :public_read)
+        if push_to_update_too # we need to copy over to update subdir too
+          update_path = remote_path.sub(/install/, 'update')
+          AWS::S3::S3Object.copy(remote_path, update_path, bucket_name, :access => :public_read)
+        end
       end
     end
     
@@ -185,6 +196,7 @@ namespace :deploy do
       set :application, "radrails-rcp"
       set :containing_folder_name, "radrails-rcp"
       set :compressed_filename, "radrails-rcp.tar.gz"
+      set :push_to_update_too, false
     end
     
     task :default do
@@ -200,6 +212,7 @@ namespace :deploy do
       set :application, "rails-bundle"
       set :containing_folder_name, "radrails-bundle"
       set :compressed_filename, "radrails-bundle.tar.gz"
+      set :push_to_update_too, true
     end
     
     desc "Run all the necessary deploy tasks in the correct order for pushing out the Rails + Studio bundle plugin"
