@@ -20,8 +20,8 @@ SetCompressor /FINAL /SOLID lzma
 !define XPUI_UNICON "Icons\aptana_uninstall.ico"
 
 # Included files
-!addincludedir Tools\nsis\Include
-!addincludedir Tools\nsis\Contrib
+!addincludedir Tools\unicode_nsis\Include
+!addincludedir Tools\unicode_nsis\Contrib
 !include Sections.nsh
 !include XPUI.nsh
 !include InstallOptions.nsh
