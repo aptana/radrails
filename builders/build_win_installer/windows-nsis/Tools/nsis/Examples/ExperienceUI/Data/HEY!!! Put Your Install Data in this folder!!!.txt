@@ -1,1 +1,0 @@
-The data files for the example installer go in this folder.
