@@ -51,7 +51,7 @@
                           windows. Usually dmgs look better without it.
             background: Location of the background image.
         -->
-        <view type="icon" x="10" y="60" width="600" height="645" icon_size="128"
+        <view type="icon" x="10" y="60" width="600" height="600" icon_size="128"
               grid="false" show_toolbar="false" background=".background/background.png" />
     </image>
 </dmgbuilder>

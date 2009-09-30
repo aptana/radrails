@@ -1,6 +1,7 @@
 package org.radrails.rails.internal.ui;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -116,15 +117,21 @@ public class RailsProjectListener implements IResourceChangeListener
 
 	private boolean hasRailsLayout(final IContainer folder)
 	{
-		return folderExists(folder, "app") && folderExists(folder, "lib") && folderExists(folder, "script")
-				&& folderExists(folder, "db") && folderExists(folder, "vendor") && folderExists(folder, "config")
-				&& folderExists(folder, "public") && folderExists(folder, "test");
+		return folderExists(folder, "app") && folderExists(folder, "script") && folderExists(folder, "config")
+				&& folderExists(folder, "public") && fileExists(folder, "config/boot.rb")
+				&& fileExists(folder, "config/environment.rb") && fileExists(folder, "script/generate");
 	}
 
 	private boolean folderExists(IContainer rootFolder, String name)
 	{
 		IFolder folder = rootFolder.getFolder(new Path(name));
 		return folder != null && folder.exists();
+	}
+
+	private boolean fileExists(IContainer rootFolder, String name)
+	{
+		IFile file = rootFolder.getFile(new Path(name));
+		return file != null && file.exists();
 	}
 
 	private static class RailsNatureAdder extends Job

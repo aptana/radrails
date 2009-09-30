@@ -2,9 +2,11 @@
 <?eclipse version="3.2"?>
 <plugin>
    <extension point="com.aptana.rdt.gems">
+   	  <gem path="lib/rack-1.0.0.gem" auto-install="true"/>
    	  <gem path="lib/activesupport-2.3.4.gem" auto-install="true"/>      
       <gem path="lib/actionpack-2.3.4.gem" auto-install="true">
         <dependency name="activesupport" version="= 2.3.4"/>
+        <dependency name="rack" version="&gt;= 1.0.0"/>
       </gem>
       <gem path="lib/activerecord-2.3.4.gem" auto-install="true">
         <dependency name="activesupport" version="= 2.3.4"/>
