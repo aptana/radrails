@@ -78,7 +78,7 @@ public class WizardNewRailsProjectPage extends WizardPage
 	private Link installRails;
 	private Cursor hand;
 
-	private org.radrails.rails.internal.ui.wizards.pages.WizardNewRailsProjectPage.Validator fValidator;
+	private Validator fValidator;
 
 	/**
 	 * Constructor.
@@ -553,6 +553,13 @@ public class WizardNewRailsProjectPage extends WizardPage
 			{
 				setErrorMessage(null);
 				setMessage(NewWizardMessages.RubyProjectWizardFirstPage_Message_enterProjectName);
+				setPageComplete(false);
+				return;
+			}
+			
+			if (name.contains("'") || name.contains("\"") || name.contains("`"))
+			{
+				setErrorMessage(WizardMessages.WizardNewRailsProjectPage_Invalid_Project_Name_msg);
 				setPageComplete(false);
 				return;
 			}
