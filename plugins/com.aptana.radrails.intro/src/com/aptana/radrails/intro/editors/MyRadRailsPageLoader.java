@@ -20,109 +20,145 @@ import org.radrails.rails.internal.core.RailsPlugin;
 import com.aptana.ide.core.FileUtils;
 import com.aptana.ide.core.PluginUtils;
 import com.aptana.ide.core.online.OnlineDetectionService;
+import com.aptana.ide.update.FeatureUtil;
+import com.aptana.ide.update.manager.IPlugin;
 import com.aptana.radrails.intro.Activator;
 
-public class MyRadRailsPageLoader {
+public class MyRadRailsPageLoader
+{
 
-    private static final String REMOTE_FILE_URL = "http://www.aptana.com/tools/radrails/my_radrails?version=" + getRadRailsVersion(); //$NON-NLS-1$
-    private static final String LOCAL_URL = "/content/radrails_index.html"; //$NON-NLS-1$
-    private static final String CACHED_FILENAME = "cached_my_radrails.html"; //$NON-NLS-1$
+	private static final String RAILS_FEATURE_ID = "org.radrails.rails_feature";
+	private static final String REMOTE_FILE_URL = "http://www.aptana.com/tools/radrails/my_radrails?version=" + getRadRailsVersion(); //$NON-NLS-1$
+	private static final String LOCAL_URL = "/content/radrails_index.html"; //$NON-NLS-1$
+	private static final String CACHED_FILENAME = "cached_my_radrails.html"; //$NON-NLS-1$
 
-    public static String getURLLocation() {
-        try {
-            if (OnlineDetectionService.isAvailable(new URL(REMOTE_FILE_URL))) {
-                Job job = new Job("Caching My RadRails Page") { //$NON-NLS-1$
+	public static String getURLLocation()
+	{
+		try
+		{
+			if (OnlineDetectionService.isAvailable(new URL(REMOTE_FILE_URL)))
+			{
+				Job job = new Job("Caching My RadRails Page") { //$NON-NLS-1$
 
-                    protected IStatus run(IProgressMonitor monitor) {
-                        try {
-                            InputStream in = (InputStream) getRemoteFileURL()
-                                    .getContent();
-                            saveCache(in);
-                        } catch (IOException e) {
-                            error(e);
-                        }
-                        return Status.OK_STATUS;
-                    }
+					protected IStatus run(IProgressMonitor monitor)
+					{
+						try
+						{
+							InputStream in = (InputStream) getRemoteFileURL().getContent();
+							saveCache(in);
+						}
+						catch (IOException e)
+						{
+							error(e);
+						}
+						return Status.OK_STATUS;
+					}
 
-                };
-                job.setSystem(true);
-                job.setPriority(Job.BUILD);
-                job.schedule();
+				};
+				job.setSystem(true);
+				job.setPriority(Job.BUILD);
+				job.schedule();
 
-                return REMOTE_FILE_URL;
-            }
-        } catch (MalformedURLException e) {
-        }
+				return REMOTE_FILE_URL;
+			}
+		}
+		catch (MalformedURLException e)
+		{
+		}
 
-        // falls back to the local cache file
-        File file = getLocalCacheFile();
-        if (file.exists()) {
-            return file.getAbsolutePath();
-        }
-        // falls back to the local copy shipped in the plugin
-        URL rootPath = Activator.getDefault().getBundle().getEntry(LOCAL_URL);
-        try {
-            rootPath = FileLocator.toFileURL(rootPath);
-            return rootPath.getPath();
-        } catch (IOException e) {
-            error(e);
-        }
-        // should not get here
-        return REMOTE_FILE_URL;
-    }
+		// falls back to the local cache file
+		File file = getLocalCacheFile();
+		if (file.exists())
+		{
+			return file.getAbsolutePath();
+		}
+		// falls back to the local copy shipped in the plugin
+		URL rootPath = Activator.getDefault().getBundle().getEntry(LOCAL_URL);
+		try
+		{
+			rootPath = FileLocator.toFileURL(rootPath);
+			return rootPath.getPath();
+		}
+		catch (IOException e)
+		{
+			error(e);
+		}
+		// should not get here
+		return REMOTE_FILE_URL;
+	}
 
-    private static URL getRemoteFileURL() throws MalformedURLException {
-        return new URL(REMOTE_FILE_URL);
-    }
+	private static URL getRemoteFileURL() throws MalformedURLException
+	{
+		return new URL(REMOTE_FILE_URL);
+	}
 
-    /**
-     * @return the local cache file
-     */
-    private static File getLocalCacheFile() {
-        IPath statePath = Activator.getDefault().getStateLocation().append(
-                CACHED_FILENAME);
-        return statePath.toFile();
-    }
+	/**
+	 * @return the local cache file
+	 */
+	private static File getLocalCacheFile()
+	{
+		IPath statePath = Activator.getDefault().getStateLocation().append(CACHED_FILENAME);
+		return statePath.toFile();
+	}
 
-    /**
-     * Copy contents from an InputStream to the local cache file.
-     * 
-     * @param in
-     *            the input stream
-     */
-    private static void saveCache(InputStream in) throws IOException {
-        File file = getLocalCacheFile();
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        OutputStream writer = null;
-        try {
-            writer = new FileOutputStream(file);
-            FileUtils.pipe(in, new FileOutputStream(file), false, null, null);
-        } finally {
-            try {
-                if (in != null) {
-                    in.close();
-                }
-            } catch (IOException e) {
-                // ignore
-            }
-            try {
-                if (writer != null) {
-                    writer.close();
-                }
-            } catch (IOException e) {
-                // ignore
-            }
-        }
-    }
+	/**
+	 * Copy contents from an InputStream to the local cache file.
+	 * 
+	 * @param in
+	 *            the input stream
+	 */
+	private static void saveCache(InputStream in) throws IOException
+	{
+		File file = getLocalCacheFile();
+		if (!file.exists())
+		{
+			file.createNewFile();
+		}
+		OutputStream writer = null;
+		try
+		{
+			writer = new FileOutputStream(file);
+			FileUtils.pipe(in, new FileOutputStream(file), false, null, null);
+		}
+		finally
+		{
+			try
+			{
+				if (in != null)
+				{
+					in.close();
+				}
+			}
+			catch (IOException e)
+			{
+				// ignore
+			}
+			try
+			{
+				if (writer != null)
+				{
+					writer.close();
+				}
+			}
+			catch (IOException e)
+			{
+				// ignore
+			}
+		}
+	}
 
-    private static void error(Exception e) {
-        Activator.log(IStatus.ERROR, e.getMessage(), e);
-    }
-    
+	private static void error(Exception e)
+	{
+		Activator.log(IStatus.ERROR, e.getMessage(), e);
+	}
+
 	private static String getRadRailsVersion()
 	{
+		// Grab the version of the rails feature
+		IPlugin plugin = FeatureUtil.findInstalledPlugin(RAILS_FEATURE_ID);
+		if (plugin != null)
+			return plugin.getVersion();
+		// Fall back to using the rails core plugin version
 		Version version = new Version(PluginUtils.getPluginVersion(RailsPlugin.getInstance()));
 		return "" + version.getMajor() + "." + version.getMinor() + "." + version.getMicro() + "." + version.getQualifier(); //$NON-NLS-1$ //$NON-NLS-2$
 	}

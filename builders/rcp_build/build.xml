@@ -25,7 +25,7 @@
 	<!-- ================================= 
           target: build              
          ================================= -->
-	<target name="build" description="Builds the RadRails RCP" depends="generate.build.properties,get.revision,replace.versions,generate.base">
+	<target name="build" description="Builds the RadRails RCP" depends="generate.build.properties,get.revision,generate.base,replace.versions">
 		<java jar="${baseLocation}/plugins/${launcher.plugin}.jar" fork="true" failonerror="yes">
 			<arg line="-application org.eclipse.ant.core.antRunner -buildfile ${baseLocation}/plugins/${builder.plugin}/scripts/productBuild/productBuild.xml -Dbuilder=${basedir} -Dbuild.revision=${build.revision} -Dstudio.version=${studio.version} -nosplash" />
 		</java>
@@ -85,22 +85,6 @@
 	          target: generate.base                      
 	         - - - - - - - - - - - - - - - - - -->
 	<target name="generate.base" depends="copy.base.windows,copy.base">
-		<antcall target="run.director">
-			<param name="p2.installIU" value="com.aptana.ide.feature.feature.group" />
-			<param name="p2.repo" value="file:${ide-core.p2.repo}" />
-		</antcall>
-		<antcall target="run.director">
-			<param name="p2.installIU" value="com.aptana.ide.feature.professional.feature.group" />
-			<param name="p2.repo" value="file:${ide-pro.p2.repo}" />
-		</antcall>
-		<antcall target="run.director">
-			<param name="p2.installIU" value="org.rubypeople.rdt.feature.group" />
-			<param name="p2.repo" value="${rdt.p2.repo}" />
-		</antcall>
-		<antcall target="run.director">
-			<param name="p2.installIU" value="org.radrails.rails_feature.feature.group" />
-			<param name="p2.repo" value="${rails.p2.repo}" />
-		</antcall>
 		<!-- Copy the features and plugins over into a dropins folder. Installing makes it so that non-linux plugins/features won't be there! -->
 		<mkdir dir="${baseLocation}/dropins/eclipse" />
 		<copy todir="${baseLocation}/dropins/eclipse">
@@ -130,6 +114,7 @@
 				<include name="plugins/*" />
 			</fileset>
 		</copy>
+		<!-- Hack to pull out studio version to stick in about box -->
 		<pathconvert property="studio.version">
 			<fileset dir="${baseLocation}/dropins/eclipse/features">
 				<include name="com.aptana.ide.feature_*.jar" />
@@ -162,7 +147,7 @@
 				<replaceregexp file="${baseLocation}/dropins/eclipse/features/${@{file}.name}/feature.xml" match="http://download.aptana.org/tools/studio/plugin/" replace="http://download.aptana.com/tools/studio/plugin/" byline="true" />
 			</sequential>
 		</for>
-		<!-- UnJAR the handful of plugins that we need to... -->
+		<!-- UnJAR the handful of plugins that need to be expanded on install... -->
 		<for param="file">
 			<path>
 				<fileset dir="${baseLocation}/dropins/eclipse/plugins" defaultexcludes="true">
@@ -185,6 +170,7 @@
 					<include name="com.aptana.ide.server.jetty_*.jar" />
 					<include name="com.aptana.ide.js.docgen_*.jar" />
 					<include name="org.eclipse.eclipsemonkey_*.jar" />
+					<include name="com.aptana.ide.syncing.professional_*.jar" />
 					<include name="org.jruby_*.jar" />
 					<include name="com.aptana.radrails.sqlite3.win32_*.jar" />
 				</fileset>
@@ -197,11 +183,15 @@
 				<delete file="@{file}" />
 			</sequential>
 		</for>
-		<delete verbose="true">
+		<!-- Only include RCP source plugins/features, we want to force Eclipse to use pre-built binaries -->
+		<delete>
 			<fileset dir="${buildDirectory}">
 				<include name="plugins/**/*" />
 				<exclude name="plugins/com.aptana.radrails.rcp/**/*" />
 				<exclude name="plugins/com.aptana.radrails.rcp.main/**/*" />
+				<include name="features**/*" />
+				<exclude name="features/com.aptana.radrails.feature.rcp/**/*" />
+				<exclude name="features/com.aptana.radrails.feature.rcp.wrapper/**/*" />
 			</fileset>
 		</delete>
 	</target>
