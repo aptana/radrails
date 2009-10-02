@@ -71,15 +71,8 @@ public class HamlUIColorProvider implements IColorManager{
 		return color;
 	}
 
-	/**
-	 * Creates a <code>Color</code> from the given string RGB value.
-	 * 
-	 * @param rgb
-	 *            the string RGB value
-	 * @return a <code>Color</code> object
-	 */
-	public Color getColor(String rgb) {
-		return getColor(StringConverter.asRGB(rgb));
+	public Color getColor(String colorKey) {
+		return getColorFromPreference(colorKey);
 	}
 
 	/**

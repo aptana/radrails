@@ -5,7 +5,7 @@ import org.eclipse.swt.graphics.Color;
 public interface IColorManager
 {
 
-	Color getColor(String hamlComment);
+	Color getColor(String colorKey);
 
 	void dispose();
 
