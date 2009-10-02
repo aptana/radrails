@@ -34,7 +34,7 @@ public class HamlContentAssistantProcessor implements IContentAssistProcessor {
 			start = start.toLowerCase();
 
 			if (region.getType().equals(HamlPartitionScanner.HAML_ELEMENT)) {
-				res.addAll(HTMLCSSKeywords.getHtmlTagMatches(start, regionOffset, region));
+				res.addAll(HTMLCSSKeywords.getHtmlTagMatches(start, regionOffset));
 			}
 			else if (region.getType().equals(HamlPartitionScanner.HAML_CLASS)) {
 				ITypedRegion[] regions = doc3.computePartitioning(HamlEditor.HAML_PARTITIONING, 0,
