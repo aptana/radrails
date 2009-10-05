@@ -32,7 +32,7 @@
          version="0.0.0"/>
 
    <includes
-         id="com.aptana.ide.feature.professional"
+         id="com.aptana.ide.feature.secureftp"
          version="0.0.0"/>
 
 </feature>

@@ -28,7 +28,7 @@
 	<!-- ================================= 
           target: build              
          ================================= -->
-	<target name="build" description="Builds the RadRails feature" depends="generate.build.properties,get.revision,replace.versions,generate.base">
+	<target name="build" description="Builds the RadRails feature" depends="generate.build.properties,get.revision,generate.base,replace.versions">
 		<java jar="${baseLocation}/plugins/${launcher.plugin}.jar" fork="true" failonerror="yes">
 			<arg line="-application org.eclipse.ant.core.antRunner -buildfile ${baseLocation}/plugins/${builder.plugin}/scripts/build.xml -Dbuilder=${basedir} -Dbuild.revision=${build.revision} -nosplash" />
 		</java>
@@ -219,7 +219,7 @@
 			</sequential>
 		</for>
 		<!-- force use of pre-built binaries -->
-		<delete verbose="true">
+		<delete>
 			<fileset dir="${buildDirectory}">
 				<include name="plugins/**/*" />
 				<include name="features/**/*"/>
