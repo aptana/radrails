@@ -155,6 +155,10 @@
 				<include name="features/*" />
 				<include name="plugins/*" />
 			</fileset>
+			<fileset dir="${cloud.p2.repo}" defaultexcludes="true">
+				<include name="features/*" />
+				<include name="plugins/*" />
+			</fileset>
 			<fileset dir="${rdt.dir}" defaultexcludes="false">
 				<include name="features/*" />
 				<include name="plugins/*" />
@@ -216,24 +220,6 @@
 				<delete file="@{file}" />
 			</sequential>
 		</for>
-		<if>
-			<isset property="dbtools.p2.repo" />
-			<then>
-				<property name="gef.p2.repo" value="file:${basedir}/gef/site.xml" />
-				<antcall target="run.director">
-					<param name="p2.installIU" value="org.eclipse.gef.feature.group" />
-					<param name="p2.repo" value="${gef.p2.repo}" />
-				</antcall>
-				<antcall target="run.director">
-					<param name="p2.installIU" value="com.aptana.ide.feature.db.feature.group" />
-					<param name="p2.repo" value="${dbtools.p2.repo}" />
-				</antcall>
-			</then>
-		</if>
-		<antcall target="run.director">
-			<param name="p2.installIU" value="com.aptana.ide.feature.server.cloud.feature.group" />
-			<param name="p2.repo" value="${cloud.p2.repo}" />
-		</antcall>
 	</target>
 
 	<!-- - - - - - - - - - - - - - - - - - 
