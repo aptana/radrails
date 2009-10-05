@@ -26,7 +26,7 @@ public class HamlEditor extends HamlesqueEditor
 		IPreferenceStore prefStore = new ChainedPreferenceStore(new IPreferenceStore[] { eclipseUIStore, defaults });
 		setPreferenceStore(prefStore);
 
-		colorManager = HamlUIColorProvider.getInstance();
+		colorManager = new HamlUIColorProvider();
 		setSourceViewerConfiguration(new HamlConfiguration(colorManager, this));
 	}
 

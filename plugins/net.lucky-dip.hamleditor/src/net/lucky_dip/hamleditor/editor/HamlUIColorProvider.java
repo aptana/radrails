@@ -15,7 +15,6 @@ import java.util.Map;
 import net.lucky_dip.hamleditor.Activator;
 
 import org.eclipse.jface.preference.PreferenceConverter;
-import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
@@ -26,33 +25,22 @@ import org.eclipse.swt.widgets.Display;
  * @author mkent
  * 
  */
-public class HamlUIColorProvider implements IColorManager{
+public class HamlUIColorProvider implements IColorManager {
 
-	private static HamlUIColorProvider instance;
+	private Map<RGB, Color> colorMap;
 
-	private Map colorMap;
-
-	private HamlUIColorProvider() {
-		colorMap = new HashMap();
-	}
-
-	/**
-	 * @return the singleton instance of the color provider
-	 */
-	public static HamlUIColorProvider getInstance() {
-		if (instance == null) {
-			instance = new HamlUIColorProvider();
-		}
-		return instance;
+	public HamlUIColorProvider() {
+		colorMap = new HashMap<RGB, Color>();
 	}
 
 	/**
 	 * Dispose the color resources held by the provider.
 	 */
-	public void dispose() {
-		Iterator i = colorMap.values().iterator();
+	public synchronized void dispose() {
+		Iterator<Color> i = colorMap.values().iterator();
 		while (i.hasNext())
-			((Color) i.next()).dispose();
+			i.next().dispose();
+		colorMap.clear();
 	}
 
 	/**
@@ -63,7 +51,7 @@ public class HamlUIColorProvider implements IColorManager{
 	 * @return a <code>Color</code> object
 	 */
 	public Color getColor(RGB rgb) {
-		Color color = (Color) colorMap.get(rgb);
+		Color color = colorMap.get(rgb);
 		if (color == null) {
 			color = new Color(Display.getCurrent(), rgb);
 			colorMap.put(rgb, color);

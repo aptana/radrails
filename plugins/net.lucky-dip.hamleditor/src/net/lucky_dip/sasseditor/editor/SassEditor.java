@@ -29,7 +29,7 @@ public class SassEditor extends HamlesqueEditor
 		IPreferenceStore prefStore = new ChainedPreferenceStore(new IPreferenceStore[] { eclipseUIStore, defaults });
 		setPreferenceStore(prefStore);
 
-		colorManager = HamlUIColorProvider.getInstance();
+		colorManager = new HamlUIColorProvider();
 		setSourceViewerConfiguration(new SassConfiguration(colorManager, this));
 	}
 

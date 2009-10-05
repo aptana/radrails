@@ -14,20 +14,21 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.editors.text.TextEditor;
 import org.eclipse.ui.texteditor.SourceViewerDecorationSupport;
 
-public abstract class HamlesqueEditor extends TextEditor {
+public abstract class HamlesqueEditor extends TextEditor
+{
 
 	protected IColorManager colorManager;
 	protected ProjectionAnnotationModel annotationModel;
 	protected ProjectionSupport projectionSupport;
 	protected Annotation[] oldAnnotations;
 
-	public void createPartControl(Composite parent) {
+	public void createPartControl(Composite parent)
+	{
 		super.createPartControl(parent);
 
 		ProjectionViewer pv = (ProjectionViewer) getSourceViewer();
 
-		projectionSupport = new ProjectionSupport(pv, getAnnotationAccess(),
-				getSharedColors());
+		projectionSupport = new ProjectionSupport(pv, getAnnotationAccess(), getSharedColors());
 		projectionSupport.install();
 
 		pv.doOperation(ProjectionViewer.TOGGLE);
@@ -35,21 +36,20 @@ public abstract class HamlesqueEditor extends TextEditor {
 		annotationModel = pv.getProjectionAnnotationModel();
 	}
 
-	protected ISourceViewer createSourceViewer(Composite parent,
-			IVerticalRuler ruler, int styles) {
-		ISourceViewer res = new ProjectionViewer(parent, ruler,
-				getOverviewRuler(), isOverviewRulerVisible(), styles);
+	protected ISourceViewer createSourceViewer(Composite parent, IVerticalRuler ruler, int styles)
+	{
+		ISourceViewer res = new ProjectionViewer(parent, ruler, getOverviewRuler(), isOverviewRulerVisible(), styles);
 
 		SourceViewerDecorationSupport svds = getSourceViewerDecorationSupport(res);
 		svds.setCharacterPairMatcher(new HamlCharacterPairMatcher());
-		svds.setMatchingCharacterPainterPreferenceKeys(
-				"rails.ui.editor.haml.char_matching",
+		svds.setMatchingCharacterPainterPreferenceKeys("rails.ui.editor.haml.char_matching",
 				"rails.ui.editor.haml.char_matching.background");
 
 		return res;
 	}
 
-	public void dispose() {
+	public void dispose()
+	{
 		colorManager.dispose();
 		super.dispose();
 	}
@@ -57,14 +57,16 @@ public abstract class HamlesqueEditor extends TextEditor {
 	/**
 	 * Updates the folding markers to display on the editor pane.
 	 */
-	public void updateFoldingStructure(ArrayList positions) {
+	public void updateFoldingStructure(ArrayList positions)
+	{
 		Annotation[] annotations = new Annotation[positions.size()];
 
 		// this will hold the new annotations along
 		// with their corresponding positions
 		HashMap newAnnotations = new HashMap();
 
-		for (int i = 0; i < positions.size(); i++) {
+		for (int i = 0; i < positions.size(); i++)
+		{
 			ProjectionAnnotation annotation = new ProjectionAnnotation();
 
 			newAnnotations.put(annotation, positions.get(i));

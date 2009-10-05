@@ -13,39 +13,37 @@ import org.eclipse.jface.text.rules.SingleLineRule;
 import org.eclipse.jface.text.rules.Token;
 import org.eclipse.jface.text.rules.WordPatternRule;
 
-public class HamlPartitionScanner extends RuleBasedPartitionScanner {
+public class HamlPartitionScanner extends RuleBasedPartitionScanner
+{
 	private static HamlPartitionScanner instance;
 
 	public final static String HAML_DOCTYPE = "__haml_doctype";
-
 	public final static String HAML_COMMENT = "__haml_comment";
-
 	public final static String HAML_RUBY = "__haml_ruby";
-
 	public final static String HAML_CLASS = "__haml_class";
-
 	public final static String HAML_ID = "__haml_id";
-
 	public final static String HAML_ELEMENT = "__haml_element";
 
-	public final static String[] HAML_PARTITION_TYPES = new String[] { HAML_DOCTYPE, HAML_RUBY,
-			HAML_CLASS, HAML_ID, HAML_COMMENT, HAML_ELEMENT };
+	public final static String[] HAML_PARTITION_TYPES = new String[] { HAML_DOCTYPE, HAML_RUBY, HAML_CLASS, HAML_ID,
+			HAML_COMMENT, HAML_ELEMENT };
 
-	public static boolean IsHAMLPartitionType(String contentType) {
-		boolean res = false;
-
-		for (int i = 0; !res && i < HAML_PARTITION_TYPES.length; i++) {
-			res = contentType.equals(HAML_PARTITION_TYPES[i]);
+	public static boolean IsHAMLPartitionType(String contentType)
+	{
+		for (String partitionType : HAML_PARTITION_TYPES)
+		{
+			if (contentType.equals(partitionType))
+				return true;
 		}
-
-		return res;
+		return false;
 	}
 
 	/**
 	 * @return the singleton instance of the scanner
 	 */
-	public static HamlPartitionScanner getInstance() {
-		if (instance == null) {
+	public static HamlPartitionScanner getInstance()
+	{
+		if (instance == null)
+		{
 			instance = new HamlPartitionScanner();
 		}
 		return instance;
@@ -54,7 +52,8 @@ public class HamlPartitionScanner extends RuleBasedPartitionScanner {
 	/**
 	 * Constructor.
 	 */
-	private HamlPartitionScanner() {
+	private HamlPartitionScanner()
+	{
 		super();
 
 		IToken doctype = new Token(HAML_DOCTYPE);
@@ -64,7 +63,7 @@ public class HamlPartitionScanner extends RuleBasedPartitionScanner {
 		IToken idToken = new Token(HAML_ID);
 		IToken rubyToken = new Token(HAML_RUBY);
 
-		List rules = new ArrayList();
+		List<IPredicateRule> rules = new ArrayList<IPredicateRule>();
 		rules.add(new WordPatternRule(new HamlWordDetector(), "%", "", element));
 		rules.add(new SingleLineRule("!!!", "", doctype, (char) 0, false));
 		rules.add(new MultiLineRule("<!--", "-->", comment, (char) 0, true));
@@ -78,8 +77,6 @@ public class HamlPartitionScanner extends RuleBasedPartitionScanner {
 		rules.add(new SingleLineRule("-", "", rubyToken, (char) 0, true, false));
 		rules.add(new SingleLineRule("{", "}", rubyToken, (char) 0, true));
 
-		IPredicateRule[] result = new IPredicateRule[rules.size()];
-		rules.toArray(result);
-		setPredicateRules(result);
+		setPredicateRules(rules.toArray(new IPredicateRule[rules.size()]));
 	}
 }

@@ -17,23 +17,36 @@ import org.eclipse.swt.graphics.Color;
 import org.rubypeople.rdt.internal.ui.RubyPlugin;
 import org.rubypeople.rdt.internal.ui.text.ruby.RubyColoringTokenScanner;
 
-public class RubyExpressionScanner extends RubyColoringTokenScanner {
+public class RubyExpressionScanner extends RubyColoringTokenScanner
+{
 
 	private Color bgColour;
+	private HamlUIColorProvider fColorManager;
 
-	public RubyExpressionScanner() {
-		super(RubyPlugin.getDefault().getRubyTextTools().getColorManager(),
-				RubyPlugin.getDefault().getPreferenceStore());
-
-		bgColour = HamlUIColorProvider.getInstance().getColorFromPreference(
-				IHamlEditorColorConstants.HAML_RUBY_BACKGROUND);
+	public RubyExpressionScanner()
+	{
+		super(RubyPlugin.getDefault().getRubyTextTools().getColorManager(), RubyPlugin.getDefault()
+				.getPreferenceStore());
+		fColorManager = new HamlUIColorProvider();
+		bgColour = fColorManager.getColorFromPreference(IHamlEditorColorConstants.HAML_RUBY_BACKGROUND);
 	}
-	
-	public IToken nextToken() {
+
+	@Override
+	protected void finalize() throws Throwable
+	{
+		if (fColorManager != null)
+			fColorManager.dispose();
+		fColorManager = null;
+		super.finalize();
+	}
+
+	public IToken nextToken()
+	{
 		IToken res = super.nextToken();
 		Object data = res.getData();
-		
-		if (data instanceof TextAttribute) {
+
+		if (data instanceof TextAttribute)
+		{
 			TextAttribute attr = (TextAttribute) res.getData();
 			res = new Token(new TextAttribute(attr.getForeground(), bgColour, attr.getStyle()));
 		}
