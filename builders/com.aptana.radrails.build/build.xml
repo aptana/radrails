@@ -151,16 +151,10 @@
 				<include name="features/*" />
 				<include name="plugins/*" />
 			</fileset>
-			<fileset dir="${ide-pro.p2.repo}" defaultexcludes="true">
-				<include name="features/*" />
-				<include name="plugins/*" />
-			</fileset>
-			<!--
 			<fileset dir="${secureftp.p2.repo}" defaultexcludes="true">
 				<include name="features/*" />
 				<include name="plugins/*" />
 			</fileset>
-			-->
 			<fileset dir="${rails.dir}" defaultexcludes="true">
 				<include name="features/*" />
 				<include name="plugins/*" />
@@ -228,6 +222,8 @@
 		<delete verbose="true">
 			<fileset dir="${buildDirectory}">
 				<include name="plugins/**/*" />
+				<include name="features/**/*"/>
+				<exclude name="features/com.aptana.radrails.feature/**/*" />
 			</fileset>
 		</delete>
 	</target>
