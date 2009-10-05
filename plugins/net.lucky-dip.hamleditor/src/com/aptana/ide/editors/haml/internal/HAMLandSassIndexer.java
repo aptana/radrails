@@ -16,7 +16,6 @@ import com.aptana.ide.editor.css.CSSColors;
 import com.aptana.ide.editor.css.IIndexConstants;
 import com.aptana.ide.index.core.Index;
 import com.aptana.ide.index.core.IndexManager;
-import com.aptana.ide.parsing.nodes.IParseNode;
 
 public class HAMLandSassIndexer extends BuildParticipant
 {
@@ -24,9 +23,12 @@ public class HAMLandSassIndexer extends BuildParticipant
 	private Index fIndex;
 	private Set<Index> indices;
 
-	private static final Pattern COLOR_PATTERN = Pattern.compile("#([a-f0-9A-F]{6}|[a-f0-9A-F]{3})");
-	private static final Pattern CLASS_PATTERN = Pattern.compile("\\s*(\\.[\\w\\-]+)\\s+");
-	private static final Pattern ID_PATTERN = Pattern.compile("\\s*(#[\\w\\-]+)\\s+");
+	private static final Pattern SASS_COLOR_PATTERN = Pattern.compile("#([a-f0-9A-F]{6}|[a-f0-9A-F]{3})");
+	private static final Pattern SASS_CLASS_PATTERN = Pattern.compile("\\s*(\\.[\\w\\-]+)\\s+");
+	private static final Pattern SASS_ID_PATTERN = Pattern.compile("\\s*(#[\\w\\-]+)\\s+");
+
+	private static final Pattern HAML_CLASS_PATTERN = Pattern.compile("[\\w\\s]*(\\.[\\w\\-]+)");
+	private static final Pattern HAML_ID_PATTERN = SASS_ID_PATTERN;
 
 	public HAMLandSassIndexer()
 	{
@@ -74,14 +76,25 @@ public class HAMLandSassIndexer extends BuildParticipant
 
 	private void indexHAML(BuildContext context)
 	{
-		walkNode(context.getRootNode(), context);
-	}
-
-	private void walkNode(IParseNode parent, BuildContext context)
-	{
-		if (parent == null)
-			return;
-		// TODO Actually index HAML tokens!
+		String src = context.getContents();
+		// Index classes
+		Matcher m = HAML_CLASS_PATTERN.matcher(src);
+		while (m.find())
+		{
+			String match = m.group(1);
+			if (isMeasurement(match))
+				continue;
+			addIndex(context, IIndexConstants.CSS_CLASS, match.substring(1));
+		}
+		// Index IDs
+		m = HAML_ID_PATTERN.matcher(src);
+		while (m.find())
+		{
+			String match = m.group(1);
+			if (isColor(match))
+				continue;
+			addIndex(context, IIndexConstants.CSS_IDENTIFIER, match.substring(1));
+		}
 	}
 
 	private boolean isColor(String value)
@@ -92,7 +105,7 @@ public class HAMLandSassIndexer extends BuildParticipant
 			return true;
 		if (value.startsWith("#") && (value.length() == 4 || value.length() == 7))
 		{
-			return COLOR_PATTERN.matcher(value).find();
+			return SASS_COLOR_PATTERN.matcher(value).find();
 		}
 		return false;
 	}
@@ -108,7 +121,7 @@ public class HAMLandSassIndexer extends BuildParticipant
 	{
 		String src = context.getContents();
 		// Index colors
-		Matcher m = COLOR_PATTERN.matcher(src);
+		Matcher m = SASS_COLOR_PATTERN.matcher(src);
 		while (m.find())
 		{
 			String match = m.group();
@@ -117,7 +130,7 @@ public class HAMLandSassIndexer extends BuildParticipant
 			addIndex(context, IIndexConstants.CSS_COLOR, CSSColors.to6CharHexWithLeadingHash(match));
 		}
 		// Index classes
-		m = CLASS_PATTERN.matcher(src);
+		m = SASS_CLASS_PATTERN.matcher(src);
 		while (m.find())
 		{
 			String match = m.group(1);
@@ -126,7 +139,7 @@ public class HAMLandSassIndexer extends BuildParticipant
 			addIndex(context, IIndexConstants.CSS_CLASS, match.substring(1));
 		}
 		// Index IDs
-		m = ID_PATTERN.matcher(src);
+		m = SASS_ID_PATTERN.matcher(src);
 		while (m.find())
 		{
 			String match = m.group(1);
@@ -166,17 +179,27 @@ public class HAMLandSassIndexer extends BuildParticipant
 
 	public static void main(String[] args)
 	{
-		Matcher m = COLOR_PATTERN.matcher("  color: #abcdef\n    color: #123");
+		// SASS
+		Matcher m = SASS_COLOR_PATTERN.matcher("  color: #abcdef\n    color: #123");
 		while (m.find())
-			System.out.println("Color Match: '" + m.group() + "'");
+			System.out.println("Sass Color Match: '" + m.group() + "'");
 
-		m = CLASS_PATTERN.matcher(".chris\n  .red\n    color: red");
+		m = SASS_CLASS_PATTERN.matcher(".chris\n  .red\n    color: red");
 		while (m.find())
-			System.out.println("Class Match: '" + m.group(1) + "'");
+			System.out.println("Sass Class Match: '" + m.group(1) + "'");
 
-		m = ID_PATTERN.matcher("#chris\n  color: red\n.users #userTab\n  color: #abc\ndiv\n  width: 42px");
+		m = SASS_ID_PATTERN.matcher("#chris\n  color: red\n.users #userTab\n  color: #abc\ndiv\n  width: 42px");
 		while (m.find())
-			System.out.println("ID Match: '" + m.group(1) + "'");
+			System.out.println("Sass ID Match: '" + m.group(1) + "'");
+		
+		// HAML
+		m = HAML_CLASS_PATTERN.matcher(".content\n  .articles\n    .article.title Doogie Howser Comes Out\n    .article.date 2006-11-05\n");
+		while (m.find())
+			System.out.println("HAML Class Match: '" + m.group(1) + "'");
+
+		m = HAML_ID_PATTERN.matcher("%div#things\n  %span#rice Chicken Fried\n  %p.beans{ :food => 'true' } The magical fruit\n  %h1.class.otherclass#id La La La\n");
+		while (m.find())
+			System.out.println("HAML ID Match: '" + m.group(1) + "'");
 	}
 
 }
