@@ -79,6 +79,7 @@ public class SassContentAssistantProcessor implements IContentAssistProcessor
 			}
 			else if (prefix != null && prefix.startsWith("#"))
 			{
+				// FIXME We may be completing a color hex value! This happens if preceding text is "color: " or '!var_name = '
 				res.addAll(getHTMLIDCompletions(offset, prefix));
 			}
 			else if (region != null && region.getType().equals(SassPartitionScanner.SASS_ATTRIBUTE))

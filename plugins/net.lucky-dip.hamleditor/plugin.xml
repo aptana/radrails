@@ -123,4 +123,11 @@
           class="net.lucky_dip.hamleditor.preferences.PreferenceInitializer">
     </initializer>
  </extension>
+ <extension
+       point="com.aptana.ide.core.buildParticipants">
+    <buildParticipant
+          class="com.aptana.ide.editors.haml.internal.HAMLandSassIndexer"
+          priority="50">
+    </buildParticipant>
+ </extension>
 </plugin>
