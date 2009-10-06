@@ -1,7 +1,6 @@
 package org.radrails.rails.internal.ui;
 
 import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -12,7 +11,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.ui.progress.UIJob;
@@ -100,7 +98,7 @@ public class RailsProjectListener implements IResourceChangeListener
 			final IProject project = rootFolder.getProject();
 			if (RailsPlugin.hasRailsNature(project))
 				return;
-			if (hasRailsLayout(rootFolder))
+			if (RailsPlugin.looksLikeRailsRoot(rootFolder))
 			{
 				Job job = new RailsNatureAdder(project);
 				job.schedule(500);
@@ -113,25 +111,6 @@ public class RailsProjectListener implements IResourceChangeListener
 			checkDelta(children[i]);
 		}
 
-	}
-
-	private boolean hasRailsLayout(final IContainer folder)
-	{
-		return folderExists(folder, "app") && folderExists(folder, "script") && folderExists(folder, "config")
-				&& folderExists(folder, "public") && fileExists(folder, "config/boot.rb")
-				&& fileExists(folder, "config/environment.rb") && fileExists(folder, "script/generate");
-	}
-
-	private boolean folderExists(IContainer rootFolder, String name)
-	{
-		IFolder folder = rootFolder.getFolder(new Path(name));
-		return folder != null && folder.exists();
-	}
-
-	private boolean fileExists(IContainer rootFolder, String name)
-	{
-		IFile file = rootFolder.getFile(new Path(name));
-		return file != null && file.exists();
 	}
 
 	private static class RailsNatureAdder extends Job

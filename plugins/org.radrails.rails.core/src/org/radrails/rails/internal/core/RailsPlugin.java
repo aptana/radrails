@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -283,33 +284,32 @@ public class RailsPlugin extends Plugin
 			return true;
 		}
 
-		private static boolean looksLikeRailsRoot(IContainer folder)
-		{
-			if (folder == null)
-				return false;
-			return folderExists(folder, new String[] { "app", "config", "public", "db" });
-		}
-
 		public IPath getRailsRoot()
 		{
 			return path;
 		}
 
-		private static boolean folderExists(IContainer folder, String[] strings)
-		{
-			for (int i = 0; i < strings.length; i++)
-			{
-				if (!folderExists(folder, strings[i]))
-					return false;
-			}
-			return true;
-		}
+	}
 
-		private static boolean folderExists(IContainer folder, String name)
-		{
-			IFolder test = folder.getFolder(new Path(name));
-			return test.exists();
-		}
+	public static boolean looksLikeRailsRoot(IContainer folder)
+	{
+		if (folder == null)
+			return false;
+		return folderExists(folder, "app") && folderExists(folder, "script") && folderExists(folder, "config")
+				&& folderExists(folder, "public") && fileExists(folder, "config/boot.rb")
+				&& fileExists(folder, "config/environment.rb") && fileExists(folder, "script/generate");
+	}
+
+	private static boolean folderExists(IContainer rootFolder, String name)
+	{
+		IFolder folder = rootFolder.getFolder(new Path(name));
+		return folder != null && folder.exists();
+	}
+
+	private static boolean fileExists(IContainer rootFolder, String name)
+	{
+		IFile file = rootFolder.getFile(new Path(name));
+		return file != null && file.exists();
 	}
 
 	/**
@@ -473,10 +473,10 @@ public class RailsPlugin extends Plugin
 		}
 		return path;
 	}
-	
+
 	/**
-	 * Searches for the bin script in the interpreter's bin directory, In the gem install paths' bin 
-	 * directories, in the bin directory of the related gem, and lastly in the System PATH.
+	 * Searches for the bin script in the interpreter's bin directory, In the gem install paths' bin directories, in the
+	 * bin directory of the related gem, and lastly in the System PATH.
 	 * 
 	 * @param command
 	 * @param relatedGemName
@@ -626,7 +626,7 @@ public class RailsPlugin extends Plugin
 	}
 
 	public static List<String> getEligibleDatabaseNamesforCurrentVM()
-	{		
+	{
 		// FIXME What about the strings in IDatabaseConstants?!
 		List<String> dbNames = new ArrayList<String>();
 		dbNames.add("ibm_db");
@@ -635,7 +635,7 @@ public class RailsPlugin extends Plugin
 			dbNames.add("derby");
 		}
 		dbNames.add("sqlite3");
-		dbNames.add("sqlite2");	
+		dbNames.add("sqlite2");
 		dbNames.add("frontbase");
 		dbNames.add("mysql");
 		dbNames.add("oracle");
