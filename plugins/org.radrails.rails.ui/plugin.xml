@@ -31,19 +31,21 @@
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension targetID="org.radrails.rails.ui.PerspectiveRails">      
-         <perspectiveShortcut id="com.aptana.ide.db.PerspectiveFactory"/>     
+      <perspectiveExtension targetID="org.radrails.rails.ui.PerspectiveRails">    
          <perspectiveShortcut id="com.aptana.ide.js.ui.WebPerspective"/>  
          <perspectiveShortcut id="org.eclipse.debug.ui.DebugPerspective"/>  
          <actionSet id="org.radrails.rails.ui.railsActions"/>
-         <newWizardShortcut id="org.radrails.rails.ui.wizards.NewWizardProject"/>
-         <newWizardShortcut id="org.eclipse.ui.wizards.new.file"/>
-         <newWizardShortcut id="org.eclipse.ui.wizards.new.folder"/>
+         <actionSet id="org.rubypeople.rdt.ui.rubyActionSet"/>
+         <actionSet id="org.radrails.rails.ui.RailsElementCreationActionSet"/>         
+         <newWizardShortcut id="org.radrails.rails.ui.wizards.NewWizardProject"/>         
          <newWizardShortcut id="org.rubypeople.rdt.ui.wizards.RubyNewFileWizard"/>
+         <newWizardShortcut id="org.rubypeople.rdt.ui.wizards.RubyNewClassWizard"/>
+         <newWizardShortcut id="org.rubypeople.rdt.testunit.wizards.RubyNewTestCaseWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.HtmlNewWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.CssNewWizard"/>
          <newWizardShortcut id="com.aptana.ide.editors.wizards.JsNewWizard"/>
-         <newWizardShortcut id="com.aptana.ide.editors.wizards.file.RubyUntitledWizard"/>
+         <newWizardShortcut id="org.eclipse.ui.wizards.new.file"/>
+         <newWizardShortcut id="org.eclipse.ui.wizards.new.folder"/>
          <viewShortcut id="org.rubypeople.rdt.testunit.views.TestUnitView"/>
          <viewShortcut id="org.rubypeople.rdt.ui.RubyExplorer"/>
          <viewShortcut id="org.radrails.rails.ui.ViewRailsPlugins"/>
@@ -59,8 +61,6 @@
          <viewShortcut id="org.rubypeople.rdt.ui.views.RIView"/> 
 		 <viewShortcut id="org.rubypeople.rdt.ui.RDocView"/>
          <showInPart id="org.rubypeople.rdt.ui.RubyExplorer"/>
-         <actionSet id="org.rubypeople.rdt.ui.rubyActionSet"/>
-         <actionSet id="org.radrails.rails.ui.RailsElementCreationActionSet"/>
          <view
                id="com.aptana.ide.documentation.TutorialView"
                minimized="false"
