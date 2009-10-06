@@ -62,10 +62,6 @@
          <actionSet id="org.rubypeople.rdt.ui.rubyActionSet"/>
          <actionSet id="org.radrails.rails.ui.RailsElementCreationActionSet"/>
          <view
-               id="org.rubypeople.rdt.ui.RubyExplorer"
-               relationship="left"
-               visible="true"/>
-         <view
                id="com.aptana.ide.documentation.TutorialView"
                minimized="false"
                relationship="stack"

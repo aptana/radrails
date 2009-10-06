@@ -20,12 +20,11 @@ import org.rubypeople.rdt.testunit.ITestUnitConstants;
 import org.rubypeople.rdt.ui.IRubyConstants;
 import org.rubypeople.rdt.ui.RubyUI;
 
-import com.aptana.rdt.rake.IRakeUIConstants;
-
 /**
  * Factory for the Rails perspective.
  * 
  * @author mkent
+ * @author cwilliams
  * 
  */
 public class RailsPerspectiveFactory implements IPerspectiveFactory {
@@ -43,9 +42,7 @@ public class RailsPerspectiveFactory implements IPerspectiveFactory {
 		
 		// Bottom right: Console, Servers, RubyGems, Rake, Problems, Tasks, Generators, Rails Plugins view
 		IPlaceholderFolderLayout consoleArea = layout.createPlaceholderFolder("consoleArea", IPageLayout.BOTTOM, 0.75f, editorArea);
-		consoleArea.addPlaceholder(IRailsUIConstants.ID_SERVERS_VIEW);
 		consoleArea.addPlaceholder(IRailsUIConstants.ID_GENERATORS_VIEW);
-		consoleArea.addPlaceholder(IRakeUIConstants.ID_RAKE_VIEW);		
 		consoleArea.addPlaceholder(IRailsUIConstants.ID_RAILS_PLUGINS_VIEW);	
 		consoleArea.addPlaceholder(IConsoleConstants.ID_CONSOLE_VIEW);
 		consoleArea.addPlaceholder(IPageLayout.ID_PROBLEM_VIEW);
