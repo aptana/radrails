@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <description url="http://download.eclipse.org/tools/gef/updates/releases/site.xml">
+	To install these plugins, point Eclipse at this site. 
+	</description>
+	<category-def label="GEF SDK 3.4.2" name="GEF SDK 3.4.2">
+		<description>
+GEF SDK 3.4.2: contains runtime, source, and documentation.
+		</description>
+	</category-def>
+	<feature id="org.eclipse.gef" version="3.4.2.v20090218-1145-67728084A56B4I233613552" url="features/org.eclipse.gef_3.4.2.v20090218-1145-67728084A56B4I233613552.jar" patch="false">
+		<category name="GEF SDK 3.4.2"/>
+	</feature>
+</site>

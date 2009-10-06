@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.radrails.rails.tests"
+      label="RadRails Unit Tests"
+      version="0.0.0"
+      provider-name="Aptana, Inc.">
+   <install-handler/>
+
+   <description url="[Enter Feature URL here.]">
+      [Enter Feature Description here.]
+   </description>
+
+   <copyright url="[Enter Copyright URL here.]">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="[Enter License URL here.]">
+      [Enter License Description here.]
+   </license>
+
+   <requires>
+      <import plugin="org.junit"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.core.runtime" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.rubypeople.rdt.launching" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.radrails.rails.ui" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="com.aptana.radrails.cloud"/>
+      <import plugin="org.eclipse.jface"/>
+      <import plugin="org.rubypeople.eclipse.shams"/>
+   </requires>
+
+   <plugin
+         id="com.aptana.radrails.cloud.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.radrails.rails.ui.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.radrails.rails.core.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.radrails.rails.server.core.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.radrails.rails.server.ui.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
