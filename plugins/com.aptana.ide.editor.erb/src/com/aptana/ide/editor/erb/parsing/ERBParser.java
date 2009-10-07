@@ -69,10 +69,10 @@ import com.aptana.ide.parsing.nodes.IParseNode;
  */
 public class ERBParser extends UnifiedParser
 {
-	
+
 	private LexemeList lexemeList;
 	private int index;
-	
+
 	/**
 	 * ERBParser
 	 * 
@@ -132,29 +132,40 @@ public class ERBParser extends UnifiedParser
 
 		String source = lexer.getSource();
 		source = source.substring(lexer.getCurrentOffset(), lexer.getEOFOffset());
-		
-		// Break into partitions, then break each partition into tokens
-		try {
-			
-			lexemeList = new LexemeList();
-			index = 0;
-			int start = lexer.getCurrentOffset();
-			IDocument document = new Document(source);			
-			MergingPartitionScanner scanner = new MergingPartitionScanner();
-			scanner.setRange(document, 0, source.length());
-			IToken token1 = scanner.nextToken();
-			while (!token1.isEOF()) {
-				int scannerOffset = scanner.getTokenOffset();
-				int scannerLength = scanner.getTokenLength();			
-				String partitionName = (String) token1.getData();				
-				scanPartition(document, partitionName, scannerOffset, scannerLength, start);				
-				token1 = scanner.nextToken();
-			}			
-		} catch (BadLocationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
-		
+		lexemeList = new LexemeList();
+		index = 0;
+
+		if (source.startsWith("#"))
+		{
+			TokenList tl = LanguageRegistry.getTokenList(ERBMimeType.MimeType);
+			Lexeme lexeme = new Lexeme(tl.get(RubyTokenTypes.SINGLE_LINE_COMMENT), source, lexer.getCurrentOffset());
+			lexemeList.add(lexeme);
+		}
+		else
+		{
+			// Break into partitions, then break each partition into tokens
+			try
+			{
+				int start = lexer.getCurrentOffset();
+				IDocument document = new Document(source);
+				MergingPartitionScanner scanner = new MergingPartitionScanner();
+				scanner.setRange(document, 0, source.length());
+				IToken token1 = scanner.nextToken();
+				while (!token1.isEOF())
+				{
+					int scannerOffset = scanner.getTokenOffset();
+					int scannerLength = scanner.getTokenLength();
+					String partitionName = (String) token1.getData();
+					scanPartition(document, partitionName, scannerOffset, scannerLength, start);
+					token1 = scanner.nextToken();
+				}
+			}
+			catch (BadLocationException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		this.advance();
 
 		while (this.isEOS() == false)
@@ -162,8 +173,10 @@ public class ERBParser extends UnifiedParser
 			this.advance();
 		}
 	}
-	
-	private void scanPartition(IDocument document, String partitionName, int startOffset, int length, int offsetToAddToTokens) throws BadLocationException {
+
+	private void scanPartition(IDocument document, String partitionName, int startOffset, int length,
+			int offsetToAddToTokens) throws BadLocationException
+	{
 		TokenList tl = LanguageRegistry.getTokenList(ERBMimeType.MimeType);
 		ITokenScanner scanner2 = getScanner(partitionName);
 		scanner2.setRange(document, startOffset, length);
@@ -176,45 +189,55 @@ public class ERBParser extends UnifiedParser
 			int jRubyType = integer.intValue();
 			int ourType = RubyTokenTypes.getOurTokenType(jRubyType);
 			if (ourType > -1)
-			{									
-				Lexeme lexeme = new Lexeme(tl.get(ourType), document.get(scannerOffset, scannerLength), scannerOffset + offsetToAddToTokens);
+			{
+				Lexeme lexeme = new Lexeme(tl.get(ourType), document.get(scannerOffset, scannerLength), scannerOffset
+						+ offsetToAddToTokens);
 				lexemeList.add(lexeme);
 			}
-//			else
-//			{
-//				RubyPlugin.log("No token type for JRuby token " + jRubyType);
-//			}
+			// else
+			// {
+			// RubyPlugin.log("No token type for JRuby token " + jRubyType);
+			// }
 			token = scanner2.nextToken();
-		}		
+		}
 	}
 
-	private ITokenScanner getScanner(String partitionName) {		
-		if (partitionName.equals(IRubyPartitions.RUBY_DEFAULT)) {
+	private ITokenScanner getScanner(String partitionName)
+	{
+		if (partitionName.equals(IRubyPartitions.RUBY_DEFAULT))
+		{
 			return new RubyTokenScanner();
 		}
 		IColorManager colorManager = RubyPlugin.getDefault().getRubyTextTools().getColorManager();
 		IPreferenceStore store = RubyPlugin.getDefault().getPreferenceStore();
-		if (partitionName.equals(IRubyPartitions.RUBY_MULTI_LINE_COMMENT)) {
+		if (partitionName.equals(IRubyPartitions.RUBY_MULTI_LINE_COMMENT))
+		{
 			return new AptanaRubyCommentScanner(colorManager, store, IRubyColorConstants.RUBY_MULTI_LINE_COMMENT);
 		}
-		if (partitionName.equals(IRubyPartitions.RUBY_SINGLE_LINE_COMMENT)) {
+		if (partitionName.equals(IRubyPartitions.RUBY_SINGLE_LINE_COMMENT))
+		{
 			return new AptanaRubyCommentScanner(colorManager, store, IRubyColorConstants.RUBY_SINGLE_LINE_COMMENT);
-		}		
-		if (partitionName.equals(IRubyPartitions.RUBY_COMMAND)) {
+		}
+		if (partitionName.equals(IRubyPartitions.RUBY_COMMAND))
+		{
 			return new AptanaSingleTokenRubyScanner(colorManager, store, IRubyColorConstants.RUBY_COMMAND);
 		}
-		if (partitionName.equals(IRubyPartitions.RUBY_STRING)) {
+		if (partitionName.equals(IRubyPartitions.RUBY_STRING))
+		{
 			return new AptanaSingleTokenRubyScanner(colorManager, store, IRubyColorConstants.RUBY_STRING);
 		}
-		if (partitionName.equals(IRubyPartitions.RUBY_REGULAR_EXPRESSION)) {
+		if (partitionName.equals(IRubyPartitions.RUBY_REGULAR_EXPRESSION))
+		{
 			return new AptanaSingleTokenRubyScanner(colorManager, store, IRubyColorConstants.RUBY_REGEXP);
 		}
 		return null;
 	}
 
 	@Override
-	protected Lexeme getNextLexemeInLanguage() throws LexerException {		
-		if (index >= lexemeList.size()) {
+	protected Lexeme getNextLexemeInLanguage() throws LexerException
+	{
+		if (index >= lexemeList.size())
+		{
 			getLexer().setCurrentOffset(getLexer().getEOFOffset()); // force it to report true to isEOS()
 			return null;
 		}
