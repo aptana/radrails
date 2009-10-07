@@ -17,7 +17,6 @@ Require-Bundle: org.eclipse.core.runtime,
  com.aptana.rdt;bundle-version="1.2.0",
  com.aptana.ide.core;bundle-version="1.2.0",
  com.aptana.ide.core.ui;bundle-version="1.2.0",
- com.aptana.ide.syncing;bundle-version="1.2.0",
  com.aptana.ide.server.cloud;bundle-version="[1.2.4,3.0.0)";resolution:=optional,
  org.radrails.rails.core;bundle-version="1.1.0",
  org.radrails.rails.ui;bundle-version="1.2.0"
