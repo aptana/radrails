@@ -73,7 +73,6 @@
       <import plugin="com.aptana.rdt" version="1.2.0" match="greaterOrEqual"/>
       <import plugin="com.aptana.ide.core" version="1.2.0" match="greaterOrEqual"/>
       <import plugin="com.aptana.ide.core.ui" version="1.2.0" match="greaterOrEqual"/>
-      <import plugin="com.aptana.ide.syncing" version="1.2.0" match="greaterOrEqual"/>
       <import plugin="org.radrails.rails.core" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.radrails.rails.ui" version="1.2.0" match="greaterOrEqual"/>
    </requires>
