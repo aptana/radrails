@@ -113,13 +113,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.aptana.ide.editor.yml"
-         download-size="30"
-         install-size="68"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.aptana.radrails.sqlite3.win32"
          os="win32"
          download-size="419"
