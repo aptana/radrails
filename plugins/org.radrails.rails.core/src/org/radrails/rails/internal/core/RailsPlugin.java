@@ -320,7 +320,8 @@ public class RailsPlugin extends Plugin
 	 */
 	public static String getRailsVersion(IProject project)
 	{
-		// TODO Cache the result based on file modification timestamp
+		if (project == null)
+			return null;
 		IPath railsRoot = RailsPlugin.findRailsRoot(project);
 		if (railsRoot == null || railsRoot.segmentCount() == 0)
 		{
@@ -330,6 +331,8 @@ public class RailsPlugin extends Plugin
 		{
 			railsRoot = project.getLocation().append(railsRoot);
 		}
+		if (railsRoot == null)
+			return null;
 		File file = railsRoot.append("config").append("environment.rb").toFile();
 		if (file == null || !file.exists() || !file.isFile())
 			return null;

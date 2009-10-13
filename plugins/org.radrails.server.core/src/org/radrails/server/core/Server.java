@@ -886,10 +886,11 @@ public class Server extends Observable
 
 	private boolean doIsOldRails(String version)
 	{
+		// Assume we're newer than 1.1.3 by default now. Rails is way newer for most people
 		try
 		{
 			if (version == null)
-				return true;
+				return false;
 			String[] numbers = version.split("\\.");
 			if (numbers == null || numbers.length == 0)
 				return true;
@@ -916,7 +917,7 @@ public class Server extends Observable
 		{
 			ServerLog.log(e);
 		}
-		return true;
+		return false;
 	}
 
 	private String getMongrelRailsScript()
