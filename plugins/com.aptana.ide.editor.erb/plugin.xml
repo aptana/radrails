@@ -279,4 +279,12 @@
            id="com.aptana.ide.editor.erb.codeResolver">
      </codeResolver>
   </extension>
+  <extension
+        point="org.eclipse.ui.contexts">
+     <context
+           id="com.aptana.ide.editor.erb.rhtmlEditorScope"
+           name="ERB Editor"
+           parentId="com.aptana.ide.editors.UnifiedEditorsScope">
+     </context>
+  </extension>
 </plugin>
