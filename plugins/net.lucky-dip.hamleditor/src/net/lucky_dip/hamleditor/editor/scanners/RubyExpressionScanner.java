@@ -25,7 +25,7 @@ public class RubyExpressionScanner extends RubyColoringTokenScanner {
 		super(RubyPlugin.getDefault().getRubyTextTools().getColorManager(),
 				RubyPlugin.getDefault().getPreferenceStore());
 
-		bgColour = HamlUIColorProvider.getInstance().getColorFromPreference(
+		bgColour = HamlUIColorProvider.getInstance().getColor(
 				IHamlEditorColorConstants.HAML_RUBY_BACKGROUND);
 	}
 	

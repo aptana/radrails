@@ -9,13 +9,11 @@
 package net.lucky_dip.hamleditor.editor;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import net.lucky_dip.hamleditor.Activator;
 
 import org.eclipse.jface.preference.PreferenceConverter;
-import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Display;
@@ -24,23 +22,27 @@ import org.eclipse.swt.widgets.Display;
  * Color provider for rails ui plugin.
  * 
  * @author mkent
- * 
+ * @author cwilliams
  */
-public class HamlUIColorProvider implements IColorManager{
+public class HamlUIColorProvider implements IColorManager
+{
 
 	private static HamlUIColorProvider instance;
 
-	private Map colorMap;
+	private Map<RGB, Color> colorMap;
 
-	private HamlUIColorProvider() {
-		colorMap = new HashMap();
+	private HamlUIColorProvider()
+	{
+		colorMap = new HashMap<RGB, Color>();
 	}
 
 	/**
 	 * @return the singleton instance of the color provider
 	 */
-	public static HamlUIColorProvider getInstance() {
-		if (instance == null) {
+	public static HamlUIColorProvider getInstance()
+	{
+		if (instance == null)
+		{
 			instance = new HamlUIColorProvider();
 		}
 		return instance;
@@ -49,10 +51,10 @@ public class HamlUIColorProvider implements IColorManager{
 	/**
 	 * Dispose the color resources held by the provider.
 	 */
-	public void dispose() {
-		Iterator i = colorMap.values().iterator();
-		while (i.hasNext())
-			((Color) i.next()).dispose();
+	public void dispose()
+	{
+		for (Color color : colorMap.values())
+			color.dispose();
 	}
 
 	/**
@@ -62,9 +64,11 @@ public class HamlUIColorProvider implements IColorManager{
 	 *            the <code>RGB</code> value of the color
 	 * @return a <code>Color</code> object
 	 */
-	public Color getColor(RGB rgb) {
+	public Color getColor(RGB rgb)
+	{
 		Color color = (Color) colorMap.get(rgb);
-		if (color == null) {
+		if (color == null)
+		{
 			color = new Color(Display.getCurrent(), rgb);
 			colorMap.put(rgb, color);
 		}
@@ -72,25 +76,14 @@ public class HamlUIColorProvider implements IColorManager{
 	}
 
 	/**
-	 * Creates a <code>Color</code> from the given string RGB value.
-	 * 
-	 * @param rgb
-	 *            the string RGB value
-	 * @return a <code>Color</code> object
-	 */
-	public Color getColor(String rgb) {
-		return getColor(StringConverter.asRGB(rgb));
-	}
-
-	/**
-	 * Creates a <code>Color</code> from a preference located in the
-	 * <code>RailsUIPlugin</code> preference store.
+	 * Creates a <code>Color</code> from a preference located in the <code>RailsUIPlugin</code> preference store.
 	 * 
 	 * @param prefId
 	 *            the identifier of the preference
 	 * @return a <code>Color</code> object
 	 */
-	public Color getColorFromPreference(String prefId) {
+	public Color getColor(String prefId)
+	{
 		RGB rgb = PreferenceConverter.getColor(Activator.getDefault().getPreferenceStore(), prefId);
 		return getColor(rgb);
 	}
