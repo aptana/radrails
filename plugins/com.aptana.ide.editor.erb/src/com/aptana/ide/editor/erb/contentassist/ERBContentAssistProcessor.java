@@ -127,7 +127,7 @@ public class ERBContentAssistProcessor extends TemplateCompletionProcessor imple
 
 	private static final String PERFORMANCE_EVENT = "com.aptana.ide.editor.erb/perf/content_assist";
 
-	private static final boolean MEASURE_PERFORMANCE = PerformanceStats.isEnabled(PERFORMANCE_EVENT);
+	private static final boolean MEASURE_PERFORMANCE = true;
 
 	private static final String HELPERS = "helpers";
 	private static final String CONTROLLERS = "controllers";
@@ -773,7 +773,7 @@ public class ERBContentAssistProcessor extends TemplateCompletionProcessor imple
 				return new ArrayList<ICompletionProposal>();
 			ISourceFolder helperFolder = root.getSourceFolder(new String[] { "action_view", HELPERS });
 			long sourceFolder = System.currentTimeMillis();
-			List<SearchMatch> matches = search(helperFolder, IRubyElement.METHOD, IRubySearchConstants.DECLARATIONS);
+			List<SearchMatch> matches = search(helperFolder, "*Helper.*", IRubyElement.METHOD, IRubySearchConstants.DECLARATIONS);
 			long finishedSearch = System.currentTimeMillis();
 			for (SearchMatch match : matches)
 			{
@@ -783,7 +783,7 @@ public class ERBContentAssistProcessor extends TemplateCompletionProcessor imple
 					IMethod method = (IMethod) element;
 					try
 					{
-						if (method.isPublic() && (method.getDeclaringType().getElementName().endsWith("Helper")))
+						if (method.isPublic())
 						{
 							proposals.add(new CachedProposal(element));
 						}
