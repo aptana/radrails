@@ -9,6 +9,10 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.radrails.rails.internal.core.RailsPlugin;
+import org.rubypeople.rdt.core.IRubyScript;
+import org.rubypeople.rdt.core.IType;
+import org.rubypeople.rdt.core.RubyCore;
+import org.rubypeople.rdt.core.RubyModelException;
 
 public abstract class RailsConventions {
 		
@@ -126,6 +130,27 @@ public abstract class RailsConventions {
 		IFile file = viewFile.getProject().getFile(controllerPath);
 		if (!file.exists()) return null;
 		return file;
+	}
+	
+	public static IType getControllerTypeFromViewFile(IFile viewFile) {		
+		try
+		{
+			IFile controllerFile = RailsConventions.getControllerFromView(viewFile);
+			if (controllerFile == null)
+				return null;
+			IRubyScript controllerScript = RubyCore.create(controllerFile);
+			if (controllerScript == null)
+				return null;
+			IType[] types = controllerScript.getTypes();
+			if (types == null || types.length == 0)
+				return null;
+			return types[0];
+		}
+		catch (RubyModelException e)
+		{
+			RailsLog.logError(e.getMessage(), e);
+		}
+		return null;
 	}
 
 	private static IPath buildController(IPath appFolder, String controllerName) {

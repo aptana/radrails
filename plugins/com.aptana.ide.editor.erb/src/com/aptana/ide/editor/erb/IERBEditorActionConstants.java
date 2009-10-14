@@ -49,4 +49,6 @@ public interface IERBEditorActionConstants
 	
 	public static final String ERB_EDITOR_CONTEXT = "com.aptana.ide.editor.erb.rhtmlEditorScope";
 
+	public static final String OPEN_EDITOR = "com.aptana.ide.editor.erb.open.editor";
+
 }

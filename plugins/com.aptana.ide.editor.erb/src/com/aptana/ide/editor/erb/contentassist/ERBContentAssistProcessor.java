@@ -697,24 +697,7 @@ public class ERBContentAssistProcessor extends TemplateCompletionProcessor imple
 
 	private IType getController()
 	{
-		try
-		{
-			IFile controllerFile = RailsConventions.getControllerFromView(getViewFile());
-			if (controllerFile == null)
-				return null;
-			IRubyScript controllerScript = RubyCore.create(controllerFile);
-			if (controllerScript == null)
-				return null;
-			IType[] types = controllerScript.getTypes();
-			if (types == null || types.length == 0)
-				return null;
-			return types[0];
-		}
-		catch (RubyModelException e)
-		{
-			IdeLog.logError(ERBPlugin.getDefault(), e.getMessage(), e);
-		}
-		return null;
+		return RailsConventions.getControllerTypeFromViewFile(getViewFile());
 	}
 
 	private IRubyProject getRubyProject()

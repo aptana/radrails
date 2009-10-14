@@ -34,8 +34,6 @@
  */
 package com.aptana.ide.editor.erb;
 
-import org.eclipse.jface.preference.IPreferenceStore;
-
 import com.aptana.ide.editor.html.HTMLEditor;
 import com.aptana.ide.editor.html.HTMLSourceEditor;
 
@@ -54,11 +52,4 @@ public class ERBEditor extends HTMLEditor
 		return this.sourceEditor;
 	}
 
-//	/**
-//	 * @see com.aptana.ide.editor.html.HTMLEditor#getPreferenceStore()
-//	 */
-//	public IPreferenceStore getPreferenceStore()
-//	{
-//		return ERBPlugin.getDefault().getPreferenceStore();
-//	}
 }

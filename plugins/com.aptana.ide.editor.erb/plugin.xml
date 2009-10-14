@@ -192,6 +192,11 @@
             sequence="CTRL+SPACE"
             platform="carbon"> 
       </key>
+            <key
+            sequence="F3"
+            contextId="com.aptana.ide.editor.erb.rhtmlEditorScope" 
+            commandId="com.aptana.ide.editor.erb.open.editor"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
     </extension>
 	<extension point="com.aptana.ide.editors.pairfinder">
 		<pairFinder
@@ -210,6 +215,12 @@
             description="%ActionDefinition.contentAssist.description"
             id="com.aptana.ide.editor.erb.content.assist.proposals"
             name="%ActionDefinition.contentAssist.name">
+      </command>
+            <command
+            categoryId="org.eclipse.ui.category.navigate"
+            description="%ActionDefinition.openEditor.description"
+            id="com.aptana.ide.editor.erb.open.editor"
+            name="%ActionDefinition.openEditor.name">
       </command>      
 	</extension>
 	<extension point="org.eclipse.ui.perspectiveExtensions">
@@ -233,4 +244,39 @@
           class="com.aptana.ide.editor.erb.ERBTabAdder">
     </tab>
  </extension>
+ <extension
+       point="org.eclipse.ui.actionSets">
+     <actionSet
+            label="%OpenActionSet.label"
+            description="%OpenActionSet.description"
+            visible="false"
+            id="com.aptana.ide.editor.erb.A_OpenActionSet">
+      
+          <action
+               definitionId="com.aptana.ide.editor.erb.open.editor"
+               label="%OpenAction.label"
+               tooltip="%OpenAction.tooltip"
+               retarget="true"
+               menubarPath="navigate/open.ext"
+               allowLabelUpdate="true"
+               id="com.aptana.ide.editor.erb.actions.Open">
+         </action>
+       </actionSet>
+ </extension>
+  <extension
+         point="org.eclipse.ui.actionSetPartAssociations">
+      <actionSetPartAssociation
+            targetID="com.aptana.ide.editor.erb.A_OpenActionSet">
+         <part
+               id="com.aptana.ide.editors.ERBEditor">
+         </part>
+      </actionSetPartAssociation>
+      </extension>
+  <extension
+        point="org.rubypeople.rdt.core.codeResolver">
+     <codeResolver
+           class="com.aptana.ide.editor.erb.ERBCodeResolver"
+           id="com.aptana.ide.editor.erb.codeResolver">
+     </codeResolver>
+  </extension>
 </plugin>

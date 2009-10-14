@@ -43,11 +43,12 @@ import org.eclipse.jface.text.ITextViewerExtension;
 import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.editors.text.IEncodingSupport;
 import org.eclipse.ui.navigator.ICommonMenuConstants;
 import org.eclipse.ui.texteditor.ContentAssistAction;
 import org.rubypeople.rdt.internal.debug.ui.actions.ToggleBreakpointAdapter;
 import org.rubypeople.rdt.internal.ui.RubyPlugin;
+import org.rubypeople.rdt.ui.actions.OpenAction;
+import org.rubypeople.rdt.ui.actions.OpenEditorActionGroup;
 
 import com.aptana.ide.editor.erb.actions.ExtractPartialAction;
 import com.aptana.ide.editor.html.HTMLSourceEditor;
@@ -59,6 +60,8 @@ import com.aptana.ide.editors.unified.IUnifiedEditorContributor;
  */
 public class ERBSourceEditor extends HTMLSourceEditor
 {
+
+	private OpenEditorActionGroup oeg;
 
 	/**
 	 * ERB source editor constructor
@@ -87,6 +90,10 @@ public class ERBSourceEditor extends HTMLSourceEditor
 		IEditorInput input = getEditorInput();
 		if (input != null)
 			RubyPlugin.getDefault().getRubyDocumentProvider().disconnect(input);
+
+		if (oeg != null)
+			oeg.dispose();
+		oeg = null;
 
 		super.dispose();
 	}
@@ -132,7 +139,11 @@ public class ERBSourceEditor extends HTMLSourceEditor
 	{
 		super.createActions();
 
-		Action action = new ExtractPartialAction(this);
+		Action action = new OpenAction(this);
+		action.setActionDefinitionId(IERBEditorActionConstants.OPEN_EDITOR);
+		setAction(IERBEditorActionConstants.OPEN_EDITOR, action); //$NON-NLS-1$
+
+		action = new ExtractPartialAction(this);
 		action.setActionDefinitionId(IERBEditorActionConstants.EXTRACT_PARTIAL_ACTION);
 		setAction(IERBEditorActionConstants.EXTRACT_PARTIAL_ACTION, action);
 		// PlatformUI.getWorkbench().getHelpSystem().setHelp(action, IERBHelpContextIds.EXTRACT_PARTIAL_ACTION);
@@ -148,8 +159,11 @@ public class ERBSourceEditor extends HTMLSourceEditor
 		super.editorContextMenuAboutToShow(menu);
 		IAction action = getAction(IERBEditorActionConstants.EXTRACT_PARTIAL_ACTION);
 		menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, action);
+
+		action = getAction(IERBEditorActionConstants.OPEN_EDITOR);
+		menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN, action);
 	}
-	
+
 	@Override
 	public Object getAdapter(Class adapter)
 	{
