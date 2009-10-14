@@ -2,7 +2,7 @@
 <feature
       id="org.radrails.rails_feature"
       label="%featureName"
-      version="1.5.0.qualifier"
+      version="2.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.radrails.rails.ui">
 
@@ -38,4 +38,5 @@
          version="0.0.0"
          name="HAML and Sass Editors"
          optional="true"/>
+
 </feature>
