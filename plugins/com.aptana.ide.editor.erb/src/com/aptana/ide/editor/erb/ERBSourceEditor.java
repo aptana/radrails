@@ -102,8 +102,7 @@ public class ERBSourceEditor extends HTMLSourceEditor
 	protected void initializeKeyBindingScopes()
 	{
 		super.initializeKeyBindingScopes();
-		setKeyBindingScopes(new String[] {
-				"com.aptana.ide.editors.UnifiedEditorsScope", IERBEditorActionConstants.ERB_EDITOR_CONTEXT }); //$NON-NLS-1$ //$NON-NLS-2$
+		setKeyBindingScopes(new String[] { IERBEditorActionConstants.ERB_EDITOR_CONTEXT });
 	}
 
 	/**
