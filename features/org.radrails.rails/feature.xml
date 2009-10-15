@@ -2,7 +2,7 @@
 <feature
       id="org.radrails.rails"
       label="%featureName"
-      version="1.5.0.qualifier"
+      version="2.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.radrails.rails.ui">
 
@@ -20,7 +20,7 @@
 
    <url>
       <update label="%updateSiteName" url="http://download.aptana.com/tools/radrails/plugin/update/rails/"/>
-      <discovery label="Git plugin (Eclipse 3.4+)" url="http://www.jgit.org/update-site/"/>
+      <discovery label="Git plugin (Eclipse 3.4+)" url="http://www.jgit.org/updates/"/>
    </url>
 
    <includes
@@ -159,13 +159,6 @@
 
    <plugin
          id="com.aptana.radrails.cloud"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="com.aptana.radrails.intro"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -2,7 +2,7 @@
 <feature
       id="com.aptana.radrails.feature"
       label="%featureName"
-      version="1.5.0.qualifier"
+      version="2.0.0.qualifier"
       provider-name="%providerName"
       plugin="org.radrails.rails.ui">
 
@@ -34,5 +34,12 @@
    <includes
          id="com.aptana.ide.feature.secureftp"
          version="0.0.0"/>
+
+   <plugin
+         id="com.aptana.radrails.intro"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>
