@@ -180,6 +180,7 @@
 				<include name="plugins/**/*" />
 				<exclude name="plugins/com.aptana.radrails.rcp/**/*" />
 				<exclude name="plugins/com.aptana.radrails.rcp.main/**/*" />
+				<exclude name="plugins/com.aptana.radrails.intro/**/*" />
 				<include name="features**/*" />
 				<exclude name="features/com.aptana.radrails.feature.rcp/**/*" />
 				<exclude name="features/com.aptana.radrails.feature.rcp.wrapper/**/*" />
