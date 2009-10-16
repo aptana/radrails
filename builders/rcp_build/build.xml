@@ -152,8 +152,6 @@
 					<include name="org.mozilla.xpcom_*.jar" />
 					<include name="com.aptana.ide.desktop.integration.protocolhandler_*.jar" />
 					<include name="com.aptana.ide.syncing_*.jar" />
-					<include name="com.aptana.ide.syncing.doms_*.jar" />
-					<include name="com.aptana.ide.professional_*.jar" />
 					<include name="com.aptana.ide.branding_*.jar" />
 					<include name="com.aptana.ide.core.win32_*.jar" />
 					<include name="com.aptana.ide.libraries_*.jar" />
