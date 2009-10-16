@@ -39,20 +39,28 @@ public class HAMLandSassIndexer extends BuildParticipant
 	public void buildStarting(List<BuildContext> contexts, boolean isBatch, IProgressMonitor monitor)
 	{
 		indices = new HashSet<Index>();
-		for (BuildContext context : contexts)
+	}
+
+	@Override
+	public void build(BuildContext context, IProgressMonitor monitor)
+	{
+		String extension = context.getFile().getFileExtension();
+		if (extension != null && extension.equalsIgnoreCase("sass"))
 		{
-			String extension = context.getFile().getFileExtension();
-			if (extension != null && extension.equalsIgnoreCase("sass"))
-			{
-				indexSASS(context);
-			}
-			else if (extension != null && extension.equalsIgnoreCase("haml"))
-			{
-				indexHAML(context);
-			}
+			indexSASS(context);
 		}
+		else if (extension != null && extension.equalsIgnoreCase("haml"))
+		{
+			indexHAML(context);
+		}
+	}
+
+	@Override
+	public void buildFinishing(IProgressMonitor monitor)
+	{
 		// Save the indexes now (so it gets saved to disk!)
 		saveModifiedIndices();
+		indices.clear();
 	}
 
 	private void saveModifiedIndices()
@@ -176,30 +184,4 @@ public class HAMLandSassIndexer extends BuildParticipant
 	{
 		return true;
 	}
-
-	public static void main(String[] args)
-	{
-		// SASS
-		Matcher m = SASS_COLOR_PATTERN.matcher("  color: #abcdef\n    color: #123");
-		while (m.find())
-			System.out.println("Sass Color Match: '" + m.group() + "'");
-
-		m = SASS_CLASS_PATTERN.matcher(".chris\n  .red\n    color: red");
-		while (m.find())
-			System.out.println("Sass Class Match: '" + m.group(1) + "'");
-
-		m = SASS_ID_PATTERN.matcher("#chris\n  color: red\n.users #userTab\n  color: #abc\ndiv\n  width: 42px");
-		while (m.find())
-			System.out.println("Sass ID Match: '" + m.group(1) + "'");
-		
-		// HAML
-		m = HAML_CLASS_PATTERN.matcher(".content\n  .articles\n    .article.title Doogie Howser Comes Out\n    .article.date 2006-11-05\n");
-		while (m.find())
-			System.out.println("HAML Class Match: '" + m.group(1) + "'");
-
-		m = HAML_ID_PATTERN.matcher("%div#things\n  %span#rice Chicken Fried\n  %p.beans{ :food => 'true' } The magical fruit\n  %h1.class.otherclass#id La La La\n");
-		while (m.find())
-			System.out.println("HAML ID Match: '" + m.group(1) + "'");
-	}
-
 }

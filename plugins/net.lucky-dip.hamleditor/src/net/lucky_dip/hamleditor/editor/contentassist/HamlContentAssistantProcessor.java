@@ -116,7 +116,7 @@ public class HamlContentAssistantProcessor implements IContentAssistProcessor
 	private Collection<CompletionProposal> getCSSClassCompletions(int offset, String prefix)
 	{
 
-		Collection<String> classes = CSSLanguageEnvironment.getInstance().getClasses(getEditorContentsPath(), "");
+		Collection<String> classes = CSSLanguageEnvironment.getInstance().getClasses(getEditorContentsProjectPath(), "");
 		if (classes == null)
 			return Collections.emptyList();
 		List<CompletionProposal> proposals = new ArrayList<CompletionProposal>();
@@ -139,7 +139,7 @@ public class HamlContentAssistantProcessor implements IContentAssistProcessor
 	private Collection<CompletionProposal> getHTMLIDCompletions(int offset, String prefix)
 	{
 
-		Collection<String> ids = CSSLanguageEnvironment.getInstance().getIds(getEditorContentsPath(), "");
+		Collection<String> ids = CSSLanguageEnvironment.getInstance().getIds(getEditorContentsProjectPath(), "");
 		if (ids == null)
 			return Collections.emptyList();
 
@@ -159,7 +159,7 @@ public class HamlContentAssistantProcessor implements IContentAssistProcessor
 		return proposals;
 	}
 
-	private String getEditorContentsPath()
+	private String getEditorContentsProjectPath()
 	{
 		IEditorInput pathEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
 				.getActiveEditor().getEditorInput();
