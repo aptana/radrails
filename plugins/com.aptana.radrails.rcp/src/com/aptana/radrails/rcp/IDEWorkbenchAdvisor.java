@@ -12,6 +12,7 @@ package com.aptana.radrails.rcp;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -50,6 +51,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorReference;
+import org.eclipse.ui.IURIEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
@@ -78,7 +80,6 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.Version;
 
-import com.aptana.ide.core.BaseFileEditorInput;
 import com.aptana.ide.core.FileUtils;
 import com.aptana.ide.core.IdeLog;
 import com.aptana.ide.core.PlatformUtils;
@@ -889,14 +890,17 @@ public class IDEWorkbenchAdvisor extends WorkbenchAdvisor {
 			IEditorInput input;
 			try
 			{
-
 				input = refs[i].getEditorInput();
-				if (input instanceof BaseFileEditorInput)
+				if (input instanceof IURIEditorInput)
 				{
-					String path = ((BaseFileEditorInput) input).getPath().toOSString();
-					if(path.startsWith(FileUtils.systemTempDir) == false)
+					URI uri = ((IURIEditorInput) input).getURI();
+					if ("file".equals(uri.getScheme())) //$NON-NLS-1$
 					{
-						openFiles.add(path);
+						String path = new File(uri).getAbsolutePath();
+						if(path.startsWith(FileUtils.systemTempDir) == false)
+						{
+							openFiles.add(path);
+						}
 					}
 				}
 			}
