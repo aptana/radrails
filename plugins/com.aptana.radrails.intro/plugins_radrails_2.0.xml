@@ -50,10 +50,10 @@
         <more>http://www.aptana.com/cloud/</more>
 		<sortweight>0</sortweight>
 		<release>
-		  <version>1.5.0</version>
+		  <version>2.0.0</version>
 		  <year>2009</year>
-		  <month>7</month>
-		  <day>8</day>
+		  <month>10</month>
+		  <day>28</day>
 		</release>
 		<icon>images/feature_cloud.png</icon>
 		<installer_id>installer.hosting</installer_id>
@@ -67,26 +67,26 @@
         <more>http://www.eclipse.org/subversive/</more>
 		<sortweight>0</sortweight>
 		<release>
-		  <version>0.7.8.I20090506-1500</version>
+		  <version>0.7.8.I20090904-1300</version>
 		  <year>2009</year>
-		  <month>5</month>
-		  <day>6</day>
+		  <month>9</month>
+		  <day>4</day>
 		</release>
 		<installer_id>installer.community.scm</installer_id>
 	</plugin>
 	<plugin>
-		<id>com.aptana.ide.feature.svn</id>
+		<id>org.tigris.subversion.subclipse</id>
 		<name>Subclipse</name>
 		<category>Utilities</category> 
 		<description>Subversion SCM integration</description>
-		<url>http://download.aptana.org/tools/studio/plugin/install/svn/</url>
+		<url>http://subclipse.tigris.org/update_1.6.x/</url>
         <more>http://subclipse.tigris.org/</more>
 		<sortweight>0</sortweight>
 		<release>
-		  <version>1.4.2</version>
+		  <version>1.6.5</version>
 		  <year>2009</year>
-		  <month>2</month>
-		  <day>17</day>
+		  <month>8</month>
+		  <day>11</day>
 		</release>
 		<installer_id>installer.community.scm</installer_id>
 	</plugin>
@@ -99,10 +99,10 @@
         <more>http://www.perforce.com/perforce/products/p4wsad.html</more>
 		<sortweight>1</sortweight>
 		<release>
-		  <version>2008.2.188245</version>
-		  <year>2008</year>
-		  <month>4</month>
-		  <day>12</day>
+		  <version>2009.1.211156</version>
+		  <year>2009</year>
+		  <month>1</month>
+		  <day>21</day>
 		</release>
 		<installer_id>installer.community.scm</installer_id>
 	</plugin>
@@ -116,10 +116,11 @@
   		<sortweight>1</sortweight>
   		<release>
   			<version>2.1.2</version>
+  			<year>2009</year>
+  			<month>8</month>
   			<day>26</day>
-  			<month>08</month>
-  			<year>2009</year></release>
-  		<icon>http://ide.aptana.com/content_ide/images/feature_pdt.png</icon>
+  		</release>
+  		<icon>images/feature_pdt.png</icon>
   		<installer_id>installer.platforms</installer_id>
   	</plugin>
     <plugin>
@@ -131,10 +132,10 @@
         <more>http://www.aptana.com/pydev</more>
         <sortweight>3</sortweight>
         <release>
-          <version>1.4.6</version>
+          <version>1.5.0</version>
           <year>2009</year>
-          <month>7</month>
-          <day>8</day>
+          <month>9</month>
+          <day>3</day>
         </release>
 		<icon>images/feature_pydev.png</icon>
 		<installer_id>installer.platforms</installer_id>
@@ -183,7 +184,7 @@
 		<release>
             <version>0.5.0</version>
 			<year>2009</year>
-			<month>7</month>
+			<month>9</month>
 			<day>8</day>
 		</release>
 		<installer_id>installer.featured</installer_id>
@@ -257,7 +258,7 @@
 		<installer_id>installer.ajax</installer_id>
 	</plugin>
   <plugin>
-		<id>com.yahoo.yui.2.7</id>
+		<id>com.yahoo.yui.2.8</id>
 		<name>Yahoo! User Interface (YUI) Support</name>
 		<category>Ajax</category>
 		<description>Adds support for the YUI Ajax library</description>
@@ -265,10 +266,10 @@
         <more>http://www.aptana.com/plugins#yui</more>
 		<sortweight>0</sortweight>
 		<release>
-            <version>2.7.0</version>
+            <version>2.8.0</version>
 			<year>2009</year>
-			<month>2</month>
-			<day>25</day>
+			<month>9</month>
+			<day>18</day>
 		</release>
 		<icon>images/ajax/yui.png</icon>
 		<installer_id>installer.ajax</installer_id>
