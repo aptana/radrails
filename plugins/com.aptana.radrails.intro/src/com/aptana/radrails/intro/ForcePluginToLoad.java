@@ -19,16 +19,16 @@ public class ForcePluginToLoad implements IStartup
 	private static final String RADRAILS_LOCAL_PLUGIN_LISTING_PATH = "plugins_radrails_1.5.xml"; //$NON-NLS-1$
 
 
-	private static final String RADRAILS_GETTING_STARTED_URL = "http://www.aptana.com/tools/radrails/getting_started"; //$NON-NLS-1$
-	private static final String RADRAILS_REMOTE_IMAGE_LOCATION = "http://www.aptana.com/tools/radrails/images/my_radrails.gif"; //$NON-NLS-1$
+	private static final String RADRAILS_GETTING_STARTED_URL = "http://www.radrails.org/tools/radrails/getting_started"; //$NON-NLS-1$
+	private static final String RADRAILS_REMOTE_IMAGE_LOCATION = "http://www.radrails.org/tools/radrails/images/my_radrails.gif"; //$NON-NLS-1$
 
 	// Custom release_message URL prefix
-	private static final String RADRAILS_RELEASE_MESSAGE_URL_PREFIX = "http://www.aptana.com/tools/radrails/release-message/"; //$NON-NLS-1$
+	private static final String RADRAILS_RELEASE_MESSAGE_URL_PREFIX = "http://www.radrails.org/tools/radrails/release-message/"; //$NON-NLS-1$
 
 	public void earlyStartup()
 	{
 		// Override the URL for Help > Aptana Help > Release Notes
-		System.setProperty(DocumentationPlugin.RELEASE_NOTES_URL_SYSTEM_PROPERTY, "http://www.aptana.com/tools/radrails/releasenotes/");
+		System.setProperty(DocumentationPlugin.RELEASE_NOTES_URL_SYSTEM_PROPERTY, "http://www.radrails.org/tools/radrails/releasenotes/");
 		
 		// Set custom RadRails plugins.xml feed
 		new InstanceScope().getNode(com.aptana.ide.update.Activator.PLUGIN_ID).put(
@@ -42,7 +42,6 @@ public class ForcePluginToLoad implements IStartup
 					radrailsLocalListingURL.toString());
 		}
 		
-		// FIXME Uncomment when we're building against studio in git!
 		// Set up custom release_message URL prefix
 		IEclipsePreferences updateUIPrefs = new InstanceScope().getNode(com.aptana.ide.update.Activator.PLUGIN_ID);
 		updateUIPrefs.put(
