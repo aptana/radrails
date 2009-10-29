@@ -415,10 +415,16 @@
         <name>Nokia WRT Plug-in for Aptana Studio</name>
         <category>Featured</category>
         <description>Build, preview, and debug Web and Ajax apps for S60 phones</description>
-        <url>http://tools.ext.nokia.com/wrt/prod/aptana/plugin</url>
+        <url>http://tools.ext.nokia.com/wrt/prod/aptana/plugin/</url>
         <more>http://www.forum.nokia.com/Resources_and_Information/Tools/Runtimes/Web_Runtime/Aptana_Plugin/</more>
         <sortweight>1</sortweight>
-        <icon>http://ide.aptana.com/content_ide/images/feature_nokia.png</icon>
+        <release>
+          <version>2.3</version>
+          <year>2009</year>
+          <month>10</month>
+          <day>28</day>
+        </release>
+        <icon>images/feature_nokia.png</icon>
         <installer_id>installer.community.mobile</installer_id>
   </plugin>
 </plugins>
