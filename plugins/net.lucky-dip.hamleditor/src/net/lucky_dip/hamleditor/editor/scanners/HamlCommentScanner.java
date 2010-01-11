@@ -21,7 +21,7 @@ public class HamlCommentScanner extends RuleBasedScanner
 		rules[0] = new SingleLineRule("/", null, comment, (char) 0, true);
 		rules[1] = new MultiLineRule("<!--", "-->", comment, (char) 0, true);
 		// FIXME Need to handle nested content and color that properly!
-		rules[1] = new SingleLineRule("-#", null, comment, (char) 0, true);
+		rules[2] = new SingleLineRule("-#", null, comment, (char) 0, true);
 
 		setRules(rules);
 	}
