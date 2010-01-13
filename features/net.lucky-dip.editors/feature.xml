@@ -2,7 +2,7 @@
 <feature
       id="net.lucky_dip.editors"
       label="Haml and Sass Editors"
-      version="0.6.0.qualifier"
+      version="0.6.1.qualifier"
       provider-name="Aptana, Inc.">
 
    <description url="http://haml.lucky-dip.net">
