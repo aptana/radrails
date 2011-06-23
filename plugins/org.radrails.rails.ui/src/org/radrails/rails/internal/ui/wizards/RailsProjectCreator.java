@@ -582,7 +582,7 @@ public class RailsProjectCreator implements IRunnableWithProgress {
 			if (railsVersion.getMajor() > 3) {
 				newArg = true;
 			} else if (railsVersion.getMajor() == 3) {
-				if (railsVersion.getQualifier() != null) {
+				if (railsVersion.getMinor() == 0 && railsVersion.getMicro() == 0 && railsVersion.getQualifier().length() != 0) {
 					if ("beta4".equals(railsVersion.getQualifier())) {
 						newArg = true;
 					}
